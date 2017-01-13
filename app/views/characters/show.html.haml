@@ -1,0 +1,7 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded
+      =@character.name
+      =link_to edit_user_character_path(current_user, @character) do
+        %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+    %div= raw @markdown.render(@character.history)

@@ -1,0 +1,19 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded New Character
+    =form_for @character do |f|
+      .form-errors
+        -if @character.errors.present?
+          .callout.alert
+            %ul
+              -@character.errors.messages.each do |attribute, messages|
+                %li
+                  %strong
+                    =attribute.to_s.humanize
+                  ="#{messages.to_sentence}."
+      .form-inputs
+        %fieldset
+          =f.label :name, "Name"
+          =f.text_field :name
+      .form-actions
+        =f.submit "Create", class: "button"

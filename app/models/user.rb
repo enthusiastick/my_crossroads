@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   before_create :generate_confirmation_digest
 
+  has_many :characters
+
   has_secure_password
 
   validates_format_of :email, with: EMAIL_REGEXP

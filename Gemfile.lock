@@ -63,6 +63,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     foundation-rails (6.3.0.0)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
@@ -137,6 +139,7 @@ GEM
       ffi (>= 0.5.0)
     recaptcha (4.0.1)
       json
+    redcarpet (3.4.0)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -204,6 +207,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.2)
   dotenv-rails
+  font-awesome-rails
   foundation-rails
   haml
   jbuilder (~> 2.5)
@@ -214,6 +218,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   recaptcha
+  redcarpet
   rspec-rails
   sass-rails (~> 5.0)
   spring

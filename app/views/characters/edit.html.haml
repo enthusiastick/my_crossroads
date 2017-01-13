@@ -1,0 +1,54 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded= @character.name
+    =form_for [@user, @character] do |f|
+      .form-errors
+        -if @character.errors.present?
+          .callout.alert
+            %ul
+              -@character.errors.messages.each do |attribute, messages|
+                %li
+                  %strong
+                    =attribute.to_s.humanize
+                  ="#{messages.to_sentence}."
+      .form-inputs
+        %fieldset
+          =f.label :history, "Character History"
+          =f.text_area :history
+      .form-actions
+        =f.submit "Save", class: "button"
+        <div>
+    %p
+      Character histories support markdown. For more information on Markdown syntax, click
+      =link_to "here.", "https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet", target: "_blank"
+    %table
+      %thead
+        %tr
+          %th syntax
+          %th rendered as
+      %tbody
+        %tr
+          %td *italics*
+          %td
+            %em italics
+        %tr
+          %td **bold**
+          %td
+            %strong bold
+        %tr
+          %td [link](http://enthusiastick.com)
+          %td
+            =link_to "link", "http://enthusiastick.com", rel: "nofollow"
+        %tr
+          %td
+            * item 1
+            %br/
+            * item 2
+            %br/
+            * item 3
+          %td
+            %ul
+              %li item 1
+              %li item 2
+              %li item 3
+

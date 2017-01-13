@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "sign-up", to: "users#new", as: :sign_up
 
   resources :account_confirmations, only: [:edit]
+  resources :characters, only: [:create, :new, :index]
   resources :password_resets, only: [:create, :edit, :new, :update]
-  resources :users, only: [:create, :edit, :update]
+  resources :users, only: [:create, :edit, :update] do
+    resources :characters, only: [:edit, :show, :update]
+  end
 end

@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_signed_in?
   protect_from_forgery with: :exception
 
+  def authorize_record_owner(user)
+    unless current_user == user
+      flash[:alert] = "You are not authorized to access this content."
+      redirect_to root_path
+    end
+  end
+
   def authenticate_user!
     if !user_signed_in?
       persist_location!
