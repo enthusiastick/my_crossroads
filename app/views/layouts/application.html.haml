@@ -15,6 +15,8 @@
     .top-bar
       .top-bar-left
         %ul.menu
+          %li.header-font.menu-text
+            = link_to "MyCrossroads", root_path
           -if user_signed_in?
             %li.menu-text Signed in as:
             %li
@@ -25,10 +27,10 @@
       .top-bar-right
         %ul.menu
           -if user_signed_in?
-            %li.sign-out
+            %li.menu-text.sign-out
               = link_to "Sign Out", sign_out_path, method: :delete
           -elsif controller_name != "sessions"
-            %li.sign-in
+            %li.menu-text.sign-in
               = link_to "Sign In", sign_in_path
     - flash.each do |name, msg|
       %div{ class: name + " callout", data: { closable: "" }}

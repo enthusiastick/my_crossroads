@@ -15,5 +15,7 @@
         %fieldset
           =f.label :name, "Name"
           =f.text_field :name
+        %fieldset
+          =f.select :race, options_for_select(Character.race_collection)
       .form-actions
         =f.submit "Create", class: "button"

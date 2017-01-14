@@ -3,6 +3,7 @@ class CreateCharacters < ActiveRecord::Migration[5.0]
     create_table :characters do |t|
       t.string :name, null: false
       t.text :history, default: ""
+      t.integer :race, default: 0
       t.string :slug, null: false
       t.belongs_to :user, null: false
 

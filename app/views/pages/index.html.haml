@@ -1,3 +1,12 @@
 .row
   .small-12.columns
-    %p.text-center.top-padded Hello from pages index.
+    %h1.text-center.top-padded MyCrossroads
+    %p.text-center
+      Welcome to
+      %strong MyCrossroads,
+      the Terres Rising app.
+    .text-center
+      =link_to characters_path, class: "button" do
+        %h2
+          %i.fa.fa-users{"aria-hidden": "true"}
+          My Characters
