@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin!
+    authenticate_user!
+    if !current_user.admin?
+      flash[:alert] = "You are not authorized to access this content."
+      redirect_to root_path
+    end
+  end
+
   def authenticate_user!
     if !user_signed_in?
       persist_location!

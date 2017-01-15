@@ -1,0 +1,9 @@
+=form.label attribute, attribute.to_s.titleize
+-if model.errors.present?
+  -if model.errors[attribute].empty?
+    =form.text_field attribute
+  -else
+    =form.text_field attribute, class: "is-invalid-input"
+    %span.form-error.is-visible= model.errors.full_messages_for(attribute).to_sentence
+-else
+  =form.text_field attribute

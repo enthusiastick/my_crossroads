@@ -2,20 +2,10 @@
   .small-12.columns
     %h1.text-center.top-padded New Character
     =form_for @character do |f|
-      .form-errors
-        -if @character.errors.present?
-          .callout.alert
-            %ul
-              -@character.errors.messages.each do |attribute, messages|
-                %li
-                  %strong
-                    =attribute.to_s.humanize
-                  ="#{messages.to_sentence}."
       .form-inputs
         %fieldset
-          =f.label :name, "Name"
-          =f.text_field :name
+          =render partial: "text_field_with_errors", locals: {attribute: :name, form: f, model: @character}
         %fieldset
-          =f.select :race, options_for_select(Character.race_collection)
+          =f.select :race, options_for_select(Character.enum_collection(:races))
       .form-actions
         =f.submit "Create", class: "button"

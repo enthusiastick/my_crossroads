@@ -19,7 +19,7 @@ class CharactersController < ApplicationController
   end
 
   def index
-    @characters = current_user.characters
+    @characters = current_user.characters.where(archived: false)
   end
 
   def new

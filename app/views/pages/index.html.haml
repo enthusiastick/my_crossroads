@@ -5,8 +5,9 @@
       Welcome to
       %strong MyCrossroads,
       the Terres Rising app.
-    .text-center
-      =link_to characters_path, class: "button" do
-        %h2
-          %i.fa.fa-users{"aria-hidden": "true"}
-          My Characters
+    -if user_signed_in?
+      .text-center
+        =link_to characters_path, class: "button" do
+          %h2
+            %i.fa.fa-users{"aria-hidden": "true"}
+            My Characters

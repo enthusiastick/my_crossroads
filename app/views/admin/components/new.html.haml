@@ -1,0 +1,43 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded New Component
+    =form_for [:admin, @component] do |f|
+      .form-inputs
+        %fieldset
+          =render partial: "text_field_with_errors", locals: {attribute: :name, form: f, model: @component}
+        .row
+          .small-12.medium-6.large-3.columns
+            %fieldset
+              =f.label :code, "Code"
+              =f.text_field :code
+          .small-12.medium-6.large-3.columns
+            %fieldset
+              =f.label :level, "Level"
+              =f.number_field :level, in: 0..4
+          .small-12.medium-6.large-3.columns
+            %fieldset
+              =f.label :category, "Type"
+              =f.select :category, options_for_select(Component.enum_collection(:categories))
+          .small-12.medium-6.large-3.columns
+            %fieldset
+              =f.label :rarity, "Rarity"
+              =f.select :rarity, options_for_select(Component.enum_collection(:rarities))
+        .row
+          .small-12.medium-4.columns
+            %fieldset
+              =f.label :primary, "Primary"
+              =f.text_field :primary
+          .small-12.medium-4.columns
+            %fieldset
+              =f.label :secondary, "Secondary"
+              =f.text_field :secondary
+          .small-12.medium-4.columns
+            %fieldset
+              =f.label :tertiary, "Tertiary"
+              =f.text_field :tertiary
+        %fieldset
+          =f.label :staff_notes, "Staff Notes"
+          =f.text_area :staff_notes
+      .form-actions
+        =f.submit "Create", class: "button"
+
