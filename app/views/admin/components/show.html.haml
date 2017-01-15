@@ -1,0 +1,40 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Components", admin_components_path
+        %li
+          %span.show-for-sr Current:
+          =@component.name
+    %h1.text-center
+      =@component.name
+      =link_to edit_admin_component_path(@component) do
+        %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+    .callout
+      .row
+        .small-12.medium-6.large-3.columns
+          %strong Code:
+          =@component.code
+        .small-12.medium-6.large-3.columns
+          %strong Level:
+          =@component.level
+        .small-12.medium-6.large-3.columns
+          %strong Type:
+          =@component.category.titleize
+        .small-12.medium-6.large-3.columns
+          %strong Rarity:
+          =@component.rarity.titleize
+    .callout
+      .row
+        .small-12.medium-4.columns
+          %strong Primary:
+          =@component.primary
+        .small-12.medium-4.columns
+          %strong Secondary:
+          =@component.secondary
+        .small-12.medium-4.columns
+          %strong Tertiary:
+          =@component.tertiary
+    -unless @component.staff_notes.empty?
+      .callout= @component.staff_notes

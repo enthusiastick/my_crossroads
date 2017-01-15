@@ -1,0 +1,27 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded Components
+    %p.text-center= link_to "Add New Component", new_admin_component_path, class: "button"
+    %table.hover.stack
+      %thead
+        %tr
+          %th Name
+          %th Code
+          %th Level
+          %th Type
+          %th Rarity
+          %th Primary
+          %th Secondary
+          %th Tertiary
+      %tbody
+        -@components.each do |component|
+          %tr
+            %td= link_to component.name, admin_component_path(component)
+            %td= component.code
+            %td= component.level
+            %td= component.category.titleize
+            %td= component.rarity.titleize
+            %td= component.primary
+            %td= component.secondary
+            %td= component.tertiary
+
