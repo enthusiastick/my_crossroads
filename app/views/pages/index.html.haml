@@ -5,6 +5,9 @@
       Welcome to
       %strong MyCrossroads,
       the Terres Rising app.
+      Today is
+      %strong
+        #{@ashriyan_date}.
     -if user_signed_in?
       .text-center
         =link_to characters_path, class: "button" do
