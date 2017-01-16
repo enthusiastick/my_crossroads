@@ -1,4 +1,4 @@
-class Component < ApplicationRecord
+class Ingredient < ApplicationRecord
   enum category: {
     special: 0,
     animal: 1,
@@ -21,6 +21,9 @@ class Component < ApplicationRecord
     rare: 3,
     extra_rare: 4
   }
+
+  has_many :inventories
+  has_many :characters, through: :inventories
 
   validates_presence_of :category, :name, :rarity
 end

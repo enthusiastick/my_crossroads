@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114190156) do
+ActiveRecord::Schema.define(version: 20170115144837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170114190156) do
     t.index ["user_id"], name: "index_characters_on_user_id", using: :btree
   end
 
-  create_table "components", force: :cascade do |t|
+  create_table "ingredients", force: :cascade do |t|
     t.string   "name",                        null: false
     t.string   "code"
     t.text     "staff_notes"
@@ -41,6 +41,31 @@ ActiveRecord::Schema.define(version: 20170114190156) do
     t.boolean  "archived",    default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "character_id",                  null: false
+    t.integer  "ingredient_id",                 null: false
+    t.integer  "quantity",      default: 0
+    t.boolean  "primary",       default: false
+    t.boolean  "secondary",     default: false
+    t.boolean  "tertiary",      default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["character_id"], name: "index_inventories_on_character_id", using: :btree
+    t.index ["ingredient_id"], name: "index_inventories_on_ingredient_id", using: :btree
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.text     "description",    null: false
+    t.integer  "contributor_id"
+    t.integer  "recipient_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["contributor_id"], name: "index_transactions_on_contributor_id", using: :btree
+    t.index ["recipient_id"], name: "index_transactions_on_recipient_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

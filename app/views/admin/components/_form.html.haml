@@ -14,11 +14,11 @@
       .small-12.medium-6.large-3.columns
         %fieldset
           =f.label :category, "Type"
-          =f.select :category, options_for_select(Component.enum_collection(:categories), @component.category)
+          =f.select :category, options_for_select(Ingredient.enum_collection(:categories), @component.category)
       .small-12.medium-6.large-3.columns
         %fieldset
           =f.label :rarity, "Rarity"
-          =f.select :rarity, options_for_select(Component.enum_collection(:rarities), @component.rarity)
+          =f.select :rarity, options_for_select(Ingredient.enum_collection(:rarities), @component.rarity)
     .row
       .small-12.medium-4.columns
         %fieldset

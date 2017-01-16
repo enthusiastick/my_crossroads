@@ -18,14 +18,13 @@ class Character < ApplicationRecord
     wyldling: 11
   }
 
+  has_many :ingredients, through: :inventories
+  has_many :contributions, class_name: :Transaction, foreign_key: :contributor_id
+  has_many :inventories
+  has_many :transactions, foreign_key: :recipient_id
+
   validates_presence_of :name, :slug, :user
   validates_uniqueness_of :name, :slug
-
-  def self.race_collection
-    collection = Array.new
-    races.keys.each { |race| collection << [race.titleize, race] }
-    collection
-  end
 
   def to_param
     slug

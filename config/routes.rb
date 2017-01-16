@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get "sign-up", to: "users#new", as: :sign_up
 
   namespace :admin do
-    resources :components
+    resources :components, except: [:create, :destroy, :update]
+    resources :ingredients, controller: :components, only: [:create, :destroy, :update]
   end
 
   resources :account_confirmations, only: [:edit]

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   before_create :generate_confirmation_digest
 
   has_many :characters
+  has_many :transactions
 
   has_secure_password
 
