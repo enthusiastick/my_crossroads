@@ -2,9 +2,14 @@
   .small-12.columns
     %h1.text-center.top-padded My Characters
     %p.text-center= link_to "Add New Character", new_character_path, class: "button"
-    %ul
-      -@characters.each do |character|
-        %li
-          =link_to character.name, user_character_path(current_user, character)
-          =link_to edit_user_character_path(current_user, character) do
-            %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+    %table.hover.stack
+      %thead
+        %tr
+          %th Name
+          %th Race
+      %tbody
+        -@characters.each do |character|
+          %tr
+            %td= link_to character.name, user_character_path(character.user, character)
+            %td= character.race.titleize
+
