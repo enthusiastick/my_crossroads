@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     authenticate_user!
-    if !current_user.admin?
+    if user_signed_in? && !current_user.admin?
       flash[:alert] = "You are not authorized to access this content."
       redirect_to root_path
     end
@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
     user.terminate_remember_digest
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
+  end
+
+  def new_markdown
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
   end
 
   def persist_location!

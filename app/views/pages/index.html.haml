@@ -13,10 +13,4 @@
         =link_to characters_path, class: "button" do
           %h2
             %i.fa.fa-users{"aria-hidden": "true"}
-            Characters
-        -if current_user.admin?
-          &nbsp;
-          =link_to admin_components_path, class: "button" do
-            %h2
-              %i.fa.fa-cubes{"aria-hidden": "true"}
-              Components
+            My Characters

@@ -1,0 +1,19 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded Users
+    %table.hover.stack
+      %thead
+        %tr
+          %th Username
+          %th Email
+          %th First Name
+          %th Last Name
+          %th Admin
+      %tbody
+        -@users.each do |user|
+          %tr
+            %td= link_to user.handle, admin_user_path(user)
+            %td= link_to user.email, "mailto:#{user.email}"
+            %td= user.first_name
+            %td= user.last_name
+            %td= user.admin?

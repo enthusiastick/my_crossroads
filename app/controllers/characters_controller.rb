@@ -29,7 +29,7 @@ class CharactersController < ApplicationController
   def show
     @character = Character.find_by(slug: params[:id])
     @user = User.find_by(handle: params[:user_id])
-    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    @markdown = new_markdown
     authorize_record_owner(@user)
   end
 

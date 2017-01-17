@@ -1,0 +1,23 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Characters", admin_characters_path
+        %li
+          %span.show-for-sr Current:
+          =@character.name
+    %nav
+      %ul.breadcrumbs
+        %li
+          =link_to "Users", admin_users_path
+        %li
+          =link_to @character.user.handle, admin_user_path(@character.user)
+        %li
+          %span.show-for-sr Current:
+          =@character.name
+    %h1.text-center
+      =@character.name
+    %p.text-center= @character.race.titleize
+    -unless @character.history.blank?
+      .callout.primary= raw @markdown.render(@character.history)

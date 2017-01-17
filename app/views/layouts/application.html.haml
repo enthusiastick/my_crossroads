@@ -24,6 +24,9 @@
           -else
             %li.menu-text
               Not signed in.
+          -if user_signed_in? && current_user.admin?
+            %li
+              =link_to "Admin", admin_path, class: "button"
       .top-bar-right
         %ul.menu
           -if user_signed_in?

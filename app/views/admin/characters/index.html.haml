@@ -1,0 +1,15 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded Characters
+    %table.hover.stack
+      %thead
+        %tr
+          %th Name
+          %th Race
+          %th User
+      %tbody
+        -@characters.each do |character|
+          %tr
+            %td= link_to character.name, admin_user_character_path(character.user, character)
+            %td= character.race.titleize
+            %td= link_to character.user.handle, admin_user_path(character.user)
