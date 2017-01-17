@@ -10,5 +10,6 @@ class CreateInventories < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :inventories, [:character_id, :ingredient_id], unique: true
   end
 end

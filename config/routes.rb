@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   get "sign-up", to: "users#new", as: :sign_up
 
   namespace :admin do
-    resources :characters, only: [:index]
+    resources :characters, only: [:index, :update]
     resources :components, except: [:create, :destroy, :update]
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show] do
-      resources :characters, only: [:show]
+      resources :characters, only: [:show] do
+        resources :inventories, only: [:index, :new]
+      end
     end
   end
 

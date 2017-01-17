@@ -1,4 +1,5 @@
 class Character < ApplicationRecord
+
   before_validation :generate_slug
 
   belongs_to :user
@@ -21,6 +22,7 @@ class Character < ApplicationRecord
   has_many :ingredients, through: :inventories
   has_many :contributions, class_name: :Transaction, foreign_key: :contributor_id
   has_many :inventories
+  accepts_nested_attributes_for :inventories
   has_many :transactions, foreign_key: :recipient_id
 
   validates_presence_of :name, :slug, :user

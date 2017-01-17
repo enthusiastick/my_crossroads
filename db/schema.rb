@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170115144837) do
     t.boolean  "tertiary",      default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.index ["character_id", "ingredient_id"], name: "index_inventories_on_character_id_and_ingredient_id", unique: true, using: :btree
     t.index ["character_id"], name: "index_inventories_on_character_id", using: :btree
     t.index ["ingredient_id"], name: "index_inventories_on_ingredient_id", using: :btree
   end

@@ -3,21 +3,24 @@
     %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
       %ul.breadcrumbs
         %li
-          =link_to "Characters", admin_characters_path
-        %li
-          %span.show-for-sr Current:
-          =@character.name
-    %nav
-      %ul.breadcrumbs
-        %li
           =link_to "Users", admin_users_path
         %li
           =link_to @character.user.handle, admin_user_path(@character.user)
+        %li
+          =link_to "Characters", admin_characters_path
         %li
           %span.show-for-sr Current:
           =@character.name
     %h1.text-center
       =@character.name
     %p.text-center= @character.race.titleize
+    %p.text-center
+      =link_to admin_user_character_inventories_path(@character.user, @character), class: "button" do
+        %i.fa.fa-list-ol
+        Edit Components
+      &nbsp;
+      =link_to new_admin_user_character_inventory_path(@character.user, @character), class: "button" do
+        %i.fa.fa-plus
+        Add Component
     -unless @character.history.blank?
       .callout.primary= raw @markdown.render(@character.history)
