@@ -18,9 +18,5 @@
       =link_to admin_user_character_inventories_path(@character.user, @character), class: "button" do
         %i.fa.fa-list-ol
         Edit Components
-      &nbsp;
-      =link_to new_admin_user_character_inventory_path(@character.user, @character), class: "button" do
-        %i.fa.fa-plus
-        Add Component
     -unless @character.history.blank?
       .callout.primary= raw @markdown.render(@character.history)

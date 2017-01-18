@@ -1,9 +1,8 @@
 class Admin::InventoriesController < ApplicationController
   before_action :authenticate_admin!
 
-  def new
+  def index
     @character = Character.find_by(slug: params[:character_id])
-    @character.inventories.build
     @components = Ingredient.all
   end
 end

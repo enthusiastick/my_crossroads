@@ -3,7 +3,7 @@ print "Seeding users"
   User.create(confirmed_at: Time.now, email: "#{user}@example.com", handle: user, first_name: user, last_name: user, password: "password")
   print "."
 end
-User.first.update(admin: true)
+User.find_by(handle: "admin").update(admin: true)
 print " complete.\nSeeding characters"
 %w(Leslie Ann Tom Ron Andy Ben Chris Donna Jerry).each do |character|
   user = User.order("RANDOM()").first

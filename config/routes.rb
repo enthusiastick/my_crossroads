@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:show] do
-        resources :inventories, only: [:index, :new]
+        resources :inventories, only: [:index]
       end
     end
   end

@@ -22,6 +22,6 @@ class Admin::CharactersController < ApplicationController
   protected
 
   def inventory_params
-    params.require(:character).permit(inventories_attributes: [:quantity, :ingredient_id])
+    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id])
   end
 end
