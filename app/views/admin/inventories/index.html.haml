@@ -18,6 +18,8 @@
     %h3.text-center
       Edit Inventory
     =form_for [:admin, @character] do |f|
+      .text-center
+        =button_to_add_inventory(f)
       .form-inputs
         -@character.inventories.each do |inventory|
           =f.fields_for :inventories, inventory do |b|
@@ -28,5 +30,5 @@
                   =b.number_field :quantity
               .small-9.medium-10.columns
                 %p.margin-top-two= inventory.ingredient.name
-        .form-actions
+        .form-actions#form-actions
           =f.submit "Save", class: "button"
