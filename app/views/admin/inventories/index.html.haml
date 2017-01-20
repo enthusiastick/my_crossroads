@@ -20,7 +20,7 @@
     =form_for @character, url: admin_character_inventory_path(@character) do |f|
       .text-center
         =button_to_add_inventory(f)
-      .form-inputs
+      .form-inputs#form-inputs
         -@character.inventories.each do |inventory|
           =f.fields_for :inventories, inventory do |b|
             .row
@@ -29,6 +29,8 @@
                   =b.label :quantity, "Quantity"
                   =b.number_field :quantity
               .small-9.medium-10.columns
-                %p.margin-top-two= inventory.ingredient.name
-        .form-actions#form-actions
+                =link_to admin_component_path(inventory.ingredient) do
+                  %span.label.secondary.margin-top-two
+                    %strong= inventory.ingredient.name
+        .form-actions
           =f.submit "Save", class: "button"
