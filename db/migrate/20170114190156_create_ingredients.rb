@@ -10,8 +10,8 @@ class CreateIngredients < ActiveRecord::Migration[5.0]
       t.string :primary
       t.string :secondary
       t.string :tertiary
-
       t.boolean :archived, default: false
+
       t.timestamps
     end
   end

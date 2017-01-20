@@ -1,6 +1,16 @@
 class Admin::CharactersController < ApplicationController
   before_action :authenticate_admin!
 
+  def destroy
+    @character = Character.find_by(slug: params[:id])
+    @time_string = Time.now.to_formatted_s(:number)
+    if @character.update(archived: true, name: "[Archived: #{@time_string}] #{@character.name}", slug: "archived-#{@time_string}-#{@character.slug}")
+      redirect_to admin_characters_path
+    else
+      render :show
+    end
+  end
+
   def edit
     @character = Character.find_by(slug: params[:id])
   end
