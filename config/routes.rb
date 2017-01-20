@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :characters, only: [:index, :update]
+    resources :character_inventories, only: [:update]
     resources :components, except: [:create, :destroy, :update]
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show] do

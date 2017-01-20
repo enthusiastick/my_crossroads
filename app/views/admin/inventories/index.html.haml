@@ -17,7 +17,7 @@
       =@character.name
     %h3.text-center
       Edit Inventory
-    =form_for [:admin, @character] do |f|
+    =form_for @character, url: admin_character_inventory_path(@character) do |f|
       .text-center
         =button_to_add_inventory(f)
       .form-inputs
