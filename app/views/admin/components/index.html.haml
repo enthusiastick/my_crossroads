@@ -10,6 +10,7 @@
           %th Level
           %th Type
           %th Rarity
+          %th Seasons
           %th Primary
           %th Secondary
           %th Tertiary
@@ -21,6 +22,7 @@
             %td= component.level
             %td= component.category.titleize
             %td= component.rarity.titleize
+            %td= component.seasons.map(&:name).to_sentence
             %td= component.primary
             %td= component.secondary
             %td= component.tertiary

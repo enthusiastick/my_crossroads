@@ -15,4 +15,9 @@ print " complete.\nSeeding components"
   Ingredient.create(name: component, category: Ingredient.categories.keys.sample, rarity: Ingredient.rarities.keys.sample)
   print "."
 end
+print " complete.\nSeeding seasons"
+{Ers: "January", Carris: "February", Tyir: "March", Rennse: "April", Fyrunn: "May", Medrim: "June", Arridun: "July", Grenn: "August", Ottur: "September", Curnnos: "October", Surrn: "November", Errund: "December", Qvellsvart: "Halloween", Varcindium: nil}.each do |name, equivalent|
+  Season.create(name: name, equivalent: equivalent)
+  print "."
+end
 print " complete."

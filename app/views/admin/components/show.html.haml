@@ -25,6 +25,10 @@
         .small-12.medium-6.large-3.columns
           %strong Rarity:
           =@component.rarity.titleize
+    -unless @component.seasons.empty?
+      .callout
+        %strong Seasons:
+        =@component.seasons.map(&:name).to_sentence
     .callout
       .row
         .small-12.medium-4.columns

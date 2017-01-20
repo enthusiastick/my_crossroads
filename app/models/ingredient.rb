@@ -22,6 +22,9 @@ class Ingredient < ApplicationRecord
     extra_rare: 4
   }
 
+  has_many :ingredient_seasons
+  has_many :seasons, through: :ingredient_seasons
+  accepts_nested_attributes_for :seasons
   has_many :inventories
   has_many :characters, through: :inventories
 

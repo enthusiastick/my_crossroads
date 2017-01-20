@@ -32,6 +32,11 @@
         %fieldset
           =f.label :tertiary, "Tertiary"
           =f.text_field :tertiary
+    %fieldset.fieldset
+      %legend Seasons
+      -Season.all.each do |season|
+        =check_box_tag "ingredient[season_ids][]", season.id, f.object.seasons.include?(season)
+        =season.name
     %fieldset
       =f.label :staff_notes, "Staff Notes"
       =f.text_area :staff_notes

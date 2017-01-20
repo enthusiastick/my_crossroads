@@ -47,6 +47,6 @@ class Admin::ComponentsController < ApplicationController
   protected
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :code, :level, :category, :rarity, :primary, :secondary, :tertiary, :staff_notes)
+    params.require(:ingredient).permit(:name, :code, :level, :category, :rarity, :primary, :secondary, :tertiary, :staff_notes, season_ids: [])
   end
 end
