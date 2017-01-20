@@ -45,6 +45,14 @@ class User < ApplicationRecord
     update_attributes(password_reset_digest: User.digest(password_reset_token), password_reset_sent_at: Time.current)
   end
 
+  def label_for_select
+    if admin?
+      "#{handle}* (#{first_name} #{last_name})"
+    else
+      "#{handle} (#{first_name} #{last_name})"
+    end
+  end
+
   def password_reset_expired?
     (password_reset_sent_at + 2.hours).past?
   end

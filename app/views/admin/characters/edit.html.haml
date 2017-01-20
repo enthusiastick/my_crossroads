@@ -1,0 +1,40 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Users", admin_users_path
+        %li
+          =link_to @character.user.handle, admin_user_path(@character.user)
+        %li
+          =link_to "Characters", admin_characters_path
+        %li
+          =link_to @character.name, admin_user_character_path(@character.user, @character)
+        %li
+          %span.show-for-sr Current:
+          Edit
+    %h1.text-center
+      Edit
+      =@character.name
+    =form_for [:admin, @character] do |f|
+      .form-inputs
+        .row
+          .small-12.medium-6.columns
+            %fieldset
+              =render partial: "text_field_with_errors", locals: {attribute: :name, form: f, model: @character}
+          .small-12.medium-6.columns
+            %fieldset
+              =render partial: "text_field_with_errors", locals: {attribute: :slug, form: f, model: @character}
+        .row
+          .small-12.medium-6.columns
+            %fieldset
+              =f.label :race, "Race"
+              =f.select :race, options_for_select(Character.enum_collection(:races), @character.race)
+          .small-12.medium-6.columns
+            %fieldset
+              =f.label :user_id, "User"
+              =f.select :user_id, options_from_collection_for_select(User.all.order(:handle), 'id', 'label_for_select', @character.user.id)
+        =f.label :history, "Character History"
+        =f.text_area :history
+      .form-actions
+        =f.submit "Save", class: "button"
