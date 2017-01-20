@@ -8,7 +8,15 @@
           %span.show-for-sr Current:
           =@user.handle
     %h1.text-center
+      -if @user.admin?
+        %i.fa.fa-star
       =@user.handle
+      =form_for @user, url: admin_user_admin_status_path(@user) do |f|
+        .form-actions
+          -if @user.admin?
+            =f.submit "Revoke Admin Privileges", class: "button", data: { confirm: "Revoke administrative privileges from user '#{@user.handle}': are you sure?" }
+          -else
+            =f.submit "Grant Admin Privileges", class: "button", data: { confirm: "Grant administrative privileges to user '#{@user.handle}': are you sure?" }
     %p
       %strong Name:
       =@user.full_name

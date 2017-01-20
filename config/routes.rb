@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         resources :inventories, only: [:index]
       end
     end
+    resources :user_admin_statuses, only: [:update]
   end
 
   resources :account_confirmations, only: [:edit]
