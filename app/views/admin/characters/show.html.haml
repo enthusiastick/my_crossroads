@@ -17,10 +17,21 @@
         %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
       =link_to admin_character_path(@character), method: :delete, data: { confirm: "Delete character '#{@character.name}': are you sure?" } do
         %i.fa.fa-trash{"aria-hidden": "true"}
+      %a{"data-open": "historyModal"}
+        %i.fa.fa-book{"aria-hidden": "true"}
     %p.text-center= @character.race.titleize
     %p.text-center
       =link_to admin_user_character_inventories_path(@character.user, @character), class: "button" do
         %i.fa.fa-list-ol
         Edit Components
-    -unless @character.history.blank?
-      .callout.primary= raw @markdown.render(@character.history)
+.reveal#historyModal{"data-reveal": ""}
+  %h2.margin-bottom-none.text-center Character History
+  %hr/
+  -if @character.history.blank?
+    %p
+      %em (blank)
+  -else
+    =raw @markdown.render(@character.history)
+  %button.close-button{"data-close": "", "aria-label": "Close modal", "type": "button"}
+    %span{"aria-hidden": "true"}
+      &times;

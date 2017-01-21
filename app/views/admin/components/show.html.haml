@@ -40,5 +40,5 @@
         .small-12.medium-4.columns
           %strong Tertiary:
           =@component.tertiary
-    -unless @component.staff_notes.nil? || @component.staff_notes.empty?
+    -unless @component.staff_notes.blank?
       .callout= @component.staff_notes
