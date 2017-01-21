@@ -4,33 +4,29 @@
     %p.text-center= link_to "Add New Component", new_admin_component_path, class: "button"
     %fieldset.fieldset
       %legend Filters
-      %ul.menu
-        %li
-          %strong Profession:
+      %ul.vertical.medium-horizontal.menu
+        %li.menu-text Profession:
         -@professions.each do |profession|
           -if @profession && profession == @profession.name
             %li.active= link_to profession, admin_filter_path(profession.parameterize)
           -else
             %li= link_to profession, admin_filter_path(profession.parameterize)
-      %ul.menu
-        %li
-          %strong Rarity:
+      %ul.vertical.medium-horizontal.menu
+        %li.menu-text Rarity:
         -Ingredient.rarities.keys.each do |rarity|
           -if rarity == @rarity
             %li.active= link_to rarity.titleize, admin_filter_path(rarity)
           -else
             %li= link_to rarity.titleize, admin_filter_path(rarity)
-      %ul.menu
-        %li
-          %strong Season:
+      %ul.vertical.medium-horizontal.menu
+        %li.menu-text Season:
         -@seasons.each do |season|
           -if @season && season == @season.name
             %li.active= link_to season, admin_filter_path(season.parameterize)
           -else
             %li= link_to season, admin_filter_path(season.parameterize)
-      %ul.menu
-        %li
-          %strong Type:
+      %ul.vertical.medium-horizontal.menu
+        %li.menu-text Type:
         -Ingredient.categories.keys.each do |category|
           -if category == @type
             %li.active= link_to category.titleize, admin_filter_path(category)
