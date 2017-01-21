@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "An email has been sent with instructions on how to reset your password."
       redirect_to root_url
     else
-      flash[:alert] = "There was a problem resetting your password. Please try again."
+      flash.now[:alert] = "There was a problem resetting your password. Please try again."
       render :new
     end
   end

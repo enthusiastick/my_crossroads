@@ -4,8 +4,10 @@ class Admin::CharacterInventoriesController < ApplicationController
   def update
     @character = Character.find_by(slug: params[:id])
     if @character.update(inventory_params)
+      flash[:success] = "Component inventory updated successfully."
       redirect_to admin_user_character_path(@character.user, @character)
     else
+      flash.now[:alert] = "There was a problem updating your component inventory."
       render 'admin/inventories/index'
     end
   end

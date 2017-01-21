@@ -5,8 +5,10 @@ class Admin::CharactersController < ApplicationController
     @character = Character.find_by(slug: params[:id])
     @time_string = Time.now.to_formatted_s(:number)
     if @character.update(archived: true, name: "[Archived: #{@time_string}] #{@character.name}", slug: "archived-#{@time_string}-#{@character.slug}")
+      flash[:success] = "Character deleted successfully."
       redirect_to admin_characters_path
     else
+      flash.now[:alert] = "There was a problem deleting your character."
       render :show
     end
   end
@@ -27,8 +29,10 @@ class Admin::CharactersController < ApplicationController
   def update
     @character = Character.find_by(slug: params[:id])
     if @character.update(admin_character_params)
+      flash[:success] = "Character updated successfully."
       redirect_to admin_user_character_path(@character.user, @character)
     else
+      flash.now[:alert] = "There was a problem updating your character."
       render :edit
     end
   end

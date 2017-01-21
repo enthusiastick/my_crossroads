@@ -6,8 +6,10 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
     @character.user = current_user
     if @character.save
+      flash[:success] = "Character created successfully."
       redirect_to characters_path
     else
+      flash.now[:alert] = "There was a problem creating your character."
       render :new
     end
   end
@@ -38,8 +40,10 @@ class CharactersController < ApplicationController
     @user = User.find_by(handle: params[:user_id])
     authorize_record_owner(@user)
     if @character.update(update_params)
+      flash[:success] = "Character updated successfully."
       redirect_to user_character_path(@user, @character)
     else
+      flash.now[:alert] = "There was a problem updating your character."
       render :edit
     end
   end

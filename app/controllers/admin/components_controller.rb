@@ -4,8 +4,10 @@ class Admin::ComponentsController < ApplicationController
   def create
     @component = Ingredient.new(ingredient_params)
     if @component.save
+      flash[:success] = "Component created successfully."
       redirect_to admin_components_path
     else
+      flash.now[:alert] = "There was a problem creating your component."
       render :new
     end
   end
@@ -13,8 +15,10 @@ class Admin::ComponentsController < ApplicationController
   def destroy
     @component = Ingredient.find(params[:id])
     if @component.update(archived: true)
+      flash[:success] = "Component deleted successfully."
       redirect_to admin_components_path
     else
+      flash.now[:alert] = "There was a problem deleting your component."
       render :edit
     end
   end
@@ -38,8 +42,10 @@ class Admin::ComponentsController < ApplicationController
   def update
     @component = Ingredient.find(params[:id])
     if @component.update(ingredient_params)
+      flash[:success] = "Component updated successfully."
       redirect_to admin_components_path
     else
+      flash.now[:alert] = "There was a problem updating your component."
       render :edit
     end
   end
