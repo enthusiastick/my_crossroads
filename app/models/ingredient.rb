@@ -22,6 +22,9 @@ class Ingredient < ApplicationRecord
     extra_rare: 4
   }
 
+  has_many :ingredient_professions
+  has_many :professions, through: :ingredient_professions
+  accepts_nested_attributes_for :professions
   has_many :ingredient_seasons
   has_many :seasons, through: :ingredient_seasons
   accepts_nested_attributes_for :seasons

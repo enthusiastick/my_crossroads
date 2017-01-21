@@ -10,6 +10,7 @@
           %th Level
           %th Type
           %th Rarity
+          %th Professions
           %th Seasons
           %th Primary
           %th Secondary
@@ -18,12 +19,13 @@
         -@components.each do |component|
           %tr
             %td= link_to component.name, admin_component_path(component)
-            %td= component.code
-            %td= component.level
-            %td= component.category.titleize
-            %td= component.rarity.titleize
+            %td.text-center= component.code
+            %td.text-right= component.level
+            %td.text-center= component.category.titleize
+            %td.text-center= component.rarity.titleize
+            %td= component.professions.map(&:name).to_sentence
             %td= component.seasons.map(&:name).to_sentence
-            %td= component.primary
-            %td= component.secondary
-            %td= component.tertiary
+            %td.text-center= component.primary
+            %td.text-center= component.secondary
+            %td.text-center= component.tertiary
 

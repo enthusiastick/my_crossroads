@@ -33,13 +33,20 @@
           =f.label :tertiary, "Tertiary"
           =f.text_field :tertiary
     %fieldset.fieldset
+      %legend Professions
+      -@professions.each do |profession|
+        =check_box_tag "ingredient[profession_ids][]", profession.id, f.object.professions.include?(profession)
+        =profession.name
+        %br.show-for-small-only/
+    %fieldset.fieldset
       %legend
         Seasons
         %a{"data-open": "keyModal"}
           %i.fa.fa-key
-      -Season.all.each do |season|
+      -@seasons.each do |season|
         =check_box_tag "ingredient[season_ids][]", season.id, f.object.seasons.include?(season)
         =season.name
+        %br.show-for-small-only/
     %fieldset
       =f.label :staff_notes, "Staff Notes"
       =f.text_area :staff_notes
@@ -52,7 +59,7 @@
         %th Name
         %th Equivalent
     %tbody
-      -Season.all.each do |season|
+      -@seasons.each do |season|
         %tr
           %td= season.name
           %td= season.equivalent

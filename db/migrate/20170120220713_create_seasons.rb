@@ -4,7 +4,7 @@ class CreateSeasons < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.string :equivalent
 
-      t.timestamp
+      t.timestamps
     end
     create_table :ingredient_seasons do |t|
       t.belongs_to :ingredient

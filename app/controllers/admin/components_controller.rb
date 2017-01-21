@@ -25,6 +25,8 @@ class Admin::ComponentsController < ApplicationController
 
   def edit
     @component = Ingredient.find(params[:id])
+    @professions = Profession.all
+    @seasons = Season.all
   end
 
   def index
@@ -33,6 +35,8 @@ class Admin::ComponentsController < ApplicationController
 
   def new
     @component = Ingredient.new
+    @professions = Profession.all
+    @seasons = Season.all
   end
 
   def show
@@ -53,6 +57,6 @@ class Admin::ComponentsController < ApplicationController
   protected
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :code, :level, :category, :rarity, :primary, :secondary, :tertiary, :staff_notes, season_ids: [])
+    params.require(:ingredient).permit(:name, :code, :level, :category, :rarity, :primary, :secondary, :tertiary, :staff_notes, profession_ids: [], season_ids: [])
   end
 end
