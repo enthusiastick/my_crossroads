@@ -33,7 +33,10 @@
           =f.label :tertiary, "Tertiary"
           =f.text_field :tertiary
     %fieldset.fieldset
-      %legend Seasons
+      %legend
+        Seasons
+        %a{"data-open": "keyModal"}
+          %i.fa.fa-key
       -Season.all.each do |season|
         =check_box_tag "ingredient[season_ids][]", season.id, f.object.seasons.include?(season)
         =season.name
@@ -42,3 +45,17 @@
       =f.text_area :staff_notes
   .form-actions
     =f.submit "Save", class: "button"
+.reveal#keyModal{"data-reveal": ""}
+  %table.hover.stack
+    %thead
+      %tr
+        %th Name
+        %th Equivalent
+    %tbody
+      -Season.all.each do |season|
+        %tr
+          %td= season.name
+          %td= season.equivalent
+  %button.close-button{"data-close": "", "aria-label": "Close modal", "type": "button"}
+    %span{"aria-hidden": "true"}
+      &times;

@@ -12,5 +12,5 @@
     %h1.text-center
       =@component.name
       =link_to admin_component_path(@component), method: :delete, data: { confirm: "Delete component '#{@component.name}': are you sure?" } do
-        %i.fa.fa-times-circle
+        %i.fa.fa-trash
     =render partial: "form"

@@ -9,8 +9,34 @@
           =@character.name
     %h1.text-center
       =@character.name
-      =link_to edit_user_character_path(current_user, @character) do
-        %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+      %a{"data-open": "historyModal"}
+        %i.fa.fa-book{"aria-hidden": "true"}
     %p.text-center= @character.race.titleize
-    -unless @character.history.blank?
-      .callout.primary= raw @markdown.render(@character.history)
+    -unless @character.inventories.empty?
+      .callout
+        %h2.text-center Components Inventory
+        %table.hover
+          %thead
+            %tr
+              %th.text-right Quantity
+              %th Component
+          %tbody
+            -@character.inventories.each do |inventory|
+              -unless inventory.quantity == 0
+                %tr
+                  %td.text-right= inventory.quantity
+                  %td= inventory.ingredient.name
+.reveal#historyModal{"data-reveal": ""}
+  %h2.margin-bottom-none.text-center
+    Character History
+    =link_to edit_user_character_path(current_user, @character) do
+      %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+  %hr/
+  -if @character.history.blank?
+    %p
+      %em (blank)
+  -else
+    =raw @markdown.render(@character.history)
+  %button.close-button{"data-close": "", "aria-label": "Close modal", "type": "button"}
+    %span{"aria-hidden": "true"}
+      &times;
