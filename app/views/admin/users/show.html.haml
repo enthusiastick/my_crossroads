@@ -28,7 +28,7 @@
       =distance_of_time_in_words_to_now(@user.created_at)
     -unless @user.characters.empty?
       %h3.text-center Characters
-      %table.hover.stack
+      %table.hover.stack.datatables
         %thead
           %tr
             %th Name
