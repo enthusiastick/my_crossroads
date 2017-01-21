@@ -8,6 +8,8 @@ class Admin::ComponentsController < ApplicationController
       redirect_to admin_components_path
     else
       flash.now[:alert] = "There was a problem creating your component."
+      @professions = Profession.all
+      @seasons = Season.all
       render :new
     end
   end
@@ -52,6 +54,8 @@ class Admin::ComponentsController < ApplicationController
       redirect_to admin_components_path
     else
       flash.now[:alert] = "There was a problem updating your component."
+      @professions = Profession.all
+      @seasons = Season.all
       render :edit
     end
   end

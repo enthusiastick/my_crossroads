@@ -8,6 +8,7 @@ class Admin::CharacterInventoriesController < ApplicationController
       redirect_to admin_user_character_path(@character.user, @character)
     else
       flash.now[:alert] = "There was a problem updating your component inventory."
+      @components = Ingredient.all - @character.ingredients
       render 'admin/inventories/index'
     end
   end
