@@ -2,14 +2,36 @@
   .small-12.columns
     %h1.text-center.top-padded Components
     %p.text-center= link_to "Add New Component", new_admin_component_path, class: "button"
+    %fieldset.fieldset
+      %legend Filters
+      %ul.menu
+        %li
+          %strong Profession:
+        -@professions.each do |profession|
+          %li= link_to profession, admin_filter_path(profession.parameterize)
+      %ul.menu
+        %li
+          %strong Rarity:
+        -Ingredient.rarities.keys.each do |rarity|
+          %li= link_to rarity.titleize, admin_filter_path(rarity)
+      %ul.menu
+        %li
+          %strong Season:
+        -@seasons.each do |season|
+          %li= link_to season, admin_filter_path(season.parameterize)
+      %ul.menu
+        %li
+          %strong Type:
+        -Ingredient.categories.keys.each do |category|
+          %li= link_to category.titleize, admin_filter_path(category)
     %table.hover.stack.datatables
       %thead
         %tr
           %th Name
           %th Code
           %th Level
-          %th Type
           %th Rarity
+          %th Type
           %th Professions
           %th Seasons
           %th Primary
@@ -21,10 +43,12 @@
             %td= link_to component.name, admin_component_path(component)
             %td.text-center= component.code
             %td.text-right= component.level
-            %td.text-center= component.category.titleize
             %td.text-center= component.rarity.titleize
-            %td= component.professions.map(&:name).to_sentence
-            %td= component.seasons.map(&:name).to_sentence
+            %td.text-center= component.category.titleize
+            %td
+              %span.small= component.professions.map(&:name).to_sentence
+            %td
+              %span.small= component.seasons.map(&:name).to_sentence
             %td.text-center= component.primary
             %td.text-center= component.secondary
             %td.text-center= component.tertiary

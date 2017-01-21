@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :characters, only: [:destroy, :index, :update]
     resources :character_inventories, only: [:update]
-    resources :components, except: [:create, :destroy, :update]
+    resources :components, except: [:create, :destroy, :update] do
+      collection do
+        resources :filters, only: [:show]
+      end
+    end
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do

@@ -31,6 +31,8 @@ class Admin::ComponentsController < ApplicationController
 
   def index
     @components = Ingredient.where(archived: false).order(:name)
+    @professions = Profession.all.map(&:name)
+    @seasons = Season.all.map(&:name)
   end
 
   def new
