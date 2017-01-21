@@ -3,7 +3,7 @@
     %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
       %ul.breadcrumbs
         %li
-          =link_to "Characters", characters_path
+          =link_to "My Characters", characters_path
         %li
           =link_to @character.name, user_character_path(@user, @character)
         %li
