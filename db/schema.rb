@@ -84,20 +84,10 @@ ActiveRecord::Schema.define(version: 20170121175257) do
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.string "name",       null: false
-    t.string "equivalent"
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.text     "description",    null: false
-    t.integer  "contributor_id"
-    t.integer  "recipient_id"
-    t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["contributor_id"], name: "index_transactions_on_contributor_id", using: :btree
-    t.index ["recipient_id"], name: "index_transactions_on_recipient_id", using: :btree
-    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
+    t.string   "name",       null: false
+    t.string   "equivalent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
