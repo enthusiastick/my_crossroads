@@ -1,8 +1,15 @@
-.row
-  %fieldset
-    .small-3.medium-2.columns
-      =form.label :quantity, "Quantity"
-      =form.number_field :quantity
-    .small-9.medium-10.columns
-      =form.label :ingredient_id, "Ingredient"
-      =form.select :ingredient_id, options_from_collection_for_select(@components, 'id', 'name')
+%tr
+  %td
+    %fieldset
+      =form.number_field :quantity, class: "text-right"
+  %td.text-center
+    =form.select :ingredient_id, options_from_collection_for_select(@components, 'id', 'name')
+  %td.text-center
+    %fieldset
+      =form.check_box :primary
+  %td.text-center
+    %fieldset
+      =form.check_box :secondary
+  %td.text-center
+    %fieldset
+      =form.check_box :tertiary

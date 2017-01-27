@@ -4,7 +4,7 @@ document.addEventListener("turbolinks:load", function() {
     var formInputs = document.getElementById('form-inputs');
     time = new Date().getTime()
     regexp = new RegExp(inventoryButton.dataset.id, 'g')
-    formInputs.insertAdjacentHTML('beforebegin', inventoryButton.dataset.fields.replace(regexp, time))
+    formInputs.insertAdjacentHTML('afterbegin', inventoryButton.dataset.fields.replace(regexp, time))
   }
   var inventoryButton = document.getElementById('add-component-button');
   if (inventoryButton) {

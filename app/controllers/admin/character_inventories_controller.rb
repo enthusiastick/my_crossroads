@@ -20,12 +20,12 @@ class Admin::CharacterInventoriesController < ApplicationController
   protected
 
   def inventory_params
-    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id])
+    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id, :primary, :secondary, :tertiary])
   end
 
   def duplicate_ingredient_ids?(params)
     ingredient_ids = Array.new
-    params[:character][:inventories_attributes].values.each { |inventory| ingredient_ids << inventory[:ingredient_id] }
+    params[:character][:inventories_attributes].values.each { |inventory| ingredient_ids << inventory[:ingredient_id] unless inventory[:ingredient_id].nil?}
     if ingredient_ids.uniq != ingredient_ids
       true
     else
