@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121175257) do
+ActiveRecord::Schema.define(version: 20170130193608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170121175257) do
     t.string   "remember_digest"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.datetime "last_signed_in_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   end
