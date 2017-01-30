@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170130193608) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.datetime "last_signed_in_at"
+    t.integer  "sign_in_count",          default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   end

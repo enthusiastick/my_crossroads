@@ -26,6 +26,13 @@
     %p
       %strong Member For:
       =distance_of_time_in_words_to_now(@user.created_at)
+    %p
+      %strong Last Signed In:
+      -if @user.last_signed_in_at.nil?
+        %em Never
+      -else
+        =distance_of_time_in_words_to_now(@user.last_signed_in_at)
+        ago
     -unless @user.characters.empty?
       %h3.text-center Characters
       %table.hover.stack.datatables
