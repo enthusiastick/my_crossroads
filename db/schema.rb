@@ -91,21 +91,22 @@ ActiveRecord::Schema.define(version: 20170130193608) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin",                  default: false
+    t.boolean  "admin",                   default: false
     t.string   "confirmation_digest"
     t.datetime "confirmed_at"
-    t.string   "email",                                  null: false
-    t.string   "first_name",                             null: false
-    t.string   "handle",                                 null: false
-    t.string   "last_name",                              null: false
+    t.string   "email",                                   null: false
+    t.string   "first_name",                              null: false
+    t.string   "handle",                                  null: false
+    t.string   "last_name",                               null: false
     t.string   "password_digest"
     t.string   "password_reset_digest"
     t.datetime "password_reset_sent_at"
     t.string   "remember_digest"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "failed_sign_in_attempts", default: 0
     t.datetime "last_signed_in_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",           default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   end

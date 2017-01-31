@@ -77,6 +77,7 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     user.increment! :sign_in_count
     user.touch(:last_signed_in_at)
+    user.update_column(:failed_sign_in_attempts, 0)
     session[:user_id] = user.id
   end
 
