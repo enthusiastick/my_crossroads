@@ -21,7 +21,7 @@
           =link_to "MyCrossroads", root_path
       #responsive-menu
         .top-bar-left
-          %ul.menu
+          %ul.vertical.medium-horizontal.menu
             -if user_signed_in?
               %li.menu-text Signed in as:
               %li
@@ -31,7 +31,7 @@
                 Not signed in.
 
         .top-bar-right
-          %ul.menu
+          %ul.vertical.medium-horizontal.menu
             -if user_signed_in?
               -if current_user.admin?
                 %li
