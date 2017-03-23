@@ -8,21 +8,26 @@ class SessionsController < ApplicationController
     else
       user = User.find_by(handle: params[:session][:login])
     end
-    if user.failed_sign_in_attempts >= 5
-      flash.now[:alert] = "Your account is currently locked. Please contact a site administrator to unlock it."
-      render :new
-    elsif user && user.authenticate(params[:session][:password])
-      if !user.confirmed_at.nil?
-        flash[:success] = "Signed in as #{user.handle}."
-        sign_in(user)
-        params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-        redirect_to post_auth_path
+    if user.present?
+      if user.failed_sign_in_attempts >= 5
+        flash.now[:alert] = "Your account is currently locked. Please contact a site administrator to unlock it."
+        render :new
+      elsif user.authenticate(params[:session][:password])
+        if !user.confirmed_at.nil?
+          flash[:success] = "Signed in as #{user.handle}."
+          sign_in(user)
+          params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+          redirect_to post_auth_path
+        else
+          flash.now[:alert] = "You need to confirm your email address before continuing."
+          render :new
+        end
       else
-        flash.now[:alert] = "You need to confirm your email address before continuing."
+        user.increment! :failed_sign_in_attempts
+        flash.now[:alert] = "Invalid email/username & password combination."
         render :new
       end
     else
-      user.increment! :failed_sign_in_attempts
       flash.now[:alert] = "Invalid email/username & password combination."
       render :new
     end
