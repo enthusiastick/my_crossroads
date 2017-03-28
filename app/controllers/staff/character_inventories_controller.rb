@@ -1,4 +1,4 @@
-class Admin::CharacterInventoriesController < ApplicationController
+class Staff::CharacterInventoriesController < ApplicationController
   before_action :authenticate_staff!
 
   def update
@@ -20,7 +20,7 @@ class Admin::CharacterInventoriesController < ApplicationController
   protected
 
   def inventory_params
-    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id, :primary, :secondary, :tertiary])
+    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id, :unlocked_calcination, :unlocked_concentration, :unlocked_dissolution, :unlocked_extraction])
   end
 
   def duplicate_ingredient_ids?(params)

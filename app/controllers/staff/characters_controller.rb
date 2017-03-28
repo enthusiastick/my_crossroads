@@ -1,4 +1,4 @@
-class Admin::CharactersController < ApplicationController
+class Staff::CharactersController < ApplicationController
   before_action :authenticate_staff!
 
   def destroy

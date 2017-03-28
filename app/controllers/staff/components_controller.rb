@@ -1,4 +1,4 @@
-class Admin::ComponentsController < ApplicationController
+class Staff::ComponentsController < ApplicationController
   before_action :authenticate_staff!
 
   def create
@@ -63,6 +63,6 @@ class Admin::ComponentsController < ApplicationController
   protected
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :code, :level, :category, :rarity, :primary, :secondary, :tertiary, :staff_notes, profession_ids: [], season_ids: [])
+    params.require(:ingredient).permit(:name, :code, :level, :category, :rarity, :process_calcination, :process_concentration, :process_dissolution, :process_extraction, :staff_notes, profession_ids: [], season_ids: [])
   end
 end

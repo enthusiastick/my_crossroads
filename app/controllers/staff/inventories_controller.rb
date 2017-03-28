@@ -1,4 +1,4 @@
-class Admin::InventoriesController < ApplicationController
+class Staff::InventoriesController < ApplicationController
   before_action :authenticate_staff!
 
   def index

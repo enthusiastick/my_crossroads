@@ -7,9 +7,10 @@ class CreateIngredients < ActiveRecord::Migration[5.0]
       t.integer :level
       t.integer :category, null: false, default: 0
       t.integer :rarity, null: false, default: 0
-      t.string :primary
-      t.string :secondary
-      t.string :tertiary
+      t.string :process_calcination
+      t.string :process_concentration
+      t.string :process_dissolution
+      t.string :process_extraction
       t.boolean :archived, default: false
 
       t.timestamps

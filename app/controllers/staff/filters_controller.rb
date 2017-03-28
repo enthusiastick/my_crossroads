@@ -1,4 +1,4 @@
-class Admin::FiltersController < ApplicationController
+class Staff::FiltersController < ApplicationController
   before_action :authenticate_staff!
 
   def show

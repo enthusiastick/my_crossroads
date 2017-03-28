@@ -14,9 +14,9 @@
       =form_for @user, url: staff_user_staff_status_path(@user) do |f|
         .form-actions
           -if @user.staff?
-            =f.submit "Revoke Admin Privileges", class: "button", data: { confirm: "Revoke staffistrative privileges from user '#{@user.handle}': are you sure?" }
+            =f.submit "Revoke Staff Privileges", class: "button", data: { confirm: "Revoke staffistrative privileges from user '#{@user.handle}': are you sure?" }
           -else
-            =f.submit "Grant Admin Privileges", class: "button", data: { confirm: "Grant staffistrative privileges to user '#{@user.handle}': are you sure?" }
+            =f.submit "Grant Staff Privileges", class: "button", data: { confirm: "Grant staffistrative privileges to user '#{@user.handle}': are you sure?" }
     %p
       %strong Name:
       =@user.full_name

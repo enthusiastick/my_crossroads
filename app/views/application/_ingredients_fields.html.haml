@@ -6,10 +6,14 @@
     =form.select :ingredient_id, options_from_collection_for_select(@components, 'id', 'name')
   %td.text-center
     %fieldset
-      =form.check_box :primary
+      =form.check_box :unlocked_extraction
   %td.text-center
     %fieldset
-      =form.check_box :secondary
+      =form.check_box :unlocked_calcination
   %td.text-center
     %fieldset
-      =form.check_box :tertiary
+      =form.check_box :unlocked_dissolution
+  %td.text-center
+    %fieldset
+      =form.check_box :unlocked_concentration
+

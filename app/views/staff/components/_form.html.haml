@@ -20,18 +20,22 @@
           =f.label :rarity, "Rarity"
           =f.select :rarity, options_for_select(Ingredient.enum_collection(:rarities), @component.rarity)
     .row
-      .small-12.medium-4.columns
+      .small-12.medium-3.columns
         %fieldset
-          =f.label :primary, "Primary"
-          =f.text_field :primary
-      .small-12.medium-4.columns
+          =f.label :process_extraction, "Extraction"
+          =f.text_field :process_extraction
+      .small-12.medium-3.columns
         %fieldset
-          =f.label :secondary, "Secondary"
-          =f.text_field :secondary
-      .small-12.medium-4.columns
+          =f.label :process_calcination, "Calcination"
+          =f.text_field :process_calcination
+      .small-12.medium-3.columns
         %fieldset
-          =f.label :tertiary, "Tertiary"
-          =f.text_field :tertiary
+          =f.label :process_dissolution, "Dissolution"
+          =f.text_field :process_dissolution
+      .small-12.medium-3.columns
+        %fieldset
+          =f.label :process_concentration, "Concentration"
+          =f.text_field :process_concentration
     %fieldset.fieldset
       %legend Professions
       -@professions.each do |profession|

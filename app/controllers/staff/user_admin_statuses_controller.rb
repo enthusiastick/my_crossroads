@@ -1,4 +1,4 @@
-class Admin::UserAdminStatusesController < ApplicationController
+class Staff::UserStaffStatusesController < ApplicationController
   before_action :authenticate_staff!
 
   def update

@@ -4,9 +4,10 @@ class CreateInventories < ActiveRecord::Migration[5.0]
       t.belongs_to :character, null: false
       t.belongs_to :ingredient, null: false
       t.integer :quantity, default: 0
-      t.boolean :primary, default: false
-      t.boolean :secondary, default: false
-      t.boolean :tertiary, default: false
+      t.boolean :unlocked_calcination, default: false
+      t.boolean :unlocked_concentration, default: false
+      t.boolean :unlocked_dissolution, default: false
+      t.boolean :unlocked_extraction, default: false
 
       t.timestamps
     end

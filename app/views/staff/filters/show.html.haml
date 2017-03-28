@@ -42,9 +42,10 @@
             %th Rarity
             %th Type
             %th Seasons
-            %th Primary
-            %th Secondary
-            %th Tertiary
+            %th Extraction
+            %th Calcination
+            %th Dissolution
+            %th Concentration
         %tbody
           -@components.each do |component|
             %tr
@@ -55,9 +56,10 @@
               %td.text-center= component.category.titleize
               %td
                 %span.small= component.seasons.map(&:name).to_sentence
-              %td.text-center= component.primary
-              %td.text-center= component.secondary
-              %td.text-center= component.tertiary
+              %td.text-center= component.process_extraction
+              %td.text-center= component.process_calcination
+              %td.text-center= component.process_dissolution
+              %td.text-center= component.process_concentration
     -elsif @filter_type == :rarity
       %table.hover.stack.datatables
         %thead
@@ -68,9 +70,10 @@
             %th Type
             %th Professions
             %th Seasons
-            %th Primary
-            %th Secondary
-            %th Tertiary
+            %th Extraction
+            %th Calcination
+            %th Dissolution
+            %th Concentration
         %tbody
           -@components.each do |component|
             %tr
@@ -82,9 +85,10 @@
                 %span.small= component.professions.map(&:name).to_sentence
               %td
                 %span.small= component.seasons.map(&:name).to_sentence
-              %td.text-center= component.primary
-              %td.text-center= component.secondary
-              %td.text-center= component.tertiary
+              %td.text-center= component.process_extraction
+              %td.text-center= component.process_calcination
+              %td.text-center= component.process_dissolution
+              %td.text-center= component.process_concentration
     -elsif @filter_type == :season
       %table.hover.stack.datatables
         %thead
@@ -95,9 +99,10 @@
             %th Rarity
             %th Type
             %th Professions
-            %th Primary
-            %th Secondary
-            %th Tertiary
+            %th Extraction
+            %th Calcination
+            %th Dissolution
+            %th Concentration
         %tbody
           -@components.each do |component|
             %tr
@@ -108,9 +113,10 @@
               %td.text-center= component.category.titleize
               %td
                 %span.small= component.professions.map(&:name).to_sentence
-              %td.text-center= component.primary
-              %td.text-center= component.secondary
-              %td.text-center= component.tertiary
+              %td.text-center= component.process_extraction
+              %td.text-center= component.process_calcination
+              %td.text-center= component.process_dissolution
+              %td.text-center= component.process_concentration
     -elsif @filter_type == :type
       %table.hover.stack.datatables
         %thead
@@ -121,9 +127,10 @@
             %th Rarity
             %th Professions
             %th Seasons
-            %th Primary
-            %th Secondary
-            %th Tertiary
+            %th Extraction
+            %th Calcination
+            %th Dissolution
+            %th Concentration
         %tbody
           -@components.each do |component|
             %tr
@@ -135,6 +142,7 @@
                 %span.small= component.professions.map(&:name).to_sentence
               %td
                 %span.small= component.seasons.map(&:name).to_sentence
-              %td.text-center= component.primary
-              %td.text-center= component.secondary
-              %td.text-center= component.tertiary
+              %td.text-center= component.process_extraction
+              %td.text-center= component.process_calcination
+              %td.text-center= component.process_dissolution
+              %td.text-center= component.process_concentration

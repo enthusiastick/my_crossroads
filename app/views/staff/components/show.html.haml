@@ -31,14 +31,17 @@
         =@component.seasons.map(&:name).to_sentence
     .callout
       .row
-        .small-12.medium-4.columns
-          %strong Primary:
-          =@component.primary
-        .small-12.medium-4.columns
-          %strong Secondary:
-          =@component.secondary
-        .small-12.medium-4.columns
-          %strong Tertiary:
-          =@component.tertiary
+        .small-12.medium-3.columns
+          %strong Extraction:
+          =@component.process_extraction
+        .small-12.medium-3.columns
+          %strong Calcination:
+          =@component.process_calcination
+        .small-12.medium-3.columns
+          %strong Dissolution:
+          =@component.process_dissolution
+        .small-12.medium-3.columns
+          %strong Concentration:
+          =@component.process_concentration
     -unless @component.staff_notes.blank?
       .callout= @component.staff_notes

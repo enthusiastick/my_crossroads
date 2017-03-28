@@ -25,9 +25,10 @@
           %tr
             %th.text-right Quantity
             %th.text-center Component
-            %th.text-center Primary
-            %th.text-center Secondary
-            %th.text-center Tertiary
+            %th.text-center Unlocked Extraction
+            %th.text-center Unlocked Calcination
+            %th.text-center Unlocked Dissolution
+            %th.text-center Unlocked Concentration
         %tbody#form-inputs
           -@character.inventories.each do |inventory|
             %tr
@@ -41,13 +42,16 @@
                       %strong= inventory.ingredient.name
                 %td.text-center
                   %fieldset
-                    =b.check_box :primary
+                    =b.check_box :unlocked_extraction
                 %td.text-center
                   %fieldset
-                    =b.check_box :secondary
+                    =b.check_box :unlocked_calcination
                 %td.text-center
                   %fieldset
-                    =b.check_box :tertiary
+                    =b.check_box :unlocked_dissolution
+                %td.text-center
+                  %fieldset
+                    =b.check_box :unlocked_concentration
       .row
         .small-12.columns
           .form-actions

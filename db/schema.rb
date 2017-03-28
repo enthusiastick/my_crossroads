@@ -49,29 +49,31 @@ ActiveRecord::Schema.define(version: 20170130193608) do
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string   "name",                        null: false
+    t.string   "name",                                  null: false
     t.string   "code"
     t.text     "staff_notes"
     t.integer  "level"
-    t.integer  "category",    default: 0,     null: false
-    t.integer  "rarity",      default: 0,     null: false
-    t.string   "primary"
-    t.string   "secondary"
-    t.string   "tertiary"
-    t.boolean  "archived",    default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "category",              default: 0,     null: false
+    t.integer  "rarity",                default: 0,     null: false
+    t.string   "process_calcination"
+    t.string   "process_concentration"
+    t.string   "process_dissolution"
+    t.string   "process_extraction"
+    t.boolean  "archived",              default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "inventories", force: :cascade do |t|
-    t.integer  "character_id",                  null: false
-    t.integer  "ingredient_id",                 null: false
-    t.integer  "quantity",      default: 0
-    t.boolean  "primary",       default: false
-    t.boolean  "secondary",     default: false
-    t.boolean  "tertiary",      default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "character_id",                           null: false
+    t.integer  "ingredient_id",                          null: false
+    t.integer  "quantity",               default: 0
+    t.boolean  "unlocked_calcination",   default: false
+    t.boolean  "unlocked_concentration", default: false
+    t.boolean  "unlocked_dissolution",   default: false
+    t.boolean  "unlocked_extraction",    default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["character_id", "ingredient_id"], name: "index_inventories_on_character_id_and_ingredient_id", unique: true, using: :btree
     t.index ["character_id"], name: "index_inventories_on_character_id", using: :btree
     t.index ["ingredient_id"], name: "index_inventories_on_ingredient_id", using: :btree

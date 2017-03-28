@@ -30,9 +30,10 @@
           %th Type
           %th Professions
           %th Seasons
-          %th Primary
-          %th Secondary
-          %th Tertiary
+          %th Extraction
+          %th Calcination
+          %th Dissolution
+          %th Concentration
       %tbody
         -@components.each do |component|
           %tr
@@ -45,7 +46,8 @@
               %span.small= component.professions.map(&:name).to_sentence
             %td
               %span.small= component.seasons.map(&:name).to_sentence
-            %td.text-center= component.primary
-            %td.text-center= component.secondary
-            %td.text-center= component.tertiary
+            %td.text-center= component.process_extraction
+            %td.text-center= component.process_calcination
+            %td.text-center= component.process_dissolution
+            %td.text-center= component.process_concentration
 
