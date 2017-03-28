@@ -1,11 +1,11 @@
 class Admin::ComponentsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_staff!
 
   def create
     @component = Ingredient.new(ingredient_params)
     if @component.save
       flash[:success] = "Component created successfully."
-      redirect_to admin_components_path
+      redirect_to staff_components_path
     else
       flash.now[:alert] = "There was a problem creating your component."
       @professions = Profession.all
@@ -18,7 +18,7 @@ class Admin::ComponentsController < ApplicationController
     @component = Ingredient.find(params[:id])
     if @component.update(archived: true)
       flash[:success] = "Component deleted successfully."
-      redirect_to admin_components_path
+      redirect_to staff_components_path
     else
       flash.now[:alert] = "There was a problem deleting your component."
       render :edit
@@ -51,7 +51,7 @@ class Admin::ComponentsController < ApplicationController
     @component = Ingredient.find(params[:id])
     if @component.update(ingredient_params)
       flash[:success] = "Component updated successfully."
-      redirect_to admin_components_path
+      redirect_to staff_components_path
     else
       flash.now[:alert] = "There was a problem updating your component."
       @professions = Profession.all

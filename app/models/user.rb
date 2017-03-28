@@ -46,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def label_for_select
-    if admin?
+    if staff?
       "#{handle}* (#{first_name} #{last_name})"
     else
       "#{handle} (#{first_name} #{last_name})"

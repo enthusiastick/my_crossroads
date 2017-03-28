@@ -1,19 +1,19 @@
 class Admin::CharacterInventoriesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_staff!
 
   def update
     @character = Character.find_by(slug: params[:id])
     if duplicate_ingredient_ids?(params)
       flash.now[:alert] = "There was a problem updating your component inventory."
       @components = Ingredient.all - @character.ingredients
-      render 'admin/inventories/index'
+      render 'staff/inventories/index'
     elsif @character.update(inventory_params)
       flash[:success] = "Component inventory updated successfully."
-      redirect_to admin_user_character_path(@character.user, @character)
+      redirect_to staff_user_character_path(@character.user, @character)
     else
       flash.now[:alert] = "There was a problem updating your component inventory."
       @components = Ingredient.all - @character.ingredients
-      render 'admin/inventories/index'
+      render 'staff/inventories/index'
     end
   end
 

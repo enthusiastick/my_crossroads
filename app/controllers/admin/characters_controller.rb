@@ -1,12 +1,12 @@
 class Admin::CharactersController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_staff!
 
   def destroy
     @character = Character.find_by(slug: params[:id])
     @time_string = Time.now.to_formatted_s(:number)
     if @character.update(archived: true, name: "[Archived: #{@time_string}] #{@character.name}", slug: "archived-#{@time_string}-#{@character.slug}")
       flash[:success] = "Character deleted successfully."
-      redirect_to admin_characters_path
+      redirect_to staff_characters_path
     else
       flash.now[:alert] = "There was a problem deleting your character."
       render :show
@@ -28,9 +28,9 @@ class Admin::CharactersController < ApplicationController
 
   def update
     @character = Character.find_by(slug: params[:id])
-    if @character.update(admin_character_params)
+    if @character.update(staff_character_params)
       flash[:success] = "Character updated successfully."
-      redirect_to admin_user_character_path(@character.user, @character)
+      redirect_to staff_user_character_path(@character.user, @character)
     else
       flash.now[:alert] = "There was a problem updating your character."
       render :edit
@@ -39,7 +39,7 @@ class Admin::CharactersController < ApplicationController
 
   protected
 
-  def admin_character_params
+  def staff_character_params
     params.require(:character).permit(:name, :slug, :race, :user_id, :history)
   end
 end

@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20170130193608) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin",                   default: false
     t.string   "confirmation_digest"
     t.datetime "confirmed_at"
     t.string   "email",                                   null: false
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170130193608) do
     t.string   "password_reset_digest"
     t.datetime "password_reset_sent_at"
     t.string   "remember_digest"
+    t.boolean  "staff",                   default: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.integer  "failed_sign_in_attempts", default: 0

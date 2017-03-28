@@ -1,7 +1,6 @@
 class CreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
-    t.boolean :admin, default: false
       t.string :confirmation_digest
       t.datetime :confirmed_at
       t.string :email, null: false
@@ -12,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :password_reset_digest
       t.datetime :password_reset_sent_at
       t.string :remember_digest
+      t.boolean :staff, default: false
 
       t.timestamps
     end

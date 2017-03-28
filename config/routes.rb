@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  get "admin", to: "pages#admin"
+  get "staff", to: "pages#staff"
   get "sign-in", to: "sessions#new", as: :sign_in
   post "sign-in", to: "sessions#create"
   delete "sign-out", to: "sessions#destroy"
   get "sign-up", to: "users#new", as: :sign_up
 
-  namespace :admin do
+  namespace :staff do
     resources :characters, only: [:destroy, :index, :update]
     resources :character_inventories, only: [:update]
     resources :components, except: [:create, :destroy, :update] do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         resources :inventories, only: [:index]
       end
     end
-    resources :user_admin_statuses, only: [:update]
+    resources :user_staff_statuses, only: [:update]
   end
 
   resources :account_confirmations, only: [:edit]

@@ -1,37 +1,37 @@
 .row
   .small-12.columns
     %h1.text-center.top-padded Components
-    %p.text-center= link_to "Add New Component", new_admin_component_path, class: "button"
+    %p.text-center= link_to "Add New Component", new_staff_component_path, class: "button"
     %fieldset.fieldset
       %legend Filters
       %ul.vertical.medium-horizontal.menu
         %li.menu-text Profession:
         -@professions.each do |profession|
           -if @profession && profession == @profession.name
-            %li.active= link_to profession, admin_components_path
+            %li.active= link_to profession, staff_components_path
           -else
-            %li= link_to profession, admin_filter_path(profession.parameterize)
+            %li= link_to profession, staff_filter_path(profession.parameterize)
       %ul.vertical.medium-horizontal.menu
         %li.menu-text Rarity:
         -Ingredient.rarities.keys.each do |rarity|
           -if rarity == @rarity
-            %li.active= link_to rarity.titleize, admin_components_path
+            %li.active= link_to rarity.titleize, staff_components_path
           -else
-            %li= link_to rarity.titleize, admin_filter_path(rarity)
+            %li= link_to rarity.titleize, staff_filter_path(rarity)
       %ul.vertical.medium-horizontal.menu
         %li.menu-text Season:
         -@seasons.each do |season|
           -if @season && season == @season.name
-            %li.active= link_to season, admin_components_path
+            %li.active= link_to season, staff_components_path
           -else
-            %li= link_to season, admin_filter_path(season.parameterize)
+            %li= link_to season, staff_filter_path(season.parameterize)
       %ul.vertical.medium-horizontal.menu
         %li.menu-text Type:
         -Ingredient.categories.keys.each do |category|
           -if category == @type
-            %li.active= link_to category.titleize, admin_components_path
+            %li.active= link_to category.titleize, staff_components_path
           -else
-            %li= link_to category.titleize, admin_filter_path(category)
+            %li= link_to category.titleize, staff_filter_path(category)
     -if @filter_type == :profession
       %table.hover.stack.datatables
         %thead
@@ -48,7 +48,7 @@
         %tbody
           -@components.each do |component|
             %tr
-              %td= link_to component.name, admin_component_path(component)
+              %td= link_to component.name, staff_component_path(component)
               %td.text-center= component.code
               %td.text-right= component.level
               %td.text-center= component.rarity.titleize
@@ -74,7 +74,7 @@
         %tbody
           -@components.each do |component|
             %tr
-              %td= link_to component.name, admin_component_path(component)
+              %td= link_to component.name, staff_component_path(component)
               %td.text-center= component.code
               %td.text-right= component.level
               %td.text-center= component.category.titleize
@@ -101,7 +101,7 @@
         %tbody
           -@components.each do |component|
             %tr
-              %td= link_to component.name, admin_component_path(component)
+              %td= link_to component.name, staff_component_path(component)
               %td.text-center= component.code
               %td.text-right= component.level
               %td.text-center= component.rarity.titleize
@@ -127,7 +127,7 @@
         %tbody
           -@components.each do |component|
             %tr
-              %td= link_to component.name, admin_component_path(component)
+              %td= link_to component.name, staff_component_path(component)
               %td.text-center= component.code
               %td.text-right= component.level
               %td.text-center= component.rarity.titleize

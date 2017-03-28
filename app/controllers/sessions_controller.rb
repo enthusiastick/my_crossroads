@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     end
     if user.present?
       if user.failed_sign_in_attempts >= 5
-        flash.now[:alert] = "Your account is currently locked. Please contact a site administrator to unlock it."
+        flash.now[:alert] = "Your account is currently locked. Please contact a site staffistrator to unlock it."
         render :new
       elsif user.authenticate(params[:session][:password])
         if !user.confirmed_at.nil?

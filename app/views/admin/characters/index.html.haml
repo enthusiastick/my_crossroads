@@ -10,6 +10,6 @@
       %tbody
         -@characters.each do |character|
           %tr
-            %td= link_to character.name, admin_user_character_path(character.user, character)
+            %td= link_to character.name, staff_user_character_path(character.user, character)
             %td= character.race.titleize
-            %td= link_to character.user.handle, admin_user_path(character.user)
+            %td= link_to character.user.handle, staff_user_path(character.user)

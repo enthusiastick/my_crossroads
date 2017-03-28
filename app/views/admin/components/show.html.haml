@@ -3,13 +3,13 @@
     %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
       %ul.breadcrumbs
         %li
-          =link_to "Components", admin_components_path
+          =link_to "Components", staff_components_path
         %li
           %span.show-for-sr Current:
           =@component.name
     %h1.text-center
       =@component.name
-      =link_to edit_admin_component_path(@component) do
+      =link_to edit_staff_component_path(@component) do
         %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
     .callout
       .row

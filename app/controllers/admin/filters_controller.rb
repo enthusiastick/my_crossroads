@@ -1,5 +1,5 @@
 class Admin::FiltersController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_staff!
 
   def show
     @filter_param = params[:id]
@@ -35,7 +35,7 @@ class Admin::FiltersController < ApplicationController
       @components = Ingredient.where(category: @type)
     else
       flash[:alert] = "Filter not found."
-      redirect_to admin_components_path
+      redirect_to staff_components_path
     end
   end
 

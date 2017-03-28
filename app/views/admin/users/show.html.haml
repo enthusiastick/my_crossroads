@@ -3,20 +3,20 @@
     %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
       %ul.breadcrumbs
         %li
-          =link_to "Users", admin_users_path
+          =link_to "Users", staff_users_path
         %li
           %span.show-for-sr Current:
           =@user.handle
     %h1.text-center
-      -if @user.admin?
+      -if @user.staff?
         %i.fa.fa-star
       =@user.handle
-      =form_for @user, url: admin_user_admin_status_path(@user) do |f|
+      =form_for @user, url: staff_user_staff_status_path(@user) do |f|
         .form-actions
-          -if @user.admin?
-            =f.submit "Revoke Admin Privileges", class: "button", data: { confirm: "Revoke administrative privileges from user '#{@user.handle}': are you sure?" }
+          -if @user.staff?
+            =f.submit "Revoke Admin Privileges", class: "button", data: { confirm: "Revoke staffistrative privileges from user '#{@user.handle}': are you sure?" }
           -else
-            =f.submit "Grant Admin Privileges", class: "button", data: { confirm: "Grant administrative privileges to user '#{@user.handle}': are you sure?" }
+            =f.submit "Grant Admin Privileges", class: "button", data: { confirm: "Grant staffistrative privileges to user '#{@user.handle}': are you sure?" }
     %p
       %strong Name:
       =@user.full_name
@@ -43,6 +43,6 @@
         %tbody
           -@user.characters.each do |character|
             %tr
-              %td= link_to character.name, admin_user_character_path(character.user, character)
+              %td= link_to character.name, staff_user_character_path(character.user, character)
               %td= character.race.titleize
 

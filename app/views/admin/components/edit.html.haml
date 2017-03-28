@@ -3,14 +3,14 @@
     %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
       %ul.breadcrumbs
         %li
-          =link_to "Components", admin_components_path
+          =link_to "Components", staff_components_path
         %li
-          =link_to @component.name, admin_component_path(@component)
+          =link_to @component.name, staff_component_path(@component)
         %li
           %span.show-for-sr Current:
           Edit
     %h1.text-center
       =@component.name
-      =link_to admin_component_path(@component), method: :delete, data: { confirm: "Delete component '#{@component.name}': are you sure?" } do
+      =link_to staff_component_path(@component), method: :delete, data: { confirm: "Delete component '#{@component.name}': are you sure?" } do
         %i.fa.fa-trash
     =render partial: "form"
