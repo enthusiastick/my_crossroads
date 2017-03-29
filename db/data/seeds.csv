@@ -1,9 +1,9 @@
-name,category,rarity,season,level,category2,extraction,calcination,dissolution,extraction
+name,category,rarity,season,level,category2,extraction,calcination,dissolution,concentration
 Crow Egg,Animals,Common,Spring,1,Animals,Mimicry,Death,Intelligence,Rebirth
 Deer Antler,Animals,Common,Spring,1,Animals,Regenerative Healing,Repair Maim,Physical Strength,Alertness
 Dragon Scale,Animals,Ex. Rare,Any,3,Animals,Longevity,Resistance,Enhance,Improve
 Eagle Egg,Animals,Rare,Fall,3,Animals,Creation,Air,Accuracy,Spirit
-Earth Newt,Animals,Common,Any,1,Annimals,Acid,Identification,Separation/Dissolution,Earth
+Earth Newt,Animals,Common,Any,1,Animals,Acid,Identification,Separation/Dissolution,Earth
 Eel,Animals,Uncommon,Any,2,Animals,Slipperiness,,Shape Changing,Increase Water/Ice
 Fire Newt,Animals,Uncommon,Spring 2/Fall 1,2,Animals,Disintegration,Protect from Fire,Enhance Fire,Increase Fire
 Fox Tail,Animals,Uncommon,Any,2,Animals,Charm,Stealth?,Silence,Luck
@@ -98,7 +98,6 @@ Quartz Crystal,Stone,Common,Any,1,Stones,Focus,,(Increase) Healing,Protection fr
 Black Quartz,Stones,Rare,Any,3,Stones,merging of divergent? energy,protecting physical space from negative energy,Binding,Deep Meditation
 Jade,Stones,Rare,Any,3,Stones,Balance,Counter-toxin,Dreaming,"Positivity, Joy"
 Obsidian,Stones,Uncommon,Any,2,Stones,Severance,Blocks Psionic Attack,Shielding,Spiritual Growth
-Component,Type,Rarity,Season,Grade,Type,Extraction,Calcination,Dissolution,Concentration
 Agaric Essence,Vials,Common,Any,1,Vials,sleep,tiring,lucid dreaming,improve dreams
 Blood,Vials,Common,Any,1,Vials,"bypassing toxin defense (remove ""toxin"" from call)",decrease toxin defense,remove toxin defense,Draws out unique Racial qualities
 Cyra Sap,Vials,Scarce,Spring/Summer,1,Vials,absorbed gases,defends against gas,reduces gas,changes gas
