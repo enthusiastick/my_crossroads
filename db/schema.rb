@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170130193608) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_professions_on_name", unique: true, using: :btree
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170130193608) do
     t.string   "equivalent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_seasons_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,6 +6,7 @@ class CreateSeasons < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :seasons, :name, unique: true
     create_table :ingredient_seasons do |t|
       t.belongs_to :ingredient
       t.belongs_to :season

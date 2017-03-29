@@ -5,6 +5,7 @@ class CreateProfessions < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :professions, :name, unique: true
     create_table :ingredient_professions do |t|
       t.belongs_to :ingredient
       t.belongs_to :profession
