@@ -2,7 +2,6 @@ class CreateIngredients < ActiveRecord::Migration[5.0]
   def change
     create_table :ingredients do |t|
       t.string :name, null: false
-      t.string :code
       t.text :staff_notes
       t.integer :level
       t.integer :category, null: false, default: 0

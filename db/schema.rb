@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20170130193608) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name",                                  null: false
-    t.string   "code"
     t.text     "staff_notes"
     t.integer  "level"
     t.integer  "category",              default: 0,     null: false
