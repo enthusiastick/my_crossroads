@@ -24,8 +24,11 @@
           =@component.grade
     -unless @component.seasons.empty?
       .callout
+        %a{ data: { open: "keyModal" } }
+          %i.fa.fa-key
         %strong Seasons:
-        =@component.seasons.map(&:name).to_sentence
+        =@component.season
+        ="(#{@component.seasons.map(&:name).to_sentence})"
     .callout
       .row
         .small-12.medium-3.columns
@@ -42,3 +45,17 @@
           =@component.process_concentration
     -unless @component.staff_notes.blank?
       .callout= @component.staff_notes
+.reveal#keyModal{ data: { reveal: "" } }
+  %table.hover.stack
+    %thead
+      %tr
+        %th Name
+        %th Equivalent
+    %tbody
+      -@seasons.each do |season|
+        %tr
+          %td= season.name
+          %td= season.equivalent
+  %button.close-button{ data: { close: "" }, aria: { label:  "Close modal"}, type: "button" }
+    %span{ aria: { hidden: "true" } }
+      &times;

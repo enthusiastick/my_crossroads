@@ -22,13 +22,13 @@ class Ingredient < ApplicationRecord
     extra_rare: 4
   }
 
-  has_many :ingredient_professions
+  has_many :ingredient_professions, dependent: :destroy
   has_many :professions, through: :ingredient_professions
   accepts_nested_attributes_for :professions
-  has_many :ingredient_seasons
+  has_many :ingredient_seasons, dependent: :destroy
   has_many :seasons, through: :ingredient_seasons
   accepts_nested_attributes_for :seasons
-  has_many :inventories
+  has_many :inventories, dependent: :destroy
   has_many :characters, through: :inventories
 
   validates_presence_of :category, :name, :rarity

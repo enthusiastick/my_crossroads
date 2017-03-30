@@ -1,5 +1,6 @@
 class Staff::ComponentsController < ApplicationController
   before_action :authenticate_staff!
+  before_action :fetch_seasons, except: [:destroy]
 
   def create
     @component = Ingredient.new(ingredient_params)
@@ -9,7 +10,6 @@ class Staff::ComponentsController < ApplicationController
     else
       flash.now[:alert] = "There was a problem creating your component."
       @professions = Profession.all
-      @seasons = Season.all
       render :new
     end
   end
@@ -28,19 +28,16 @@ class Staff::ComponentsController < ApplicationController
   def edit
     @component = Ingredient.find(params[:id])
     @professions = Profession.all
-    @seasons = Season.all
   end
 
   def index
     @components = Ingredient.where(archived: false).order(:name)
     @professions = Profession.all.map(&:name)
-    @seasons = Season.all.map(&:name)
   end
 
   def new
     @component = Ingredient.new
     @professions = Profession.all
-    @seasons = Season.all
   end
 
   def show
@@ -55,12 +52,15 @@ class Staff::ComponentsController < ApplicationController
     else
       flash.now[:alert] = "There was a problem updating your component."
       @professions = Profession.all
-      @seasons = Season.all
       render :edit
     end
   end
 
   protected
+
+  def fetch_seasons
+    @seasons = Season.all
+  end
 
   def ingredient_params
     params.require(:ingredient).permit(:name, :grade, :category, :rarity, :process_calcination, :process_concentration, :process_dissolution, :process_extraction, :staff_notes, profession_ids: [], season_ids: [])

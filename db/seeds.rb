@@ -9,7 +9,7 @@ print " complete.\nSeeding professions"
     Profession.find_or_create_by(name: profession)
     print "."
   end
-print " complete.\nSeeding components"
+print " complete.\nSeeding components:"
 CSV.foreach("#{Rails.root}/db/data/seeds.csv", headers: true) do |row|
   component = Ingredient.find_or_initialize_by(name: row["name"])
   component.category = row["category2"].downcase.singularize
@@ -55,6 +55,6 @@ CSV.foreach("#{Rails.root}/db/data/seeds.csv", headers: true) do |row|
   component.process_calcination = row["calcination"]
   component.process_dissolution = row["dissolution"]
   component.process_concentration = row["concentration"]
-  print "." if component.save
+  print " #{component.name}." if component.save
 end
-print " complete."
+print "\nComponent seeding complete."

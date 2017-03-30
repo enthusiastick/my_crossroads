@@ -14,7 +14,7 @@
           %li= link_to rarity.titleize, staff_filter_path(rarity)
       %ul.vertical.medium-horizontal.menu
         %li.menu-text Season:
-        -@seasons.each do |season|
+        -@seasons.map(&:name).each do |season|
           %li= link_to season, staff_filter_path(season.parameterize)
       %ul.vertical.medium-horizontal.menu
         %li.menu-text Type:

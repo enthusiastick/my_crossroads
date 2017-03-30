@@ -41,7 +41,7 @@
     %fieldset.fieldset
       %legend
         Seasons
-        %a{"data-open": "keyModal"}
+        %a{ data: { open: "keyModal" } }
           %i.fa.fa-key
       -@seasons.each do |season|
         =check_box_tag "ingredient[season_ids][]", season.id, f.object.seasons.include?(season)
@@ -52,7 +52,7 @@
       =f.text_area :staff_notes
   .form-actions
     =f.submit "Save", class: "button"
-.reveal#keyModal{"data-reveal": ""}
+.reveal#keyModal{ data: { reveal: "" } }
   %table.hover.stack
     %thead
       %tr
@@ -63,6 +63,6 @@
         %tr
           %td= season.name
           %td= season.equivalent
-  %button.close-button{"data-close": "", "aria-label": "Close modal", "type": "button"}
-    %span{"aria-hidden": "true"}
+  %button.close-button{ data: { close: "" }, aria: { label:  "Close modal"}, type: "button" }
+    %span{ aria: { hidden: "true" } }
       &times;
