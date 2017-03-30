@@ -45,6 +45,10 @@ class Ingredient < ApplicationRecord
       "Summer"
     when Season.winter
       "Winter"
+    when Season.spring + Season.summer
+      "Spring/Summer"
+    when Season.spring + Season.fall
+      "Spring/Fall"
     when [Season.qvellsvart]
       "Qvellsvart"
     when [Season.varcindium]

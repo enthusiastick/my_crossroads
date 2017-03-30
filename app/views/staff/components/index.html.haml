@@ -24,11 +24,11 @@
       %thead
         %tr
           %th Name
-          %th Rarity
           %th Type
+          %th Rarity
+          %th Season
           %th Grade
           %th Professions
-          %th Season
           %th Extraction
           %th Calcination
           %th Dissolution
@@ -37,12 +37,12 @@
         -@components.each do |component|
           %tr
             %td= link_to component.name, staff_component_path(component)
-            %td.text-center= component.rarity.titleize
             %td.text-center= component.category.titleize
+            %td.text-center= component.rarity.titleize
+            %td.text-center= component.season
             %td.text-right= component.grade
             %td
               %span.small= component.professions.map(&:name).to_sentence
-            %td= component.season
             %td.text-center= component.process_extraction
             %td.text-center= component.process_calcination
             %td.text-center= component.process_dissolution
