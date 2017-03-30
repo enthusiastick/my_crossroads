@@ -32,4 +32,25 @@ class Ingredient < ApplicationRecord
   has_many :characters, through: :inventories
 
   validates_presence_of :category, :name, :rarity
+
+  def season
+    case seasons.order(:id)
+    when Season.months
+      "Any"
+    when Season.fall
+      "Fall"
+    when Season.spring
+      "Spring"
+    when Season.summer
+      "Summer"
+    when Season.winter
+      "Winter"
+    when [Season.qvellsvart]
+      "Qvellsvart"
+    when [Season.varcindium]
+      "Varcindium"
+    else
+      "Varied"
+    end
+  end
 end

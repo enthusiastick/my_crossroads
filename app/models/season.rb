@@ -1,18 +1,18 @@
 class Season < ApplicationRecord
-  MONTHS = [
-    "Ers",
-    "Carris",
-    "Tyir",
-    "Rennse",
-    "Fyrunn",
-    "Medrim",
-    "Arridun",
-    "Grenn",
-    "Ottur",
-    "Curnnos",
-    "Surrn",
-    "Errund"
-  ]
+  MONTHS = {
+    Ers: "January",
+    Carris: "February",
+    Tyir: "March",
+    Rennse: "April",
+    Fyrunn: "May",
+    Medrim: "June",
+    Arridun: "July",
+    Grenn: "August",
+    Ottur: "September",
+    Curnnos: "October",
+    Surrn: "November",
+    Errund: "December"
+  }
   FALL = ["Ottur", "Curnnos", "Surrn"]
   SPRING = ["Tyir", "Rennse", "Fyrunn"]
   SUMMER = ["Medrim", "Arridun", "Grenn"]
@@ -24,7 +24,7 @@ class Season < ApplicationRecord
   validates_uniqueness_of :name
 
   def self.months
-    where(name: MONTHS)
+    where(name: MONTHS.keys)
   end
 
   def self.fall
@@ -43,7 +43,7 @@ class Season < ApplicationRecord
     where(name: WINTER)
   end
 
-  def self.quellsvart
+  def self.qvellsvart
     find_by(name: "Qvellsvart")
   end
 

@@ -48,7 +48,7 @@ CSV.foreach("#{Rails.root}/db/data/seeds.csv", headers: true) do |row|
   when "Varcindium"
     component.seasons << Season.varcindium
   when "Quellsvart"
-    component.seasons << Season.quellsvart
+    component.seasons << Season.qvellsvart
   end
   component.grade = row["grade"]
   component.process_extraction = row["extraction"]
