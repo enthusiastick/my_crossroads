@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :components, except: [:create, :destroy, :update] do
       collection do
         resources :filters, only: [:show]
+        resources :pictures, only: [:index]
       end
     end
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
