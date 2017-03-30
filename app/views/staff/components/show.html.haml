@@ -7,10 +7,14 @@
         %li
           %span.show-for-sr Current:
           =@component.name
-    %h1.text-center
-      =@component.name
-      =link_to edit_staff_component_path(@component) do
-        %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+    .text-center
+      %h1
+        =@component.name
+        =link_to edit_staff_component_path(@component) do
+          %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+      -if @component.picture.present?
+        %a.thumbnail{ data: { open: "pictureModal" } }
+          =image_tag(@component.picture.thumb.url, alt: "Thumbnail Picture of #{@component.name}")
     .callout
       .row
         .small-12.medium-5.columns
@@ -59,3 +63,9 @@
   %button.close-button{ data: { close: "" }, aria: { label:  "Close modal"}, type: "button" }
     %span{ aria: { hidden: "true" } }
       &times;
+-if @component.picture.present?
+  .reveal#pictureModal{ data: { reveal: "" } }
+    =image_tag(@component.picture.url, alt: "Picture of #{@component.name}")
+    %button.close-button{ data: { close: "" }, aria: { label:  "Close modal"}, type: "button" }
+      %span{ aria: { hidden: "true" } }
+        &times;
