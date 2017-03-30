@@ -20,12 +20,35 @@
             %tr
               %th.text-right Quantity
               %th Component
+              %th.text-center Extraction
+              %th.text-center Calcination
+              %th.text-center Dissolution
+              %th.text-center Concentration
           %tbody
             -@character.inventories.each do |inventory|
-              -unless inventory.quantity == 0
-                %tr
-                  %td.text-right= inventory.quantity
-                  %td= inventory.ingredient.name
+              %tr
+                %td.text-right= inventory.quantity
+                %td= inventory.ingredient.name
+                %td.text-center
+                  -if inventory.unlocked_extraction?
+                    =inventory.ingredient.process_extraction
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_calcination?
+                    =inventory.ingredient.process_calcination
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_dissolution?
+                    =inventory.ingredient.process_dissolution
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_concentration?
+                    =inventory.ingredient.process_concentration
+                  -else
+                    %i.fa.fa-lock
 .reveal#historyModal{"data-reveal": ""}
   %h2.margin-bottom-none.text-center
     Character History

@@ -37,9 +37,8 @@
                   %fieldset
                     =b.number_field :quantity, class: "text-right"
                 %td.text-center
-                  =link_to staff_component_path(inventory.ingredient) do
-                    %span.label.secondary
-                      %strong= inventory.ingredient.name
+                  %strong
+                    =link_to inventory.ingredient.name, staff_component_path(inventory.ingredient)
                 %td.text-center
                   %fieldset
                     =b.check_box :unlocked_extraction
