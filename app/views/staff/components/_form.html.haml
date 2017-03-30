@@ -1,6 +1,9 @@
 =form_for [:staff, @component] do |f|
   .form-inputs
     %fieldset
+      %label.button{for: "ingredient_picture"} Upload Image
+      =f.file_field :picture, class: "show-for-sr"
+    %fieldset
       =render partial: "text_field_with_errors", locals: {attribute: :name, form: f, model: @component}
     .row
       .small-12.medium-5.columns

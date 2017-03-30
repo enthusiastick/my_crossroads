@@ -22,6 +22,8 @@ class Ingredient < ApplicationRecord
     extra_rare: 4
   }
 
+  mount_uploader :picture, PictureUploader
+
   has_many :ingredient_professions, dependent: :destroy
   has_many :professions, through: :ingredient_professions
   accepts_nested_attributes_for :professions

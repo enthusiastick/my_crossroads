@@ -63,6 +63,6 @@ class Staff::ComponentsController < ApplicationController
   end
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :grade, :category, :rarity, :process_calcination, :process_concentration, :process_dissolution, :process_extraction, :staff_notes, profession_ids: [], season_ids: [])
+    params.require(:ingredient).permit(:picture, :name, :grade, :category, :rarity, :process_calcination, :process_concentration, :process_dissolution, :process_extraction, :staff_notes, profession_ids: [], season_ids: [])
   end
 end
