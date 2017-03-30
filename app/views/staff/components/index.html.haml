@@ -26,7 +26,7 @@
           %th Name
           %th Rarity
           %th Type
-          %th Level
+          %th Grade
           %th Professions
           %th Seasons
           %th Extraction
@@ -39,7 +39,7 @@
             %td= link_to component.name, staff_component_path(component)
             %td.text-center= component.rarity.titleize
             %td.text-center= component.category.titleize
-            %td.text-right= component.level
+            %td.text-right= component.grade
             %td
               %span.small= component.professions.map(&:name).to_sentence
             %td

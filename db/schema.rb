@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170130193608) do
   create_table "ingredients", force: :cascade do |t|
     t.string   "name",                                  null: false
     t.text     "staff_notes"
-    t.integer  "level"
+    t.integer  "grade"
     t.integer  "category",              default: 0,     null: false
     t.integer  "rarity",                default: 0,     null: false
     t.string   "process_calcination"

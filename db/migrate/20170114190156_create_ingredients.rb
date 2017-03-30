@@ -3,7 +3,7 @@ class CreateIngredients < ActiveRecord::Migration[5.0]
     create_table :ingredients do |t|
       t.string :name, null: false
       t.text :staff_notes
-      t.integer :level
+      t.integer :grade
       t.integer :category, null: false, default: 0
       t.integer :rarity, null: false, default: 0
       t.string :process_calcination

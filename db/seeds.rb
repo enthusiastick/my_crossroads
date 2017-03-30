@@ -1,5 +1,5 @@
 require "csv"
-print " complete.\nSeeding seasons"
+print "\nSeeding seasons"
 {Ers: "January", Carris: "February", Tyir: "March", Rennse: "April", Fyrunn: "May", Medrim: "June", Arridun: "July", Grenn: "August", Ottur: "September", Curnnos: "October", Surrn: "November", Errund: "December", Qvellsvart: "Halloween", Varcindium: "Spring 2"}.each do |name, equivalent|
   Season.find_or_create_by(name: name, equivalent: equivalent)
   print "."
@@ -50,7 +50,7 @@ CSV.foreach("#{Rails.root}/db/data/seeds.csv", headers: true) do |row|
   when "Quellsvart"
     component.seasons << Season.quellsvart
   end
-  component.level = row["level"]
+  component.grade = row["grade"]
   component.process_extraction = row["extraction"]
   component.process_calcination = row["calcination"]
   component.process_dissolution = row["dissolution"]

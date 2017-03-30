@@ -13,8 +13,8 @@
           =f.select :rarity, options_for_select(Ingredient.enum_collection(:rarities), @component.rarity)
       .small-12.medium-2.columns
         %fieldset
-          =f.label :level, "Level"
-          =f.number_field :level, in: 0..4
+          =f.label :grade, "Grade"
+          =f.number_field :grade, in: 0..4
     .row
       .small-12.medium-3.columns
         %fieldset
