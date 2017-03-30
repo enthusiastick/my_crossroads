@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "app@mycrossroads.terresrising.com"
+  default from: "MyCrossroads Envoy <app@mycrossroads.terresrising.com>"
   layout "mailer"
 end
