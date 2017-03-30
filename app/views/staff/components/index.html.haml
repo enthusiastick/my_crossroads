@@ -24,10 +24,9 @@
       %thead
         %tr
           %th Name
-          %th Code
-          %th Level
           %th Rarity
           %th Type
+          %th Level
           %th Professions
           %th Seasons
           %th Extraction
@@ -38,10 +37,9 @@
         -@components.each do |component|
           %tr
             %td= link_to component.name, staff_component_path(component)
-            %td.text-center= component.code
-            %td.text-right= component.level
             %td.text-center= component.rarity.titleize
             %td.text-center= component.category.titleize
+            %td.text-right= component.level
             %td
               %span.small= component.professions.map(&:name).to_sentence
             %td
