@@ -33,7 +33,7 @@
           .small-12.medium-6.columns
             %fieldset
               =f.label :user_id, "User"
-              =f.select :user_id, options_from_collection_for_select(User.all.order(:handle), 'id', 'label_for_select', @character.user.id)
+              =f.select :user_id, options_from_collection_for_select(User.by_name, 'id', 'label_for_select', @character.user.id)
         =f.check_box :alchemist
         =f.label :alchemist?
         =f.label :history, "Character History"

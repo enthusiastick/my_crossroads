@@ -18,6 +18,8 @@ class User < ApplicationRecord
   validates_presence_of :email, :first_name, :handle, :last_name
   validates_uniqueness_of :email, :handle
 
+  scope :by_name, -> { order(:first_name) }
+
   def authenticated?(attribute, token)
     digest = self.send("#{attribute}_digest")
     return false if digest.nil?
@@ -52,9 +54,9 @@ class User < ApplicationRecord
 
   def label_for_select
     if staff?
-      "#{handle}* (#{first_name} #{last_name})"
+      "#{first_name} #{last_name} (#{handle}*)"
     else
-      "#{handle} (#{first_name} #{last_name})"
+      "#{first_name} #{last_name} (#{handle})"
     end
   end
 
