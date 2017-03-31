@@ -26,10 +26,14 @@
                 %th.text-center Dissolution
                 %th.text-center Concentration
               -else
-                %th.text-center Primary
-                %th.text-center Secondary
-                %th.text-center Tertiary
-                %th.text-center Quaternary
+                %th.text-center
+                  %i.fa.fa-question-circle
+                %th.text-center
+                  %i.fa.fa-question-circle
+                %th.text-center
+                  %i.fa.fa-question-circle
+                %th.text-center
+                  %i.fa.fa-question-circle
           %tbody
             -@character.inventories.each do |inventory|
               %tr
