@@ -7,11 +7,11 @@
         %li
           %span.show-for-sr Current:
           Component Visual Dictionary
-.row.top-padded
+.row.top-padded{ data: { equalizer: "" } }
   -@components.each do |component|
     .small-12.medium-3.large-2.columns.end.text-center
       =link_to staff_component_path(component) do
-        .callout.primary.small
+        .callout.primary.small{ data: { equalizer: { watch: "" } } }
           =image_tag(component.picture.thumb.url, alt: "Thumbnail Picture of #{component.name}", class: "thumbnail margin-bottom-none")
           %div
             =component.name
