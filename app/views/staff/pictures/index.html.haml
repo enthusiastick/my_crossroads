@@ -14,4 +14,8 @@
         .callout.primary.small{ data: { equalizer: { watch: "" } } }
           =image_tag(component.picture.thumb.url, alt: "Thumbnail Picture of #{component.name}", class: "thumbnail margin-bottom-none")
           %div
-            =component.name
+            -if component.staff_notes.nil? || component.staff_notes.empty?
+              =component.name
+            -else
+              %span.has-tip{aria: { haspopup: true }, data: { disable: { hover: false }, tooltip: "" }, tabindex: 1, title: component.staff_notes }
+                =component.name
