@@ -1,6 +1,15 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Components", staff_components_path
+        %li
+          %span.show-for-sr Current:
+          Component Visual Dictionary
 .row.top-padded
   -@components.each do |component|
-    .small-12.medium-3.large-2.columns.text-center
+    .small-12.medium-3.large-2.columns.end.text-center
       =link_to staff_component_path(component) do
         .callout.primary.small
           =image_tag(component.picture.thumb.url, alt: "Thumbnail Picture of #{component.name}", class: "thumbnail margin-bottom-none")
