@@ -47,22 +47,22 @@
                 %td= inventory.ingredient.name
                 %td.text-center
                   -if inventory.unlocked_extraction?
-                    %i.fa.fa-unlock
+                    =inventory.ingredient.process_extraction
                   -else
                     %i.fa.fa-lock
                 %td.text-center
                   -if inventory.unlocked_calcination?
-                    %i.fa.fa-unlock
+                    =inventory.ingredient.process_calcination
                   -else
                     %i.fa.fa-lock
                 %td.text-center
                   -if inventory.unlocked_dissolution?
-                    %i.fa.fa-unlock
+                    =inventory.ingredient.process_dissolution
                   -else
                     %i.fa.fa-lock
                 %td.text-center
                   -if inventory.unlocked_concentration?
-                    %i.fa.fa-unlock
+                    =inventory.ingredient.process_concentration
                   -else
                     %i.fa.fa-lock
 .reveal#historyModal{"data-reveal": ""}

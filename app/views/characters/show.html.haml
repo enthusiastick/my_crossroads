@@ -20,10 +20,16 @@
             %tr
               %th.text-right Quantity
               %th Component
-              %th.text-center Extraction
-              %th.text-center Calcination
-              %th.text-center Dissolution
-              %th.text-center Concentration
+              -if @character.alchemist?
+                %th.text-center Extraction
+                %th.text-center Calcination
+                %th.text-center Dissolution
+                %th.text-center Concentration
+              -else
+                %th.text-center Primary
+                %th.text-center Secondary
+                %th.text-center Tertiary
+                %th.text-center Quaternary
           %tbody
             -@character.inventories.each do |inventory|
               %tr

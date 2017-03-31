@@ -25,6 +25,7 @@ class Character < ApplicationRecord
   accepts_nested_attributes_for :inventories
   has_many :transactions, foreign_key: :recipient_id
 
+  validates_inclusion_of :alchemist, in: [true, false]
   validates_presence_of :name, :slug, :user
   validates_uniqueness_of :name, :slug
 
