@@ -8,7 +8,7 @@
           %span.show-for-sr Current:
           =@event.name
 .row
-  .small-12.columns
+  .small-12.medium-11.large-10.small-centered.columns
     %h1.text-center
       =@event.name
       -if user_signed_in? && current_user.staff?
@@ -20,5 +20,6 @@
       .small-11.medium-7.small-centered.columns
         .callout#map_canvas{ data: { latitude: @event.latitude, longitude: @event.longitude } }
         %p.text-center
-          %strong Address:
-          =link_to @event.address, "https://www.google.com/maps/search/#{@event.address}", target: "_blank"
+          %strong
+            Address:
+            =link_to @event.address, "https://www.google.com/maps/search/#{@event.address}", target: "_blank"
