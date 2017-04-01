@@ -2,7 +2,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
   def change
     create_table :events do |t|
       t.string :address
-      t.text :description
+      t.text :directions
       t.datetime :end_date, null: false
       t.float :latitude
       t.float :longitude

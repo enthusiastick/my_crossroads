@@ -7,6 +7,10 @@ class Event < ApplicationRecord
   validates_uniqueness_of :slug
   validate :end_after_start
 
+  def date
+    "#{start_date.strftime("%B %-d")} to #{end_date.strftime("%B %-d, %Y")}"
+  end
+
   def end_after_start
     errors.add(:end_date, "can't be before start date") if end_date.present? && end_date < start_date
   end
@@ -15,7 +19,9 @@ class Event < ApplicationRecord
     self.slug ||= name.parameterize
   end
 
-  protected
+  def regenerate_slug!
+    update(slug: name.parameterize)
+  end
 
   def to_param
     slug

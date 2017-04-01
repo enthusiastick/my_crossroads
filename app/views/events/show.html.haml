@@ -1,0 +1,24 @@
+.row
+  .small-12.columns
+    %nav.top-padded{ aria: { label: "You are here:" }, role: "navigation" }
+      %ul.breadcrumbs
+        %li
+          =link_to "Events", events_path
+        %li
+          %span.show-for-sr Current:
+          =@event.name
+.row
+  .small-12.columns
+    %h1.text-center
+      =@event.name
+      -if user_signed_in? && current_user.staff?
+        =link_to edit_staff_event_path(@event) do
+          %i.fa.fa-pencil-square-o
+    %h3.text-center= @event.date
+    %div= raw @markdown.render(@event.directions)
+    .row
+      .small-11.medium-7.small-centered.columns
+        .callout#map_canvas{ data: { latitude: @event.latitude, longitude: @event.longitude } }
+        %p.text-center
+          %strong Address:
+          =link_to @event.address, "https://www.google.com/maps/search/#{@event.address}", target: "_blank"

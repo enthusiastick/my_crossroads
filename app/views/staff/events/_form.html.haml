@@ -1,0 +1,27 @@
+=form_for [:staff, @event] do |f|
+  .form-inputs
+    %fieldset
+      =render partial: "text_field_with_errors", locals: { attribute: :name, form: f, model: @event }
+    .row
+      .small-12.medium-6.columns
+        %fieldset
+          =f.label :start_date, "Start Date"
+          =f.text_field :start_date, class: "datetimepicker"
+      .small-12.medium-6.columns
+        %fieldset
+          =f.label :end_date, "End Date"
+          =f.text_field :end_date, class: "datetimepicker"
+    %fieldset
+      =render partial: "text_field_with_errors", locals: { attribute: :address, form: f, model: @event }
+    .row
+      .small-12.medium-6.columns
+        %fieldset
+          =render partial: "text_field_with_errors", locals: { attribute: :latitude, form: f, model: @event }
+      .small-12.medium-6.columns
+        %fieldset
+          =render partial: "text_field_with_errors", locals: { attribute: :longitude, form: f, model: @event }
+    %fieldset
+      =f.label :directions
+      =f.text_area :directions
+  .form-actions
+    =f.submit "Save", class: "button"

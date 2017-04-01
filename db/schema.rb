@@ -39,16 +39,16 @@ ActiveRecord::Schema.define(version: 20170401015039) do
 
   create_table "events", force: :cascade do |t|
     t.string   "address"
-    t.text     "description"
-    t.datetime "end_date",                   null: false
+    t.text     "directions"
+    t.datetime "end_date",                  null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "name",                       null: false
-    t.string   "slug",                       null: false
-    t.datetime "start_date",                 null: false
-    t.boolean  "visible",     default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",                      null: false
+    t.string   "slug",                      null: false
+    t.datetime "start_date",                null: false
+    t.boolean  "visible",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["slug"], name: "index_events_on_slug", unique: true, using: :btree
   end
 

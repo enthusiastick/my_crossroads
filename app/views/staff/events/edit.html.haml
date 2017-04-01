@@ -5,9 +5,14 @@
         %li
           =link_to "Events", events_path
         %li
+          =link_to @event.name, event_path(@event)
+        %li
           %span.show-for-sr Current:
-          New
+          Edit
 .row
   .small-12.columns
-    %h1.text-center New Event
+    %h1.text-center
+      Edit Event
+      =link_to staff_event_path(@event), method: :delete, data: { confirm: "Delete event '#{@event.name}': are you sure?" } do
+        %i.fa.fa-calendar-times-o
     = render partial: "form"

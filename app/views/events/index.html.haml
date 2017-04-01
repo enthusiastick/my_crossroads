@@ -1,0 +1,19 @@
+.row.top-padded
+  .small-12.columns
+    %h1.text-center
+      Terres Rising
+      -if user_signed_in? && current_user.staff?
+        =link_to new_staff_event_path do
+          %i.fa.fa-calendar-plus-o
+    -if @events.empty?
+      %h2.text-center No events currently scheduled.
+      %p.text-center Check back soon!
+    -else
+      %h2.text-center Upcoming Events
+      -@events.each do |event|
+        .row
+          .small-9.medium-7.large-5.small-centered.columns
+            .callout.primary
+              %h3.text-center=link_to event.name, event_path(event)
+              %strong
+                %p.text-center= event.date

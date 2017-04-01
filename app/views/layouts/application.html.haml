@@ -8,6 +8,7 @@
     %title= content_for?(:title) ? yield(:title) : "MyCrossroads"
 
     = stylesheet_link_tag "application"
+    %script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['GMAPS_API_KEY']}"}
     = javascript_include_tag "application", "data-turbolinks-track": true
     = csrf_meta_tag
 
