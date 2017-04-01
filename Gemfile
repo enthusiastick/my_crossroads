@@ -8,6 +8,7 @@ end
 gem "bcrypt", "~> 3.1.7"
 gem "carrierwave", "~> 1.0"
 gem "coffee-rails", "~> 4.2"
+gem "rails-assets-datetimepicker", source: "https://rails-assets.org"
 gem "fog-aws"
 gem "font-awesome-rails"
 gem "foundation-rails"

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require datetimepicker
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.foundation
 //= require turbolinks
@@ -21,4 +22,5 @@
 $(document).on('turbolinks:load', function() {
   $(document).foundation();
   $(".datatables").dataTable();
+  $(".datetimepicker").datetimepicker();
 });
