@@ -27,6 +27,9 @@ initMap = function() {
   return marker = new google.maps.Marker(markerOptions);
 };
 
-$(document).on('turbolinks:load', function() {
-  return google.maps.event.addDomListener(window, "load", initMap);
+$(document).ready(function() {
+  var maps = document.getElementById('map_canvas')
+  if (maps) {
+    return google.maps.event.addDomListener(window, "load", initMap);
+  }
 });

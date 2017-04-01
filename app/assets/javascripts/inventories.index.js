@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("DOMContentLoaded", function() {
   function inventoryButtonClickHandler(e) {
     e.preventDefault();
     var formInputs = document.getElementById('form-inputs');
