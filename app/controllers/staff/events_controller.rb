@@ -12,6 +12,17 @@ class Staff::EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find_by(slug: params[:id])
+    if @event.update(visible: false)
+      flash[:success] = "Event deleted successfully."
+      redirect_to events_path
+    else
+      flash.now[:alert] = "There was a problem deleting your event."
+      render :edit
+    end
+  end
+
   def edit
     @event = Event.find_by(slug: params[:id])
   end
