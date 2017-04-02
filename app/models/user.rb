@@ -7,6 +7,7 @@ class User < ApplicationRecord
   before_create :generate_confirmation_digest
   before_save :downcase_email
 
+  has_many :bookings
   has_many :characters
   has_many :transactions
 

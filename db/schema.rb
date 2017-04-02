@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20170401015039) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "character_id"
-    t.integer  "user_id"
+    t.integer  "event_id",     null: false
+    t.integer  "receipt_id"
+    t.integer  "user_id",      null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["character_id", "user_id"], name: "index_bookings_on_character_id_and_user_id", unique: true, using: :btree
+    t.index ["event_id", "user_id"], name: "index_bookings_on_event_id_and_user_id", unique: true, using: :btree
   end
 
   create_table "characters", force: :cascade do |t|
@@ -108,6 +110,19 @@ ActiveRecord::Schema.define(version: 20170401015039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_professions_on_name", unique: true, using: :btree
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.decimal  "amount",       precision: 8, scale: 2
+    t.string   "brand"
+    t.string   "expiry"
+    t.string   "ip_address",                           null: false
+    t.string   "last_4"
+    t.string   "name",                                 null: false
+    t.string   "stripe_token"
+    t.string   "stripe_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "seasons", force: :cascade do |t|

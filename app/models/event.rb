@@ -2,6 +2,11 @@ class Event < ApplicationRecord
 
   before_validation :generate_slug
 
+  has_many :bookings
+  has_many :characters, through: :bookings
+  has_many :receipts, through: :bookings
+  has_many :users, through: :bookings
+
   validates_inclusion_of :visible, in: [true, false]
   validates_presence_of :name, :start_date, :end_date
   validates_uniqueness_of :slug
@@ -17,6 +22,14 @@ class Event < ApplicationRecord
 
   def generate_slug
     self.slug ||= name.parameterize
+  end
+
+  def price
+    if (start_date.beginning_of_day - 14.days).past?
+      75
+    else
+      70
+    end
   end
 
   def regenerate_slug!

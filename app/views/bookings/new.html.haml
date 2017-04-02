@@ -1,0 +1,43 @@
+.row
+  .small-12.medium-11.large-10.small-centered.columns
+    %h1.text-center.top-padded Event Registration
+    =form_for @receipt do |f|
+      .form-inputs{ data: { equalizer: "" } }
+        .row
+          .small-12.medium-4.large-5.columns
+            %fieldset.fieldset{ data: { equalizer: { watch: "" } } }
+              %legend Events
+              -@events.each do |event|
+                -unless event.users.include?(current_user)
+                  %p.margin-bottom-none
+                    =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box", data: { price: event.price }
+                    ="#{event.name} ($#{event.price})"
+              .callout.margin-bottom-none.text-right
+                %strong Total:
+                %span#total $0
+          .small-12.medium-8.large-7.columns
+            %fieldset.fieldset{ data: { equalizer: { watch: "" } } }
+              %legend Contact Information
+              =f.telephone_field :phone, placeholder: "Phone Number"
+              =f.text_field :street, placeholder: "Street Address"
+              .row
+                .small-12.large-7.columns
+                  =f.text_field :city, placeholder: "City/Town"
+                .small-12.medium-4.large-2.columns
+                  =f.select :state, options_for_select(State::ABBREVIATIONS)
+                .small-12.medium-8.large-3.columns
+                  =f.text_field :zip, placeholder: "Zip"
+        %fieldset
+          =f.label :report, "Please let us know about any allergies, medical conditions, and food requirements"
+          =f.text_area :report
+      .row
+        .small-12.medium-7.large-9.columns
+          %fieldset
+            =f.label :character
+            =f.collection_select :character_id, current_user.characters, :id, :name, include_blank: true
+          %fieldset
+            %label Payment Information
+            #card-element
+      .form-actions
+        =f.submit "Register", class: "button"
+%script{src: "https://js.stripe.com/v3/"}
