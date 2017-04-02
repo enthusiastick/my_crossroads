@@ -30,6 +30,8 @@ class Character < ApplicationRecord
   validates_presence_of :name, :slug, :user
   validates_uniqueness_of :name, :slug
 
+  scope :by_name, -> { order(:name) }
+
   def to_param
     slug
   end

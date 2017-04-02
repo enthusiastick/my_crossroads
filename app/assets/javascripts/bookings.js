@@ -27,6 +27,19 @@ $(document).ready(function() {
     // Add an instance of the card Element into the `card-element` <div>
     card.mount('#card-element');
 
+    card.addEventListener('change', function(event) {
+      var displayError = document.getElementById('card-errors');
+      var cardLabel = document.getElementById('card-label');
+      if (event.error) {
+        displayError.textContent = event.error.message;
+        displayError.classList.add('is-visible');
+        cardLabel.classList.add('is-invalid-label');
+      } else {
+        displayError.classList.remove('is-visible');
+        cardLabel.classList.remove('is-invalid-label');
+        displayError.textContent = '';
+      }
+    });
 
     // Create a token or display an error the form is submitted.
     var form = document.getElementById('new_receipt');
@@ -53,6 +66,11 @@ $(document).ready(function() {
       hiddenInput.setAttribute('name', 'stripeToken');
       hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);
+      var amountInput = document.createElement('input');
+      amountInput.setAttribute('type', 'hidden');
+      amountInput.setAttribute('name', 'amount');
+      amountInput.setAttribute('value', total);
+      form.appendChild(amountInput);
 
       // Submit the form
       form.submit();

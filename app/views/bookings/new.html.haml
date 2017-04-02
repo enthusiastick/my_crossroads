@@ -34,10 +34,12 @@
         .small-12.medium-7.large-9.columns
           %fieldset
             =f.label :character
-            =f.collection_select :character_id, current_user.characters, :id, :name, include_blank: true
+            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, include_blank: true
           %fieldset
-            %label Payment Information
-            #card-element
+            %label#card-label
+              Payment Information
+              #card-element
+              %span.form-error#card-errors
       .form-actions
         =f.submit "Register", class: "button"
 %script{src: "https://js.stripe.com/v3/"}
