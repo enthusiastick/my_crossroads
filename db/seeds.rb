@@ -67,23 +67,23 @@ directions = "#### Directions to Camp Howe\n\n##### From East:\n\nI-90 West to I
 event1 = Event.find_or_initialize_by(name: "Spring One 2017")
 unless event1.persisted?
   event1.assign_attributes(start_date: "2017-05-05 22:00:00 -0400", end_date: "2017-05-07 15:00:00 -0400", address: address, latitude: latitude, longitude: longitude, directions: directions)
-  event1.save
+  print "#{event1.name}. " if event1.save
 end
 
 event2 = Event.find_or_initialize_by(name: "Spring Two 2017")
 unless event2.persisted?
   event2.assign_attributes(start_date: "2017-06-02 22:00:00 -0400", end_date: "2017-06-04 15:00:00 -0400", address: address, latitude: latitude, longitude: longitude, directions: directions)
-  event2.save
+  print "#{event2.name}. " if event2.save
 end
 
 event3 = Event.find_or_initialize_by(name: "Fall One 2017")
 unless event3.persisted?
   event3.assign_attributes(start_date: "2017-08-25 22:00:00 -0400", end_date: "2017-08-27 15:00:00 -0400", address: address, latitude: latitude, longitude: longitude, directions: directions)
-  event3.save
+  print "#{event3.name}. " if event3.save
 end
 
 event4 = Event.find_or_initialize_by(name: "Fall Two 2017")
 unless event4.persisted?
   event4.assign_attributes(start_date: "2017-10-06 22:00:00 -0400", end_date: "2017-10-08 15:00:00 -0400", address: address, latitude: latitude, longitude: longitude, directions: directions)
-  event4.save
+  print "#{event4.name}. " if event4.save
 end
