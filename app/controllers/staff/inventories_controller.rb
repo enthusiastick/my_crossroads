@@ -3,6 +3,6 @@ class Staff::InventoriesController < ApplicationController
 
   def index
     @character = Character.find_by(slug: params[:character_id])
-    @components = Ingredient.all - @character.ingredients
+    @components = Ingredient.by_name - @character.ingredients
   end
 end

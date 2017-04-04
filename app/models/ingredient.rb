@@ -35,6 +35,8 @@ class Ingredient < ApplicationRecord
 
   validates_presence_of :category, :name, :rarity
 
+  scope :by_name, -> { order(:name) }
+
   def season
     case seasons.order(:id)
     when Season.months
