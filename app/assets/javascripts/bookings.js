@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var booking = document.getElementById('new_receipt')
   if (booking) {
-    var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+    var stripe = Stripe(booking.dataset.stripePublishableKey);
     var elements = stripe.elements();
 
     // Custom styling can be passed to options when creating an Element.
@@ -69,7 +69,7 @@ $(document).ready(function() {
       var amountInput = document.createElement('input');
       amountInput.setAttribute('type', 'hidden');
       amountInput.setAttribute('name', 'amount');
-      amountInput.setAttribute('value', total);
+      amountInput.setAttribute('value', parseInt(total)*100);
       form.appendChild(amountInput);
 
       // Submit the form
@@ -85,9 +85,16 @@ $(document).ready(function() {
           total += parseInt(event.target.dataset.price)
         } else {
           total -= parseInt(event.target.dataset.price)
+          if (total < 0) {
+            total = 0
+          }
         }
         totalDisplay.textContent = '$' + total;
       });
     };
+
+    $('#receipt_state').autocomplete({
+      source: ['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']
+    });
   }
 });

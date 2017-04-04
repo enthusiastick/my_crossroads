@@ -25,10 +25,10 @@ class Event < ApplicationRecord
   end
 
   def price
-    if (start_date.beginning_of_day - 14.days).past?
-      75
+    if (start_date.beginning_of_day - 5.days).past?
+      90
     else
-      70
+      75
     end
   end
 
