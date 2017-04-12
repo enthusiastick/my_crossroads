@@ -66,6 +66,7 @@ $(document).ready(function() {
       hiddenInput.setAttribute('name', 'stripeToken');
       hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);
+      calculateTotal();
       var amountInput = document.createElement('input');
       amountInput.setAttribute('type', 'hidden');
       amountInput.setAttribute('name', 'amount');
@@ -78,20 +79,24 @@ $(document).ready(function() {
 
     var checkboxes = document.getElementsByClassName('event_check_box');
     var totalDisplay = document.getElementById('total');
-    var total = 0;
+    var total;
     for (var i = 0, length = checkboxes.length; i < length; i++) {
       checkboxes[i].addEventListener('click', function(event) {
-        if (event.target.checked) {
-          total += parseInt(event.target.dataset.price)
-        } else {
-          total -= parseInt(event.target.dataset.price)
-          if (total < 0) {
-            total = 0
-          }
-        }
-        totalDisplay.textContent = '$' + total;
+        calculateTotal();
       });
     };
+
+    function calculateTotal() {
+      var checkbox;
+      total = 0;
+      for (var i = 0, length = checkboxes.length; i < length; i++) {
+        checkbox = checkboxes[i]
+        if (checkbox.checked) {
+          total += parseInt(checkbox.dataset.price)
+        }
+      }
+      totalDisplay.textContent = '$' + total;
+    }
 
     $('#receipt_state').autocomplete({
       source: ['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']
