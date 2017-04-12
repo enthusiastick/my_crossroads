@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       end
     end
     resources :user_staff_statuses, only: [:update]
+    resources :user_editor_statuses, only: [:update]
   end
 
   resources :account_confirmations, only: [:edit]

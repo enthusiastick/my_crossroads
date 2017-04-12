@@ -1,5 +1,5 @@
 class Staff::InventoriesController < ApplicationController
-  before_action :authenticate_staff!
+  before_action :authenticate_staff_editor!
 
   def index
     @character = Character.find_by(slug: params[:character_id])

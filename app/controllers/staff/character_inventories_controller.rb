@@ -1,5 +1,5 @@
 class Staff::CharacterInventoriesController < ApplicationController
-  before_action :authenticate_staff!
+  before_action :authenticate_staff_editor!
 
   def update
     @character = Character.find_by(slug: params[:id])

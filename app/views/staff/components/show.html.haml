@@ -10,8 +10,9 @@
     .text-center
       %h1
         =@component.name
-        =link_to edit_staff_component_path(@component) do
-          %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+        -if current_user.editor?
+          =link_to edit_staff_component_path(@component) do
+            %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
       -if @component.picture.present?
         %a.thumbnail{ data: { open: "pictureModal" } }
           =image_tag(@component.picture.thumb.url, alt: "Thumbnail Picture of #{@component.name}")

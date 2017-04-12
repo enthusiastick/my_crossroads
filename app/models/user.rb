@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   validates_format_of :email, with: EMAIL_REGEXP
   validates_format_of :handle, with: HANDLE_REGEXP
+  validates_inclusion_of :editor, in: [true, false]
+  validates_inclusion_of :staff, in: [true, false]
   validates_length_of :handle, in: 3..30
   validates_presence_of :email, :first_name, :handle, :last_name
   validates_uniqueness_of :email, :handle

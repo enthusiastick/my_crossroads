@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401015039) do
+ActiveRecord::Schema.define(version: 20170412173915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20170401015039) do
     t.integer  "failed_sign_in_attempts", default: 0
     t.datetime "last_signed_in_at"
     t.integer  "sign_in_count",           default: 0
+    t.boolean  "editor",                  default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   end

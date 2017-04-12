@@ -1,5 +1,6 @@
 class Staff::ComponentsController < ApplicationController
   before_action :authenticate_staff!
+  before_action :authenticate_staff_editor!, except: [:index, :show]
   before_action :fetch_seasons, except: [:destroy]
 
   def create

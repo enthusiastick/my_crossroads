@@ -9,14 +9,25 @@
           =@user.handle
     %h1.text-center
       -if @user.staff?
-        %i.fa.fa-star
+        -if @user.editor?
+          %i.fa.fa-star
+        -else
+          %i.fa.fa-star-half-o
       =@user.handle
       =form_for @user, url: staff_user_staff_status_path(@user) do |f|
         .form-actions
           -if @user.staff?
-            =f.submit "Revoke Staff Privileges", class: "button", data: { confirm: "Revoke staffistrative privileges from user '#{@user.handle}': are you sure?" }
+            =f.submit "Revoke Staff Privileges", class: "button", data: { confirm: "Revoke staff privileges from user '#{@user.handle}': are you sure?" }
           -else
-            =f.submit "Grant Staff Privileges", class: "button", data: { confirm: "Grant staffistrative privileges to user '#{@user.handle}': are you sure?" }
+            =f.submit "Grant Staff Privileges", class: "button", data: { confirm: "Grant staff privileges to user '#{@user.handle}': are you sure?" }
+      -if current_user.editor?
+        -if @user.staff?
+          =form_for @user, url: staff_user_editor_status_path(@user) do |f|
+            .form-actions
+              -if @user.editor?
+                =f.submit "Revoke Editor Privileges", class: "button", data: { confirm: "Revoke editor privileges from user '#{@user.handle}': are you sure?" }
+              -else
+                =f.submit "Grant Editor Privileges", class: "button", data: { confirm: "Grant editor privileges to user '#{@user.handle}': are you sure?" }
     %p
       %strong Name:
       =@user.full_name

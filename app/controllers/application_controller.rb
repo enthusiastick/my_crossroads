@@ -11,9 +11,21 @@ class ApplicationController < ActionController::Base
 
   def authenticate_staff!
     authenticate_user!
-    if user_signed_in? && !current_user.staff?
-      flash[:alert] = "You are not authorized to access this content."
-      redirect_to root_path
+    if user_signed_in?
+      unless current_user.staff?
+        flash[:alert] = "You are not authorized to access this content."
+        redirect_to root_path
+      end
+    end
+  end
+
+  def authenticate_staff_editor!
+    authenticate_user!
+    if user_signed_in?
+      unless current_user.staff? && current_user.editor?
+        flash[:alert] = "You are not authorized to access this content."
+        redirect_to root_path
+      end
     end
   end
 
