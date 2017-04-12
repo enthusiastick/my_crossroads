@@ -113,16 +113,15 @@ ActiveRecord::Schema.define(version: 20170412173915) do
   end
 
   create_table "receipts", force: :cascade do |t|
-    t.decimal  "amount",       precision: 8, scale: 2
+    t.decimal  "amount",     precision: 8, scale: 2
     t.string   "brand"
     t.string   "expiry"
-    t.string   "ip_address",                           null: false
+    t.string   "ip_address",                         null: false
     t.string   "last_4"
-    t.string   "name",                                 null: false
-    t.string   "stripe_token"
     t.string   "stripe_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "user_id",                            null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "seasons", force: :cascade do |t|

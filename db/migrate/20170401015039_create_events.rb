@@ -29,9 +29,8 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.string :expiry
       t.string :ip_address, null: false
       t.string :last_4
-      t.string :name, null: false
-      t.string :stripe_token
       t.string :stripe_id
+      t.integer :user_id, null: false
 
       t.timestamps
     end
