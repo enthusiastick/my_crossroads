@@ -13,24 +13,27 @@
           =@character.name
     %h1.text-center
       =@character.name
-      =link_to edit_staff_user_character_path(@character.user, @character) do
-        %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
-      =link_to staff_character_path(@character), method: :delete, data: { confirm: "Delete character '#{@character.name}': are you sure?" } do
-        %i.fa.fa-trash{"aria-hidden": "true"}
+      -if current_user.editor?
+        =link_to edit_staff_user_character_path(@character.user, @character) do
+          %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+        =link_to staff_character_path(@character), method: :delete, data: { confirm: "Delete character '#{@character.name}': are you sure?" } do
+          %i.fa.fa-trash{"aria-hidden": "true"}
       %a{"data-open": "historyModal"}
         %i.fa.fa-book{"aria-hidden": "true"}
     %p.text-center= @character.race.titleize
     -if @character.inventories.empty?
-      %p.text-center
-        =link_to staff_user_character_inventories_path(@character.user, @character), class: "button" do
-          %i.fa.fa-list-ol
-          Edit Components Inventory
+      -if current_user.editor?
+        %p.text-center
+          =link_to staff_user_character_inventories_path(@character.user, @character), class: "button" do
+            %i.fa.fa-list-ol
+            Edit Components Inventory
     -else @character.inventories.empty?
       .callout
         %h2.text-center
           Components Inventory
-          =link_to staff_user_character_inventories_path(@character.user, @character) do
-            %i.fa.fa-list-ol{"aria-hidden": "true"}
+          -if current_user.editor?
+            =link_to staff_user_character_inventories_path(@character.user, @character) do
+              %i.fa.fa-list-ol{"aria-hidden": "true"}
         %table.hover.datatables
           %thead
             %tr

@@ -1,5 +1,6 @@
 class Staff::CharactersController < ApplicationController
   before_action :authenticate_staff!
+  before_action :authenticate_staff_editor!, except: [:index, :show]
 
   def destroy
     @character = Character.find_by(slug: params[:id])

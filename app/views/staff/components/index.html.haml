@@ -4,7 +4,8 @@
       Components
       =link_to staff_pictures_path do
         %i.fa.fa-picture-o{"aria-hidden": "true"}
-    %p.text-center= link_to "Add New Component", new_staff_component_path, class: "button"
+    -if current_user.editor?
+      %p.text-center= link_to "Add New Component", new_staff_component_path, class: "button"
     %fieldset.fieldset
       %legend Filters
       %ul.vertical.medium-horizontal.menu
