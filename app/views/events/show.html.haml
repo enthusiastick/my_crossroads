@@ -11,7 +11,7 @@
   .small-12.medium-11.large-10.small-centered.columns
     %h1.text-center
       =@event.name
-      -if user_signed_in? && current_user.staff?
+      -if user_signed_in? && current_user.staff? && current_user.editor?
         =link_to edit_staff_event_path(@event) do
           %i.fa.fa-pencil-square-o
     %h3.text-center= @event.date

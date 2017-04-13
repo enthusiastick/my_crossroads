@@ -2,7 +2,7 @@
   .small-12.columns
     %h1.text-center
       Terres Rising
-      -if user_signed_in? && current_user.staff?
+      -if user_signed_in? && current_user.staff? && current_user.editor?
         =link_to new_staff_event_path do
           %i.fa.fa-calendar-plus-o
     -if @events.empty?

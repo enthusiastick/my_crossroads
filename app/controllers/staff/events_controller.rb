@@ -1,5 +1,5 @@
 class Staff::EventsController < ApplicationController
-  before_action :authenticate_staff!
+  before_action :authenticate_staff_editor!
 
   def create
     @event = Event.new(event_params)
