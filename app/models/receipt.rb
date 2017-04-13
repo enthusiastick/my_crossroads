@@ -19,4 +19,8 @@ class Receipt < ApplicationRecord
       last_4: charge.source.last4
     )
   end
+
+  def send_confirmation_email
+    ReceiptMailer.registration_confirmation(self.id).deliver_now
+  end
 end

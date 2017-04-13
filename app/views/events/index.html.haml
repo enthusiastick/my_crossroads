@@ -12,7 +12,7 @@
       %h2.text-center Upcoming Events
       -@events.each do |event|
         .row
-          .small-9.medium-7.large-5.small-centered.columns
+          .small-11.medium-7.large-5.small-centered.columns
             .callout.primary
               -if user_signed_in?
                 -if event.users.include?(current_user)

@@ -21,6 +21,7 @@ class ReceiptsController < ApplicationController
         user = current_user
         user.assign_attributes_from_receipt(params[:receipt])
         if receipt.save && user.save && bookings.each(&:save)
+          receipt.send_confirmation_email
           flash[:success] = "Your registration completed successfully."
           redirect_to events_path
         else
