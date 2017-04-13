@@ -8,7 +8,8 @@ class ReceiptsController < ApplicationController
         amount: params[:amount].to_i,
         currency: "usd",
         source: params[:stripeToken],
-        description: "Registration for #{events.pluck(:name).to_sentence}."
+        description: "#{current_user.full_name} registration for #{events.pluck(:name).to_sentence}.",
+        receipt_email: current_user.email
       )
       if charge.paid
         receipt = Receipt.new_from_charge(charge)
@@ -38,10 +39,10 @@ class ReceiptsController < ApplicationController
 
   def valid_params?(params)
     params[:stripeToken].present? &&
-    # params[:receipt][:street].present? &&
-    # params[:receipt][:city].present? &&
-    # params[:receipt][:state].present? &&
-    # params[:receipt][:zip].present? &&
+    params[:receipt][:street].present? &&
+    params[:receipt][:city].present? &&
+    params[:receipt][:state].present? &&
+    params[:receipt][:zip].present? &&
     params[:amount].to_i > 0
   end
 end
