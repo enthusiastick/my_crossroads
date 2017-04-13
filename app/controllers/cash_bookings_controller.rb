@@ -36,6 +36,7 @@ class CashBookingsController < ApplicationController
     params[:receipt][:street].present? &&
     params[:receipt][:city].present? &&
     params[:receipt][:state].present? &&
-    params[:receipt][:zip].present?
+    params[:receipt][:zip].present? &&
+    params[:receipt][:event_ids].present?
   end
 end

@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var booking = document.getElementById('new_receipt')
-  if (booking) {
+  if (booking && booking.dataset.stripePublishableKey) {
     var stripe = Stripe(booking.dataset.stripePublishableKey);
     var elements = stripe.elements();
 
