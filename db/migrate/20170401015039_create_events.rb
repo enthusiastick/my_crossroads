@@ -34,5 +34,11 @@ class CreateEvents < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_column :users, :phone, :string
+    add_column :users, :street_address, :string
+    add_column :users, :city, :string
+    add_column :users, :state, :string
+    add_column :users, :zip, :string
+    add_column :users, :self_report, :text
   end
 end

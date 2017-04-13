@@ -17,14 +17,18 @@ class ReceiptsController < ApplicationController
         character = params[:receipt][:character_id].present? ? Character.find(params[:receipt][:character_id]) : nil
         bookings = Array.new
         events.each { |event| bookings << Booking.new(character: character, event: event, receipt: receipt, user: current_user) }
-        if receipt.save && bookings.each(&:save)
+        user = current_user
+        user.assign_attributes_from_receipt(params[:receipt])
+        if receipt.save && user.save && bookings.each(&:save)
           flash[:success] = "Your registration completed successfully."
           redirect_to events_path
         else
-          binding.pry
+          flash[:alert] = "There was a problem with your registration. Please contact a system administrator."
+          redirect_to new_booking_path
         end
       else
-        binding.pry
+        flash[:alert] = "There was a problem with your registration. We were unable to process your credit card."
+        redirect_to new_booking_path
       end
     else
       flash[:alert] = "There was a problem with your registration. Your card has not been charged."

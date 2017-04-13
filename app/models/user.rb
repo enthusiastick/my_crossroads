@@ -23,6 +23,17 @@ class User < ApplicationRecord
 
   scope :by_name, -> { order(:first_name) }
 
+  def assign_attributes_from_receipt(hash)
+    assign_attributes(
+      phone: hash[:phone],
+      street_address: hash[:street],
+      city: hash[:city],
+      state: hash[:state],
+      zip: hash[:zip],
+      self_report: hash[:report]
+    )
+  end
+
   def authenticated?(attribute, token)
     digest = self.send("#{attribute}_digest")
     return false if digest.nil?

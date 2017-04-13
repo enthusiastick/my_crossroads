@@ -150,6 +150,12 @@ ActiveRecord::Schema.define(version: 20170412173915) do
     t.datetime "last_signed_in_at"
     t.integer  "sign_in_count",           default: 0
     t.boolean  "editor",                  default: false
+    t.string   "phone"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.text     "self_report"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   end
