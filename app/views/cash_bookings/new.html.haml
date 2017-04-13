@@ -1,7 +1,7 @@
 .row
   .small-12.medium-11.large-10.small-centered.columns
     %h1.text-center.top-padded Event Registration
-    =form_for @receipt, data: { "stripe-publishable-key": @stripe_publishable_key } do |f|
+    =form_for @receipt, url: cash_bookings_path do |f|
       .form-inputs{ data: { equalizer: "" } }
         .row
           .small-12.medium-4.large-5.columns
@@ -10,11 +10,8 @@
               -@events.each do |event|
                 -unless event.users.include?(current_user)
                   %p.margin-bottom-none
-                    =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box", data: { price: event.price }
-                    ="#{event.name} ($#{event.price})"
-              .callout.margin-bottom-none.text-right
-                %strong Total:
-                %span#total $0
+                    =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box"
+                    =event.name
           .small-12.medium-8.large-7.columns
             %fieldset.fieldset{ data: { equalizer: { watch: "" } } }
               %legend Contact Information
@@ -35,13 +32,5 @@
           %fieldset
             =f.label :character
             =f.collection_select :character_id, current_user.characters.by_name, :id, :name, include_blank: true
-          %fieldset
-            %label#card-label
-              Payment Information
-              #card-element
-              %span.form-error#card-errors
       .form-actions
         =f.submit "Register", class: "button"
-        &nbsp;
-        =link_to "I would like to pay at the door", new_cash_booking_path
-%script{src: "https://js.stripe.com/v3/"}
