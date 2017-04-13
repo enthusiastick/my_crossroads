@@ -14,6 +14,10 @@
         .row
           .small-9.medium-7.large-5.small-centered.columns
             .callout.primary
+              -if user_signed_in?
+                -if event.users.include?(current_user)
+                  %span.badge.float-right
+                    %i.fa.fa-check
               %h3.text-center=link_to event.name, event_path(event)
               %strong
                 %p.text-center= event.date

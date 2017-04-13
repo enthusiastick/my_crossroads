@@ -15,6 +15,25 @@
         =link_to edit_staff_event_path(@event) do
           %i.fa.fa-pencil-square-o
     %h3.text-center= @event.date
+    -if user_signed_in?
+      -if @event.users.include?(current_user)
+        %p.text-center
+          You
+          %strong are
+          registered for this event.
+    -if @booking.present?
+      .row
+        .small-11.medium-9.large-7.small-centered.columns
+          =form_for @booking do |f|
+            =f.label :character, "Attending As"
+            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, include_blank: true
+            .text-right
+              =f.submit "Update", class: "button"
+    -unless @characters.empty?
+      %p
+        %strong Who's Coming?
+        ="(#{@characters.count})"
+        =@characters.to_sentence
     %div= raw @markdown.render(@event.directions)
     .row
       .small-11.medium-7.small-centered.columns
