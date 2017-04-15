@@ -32,11 +32,12 @@
           %th Rarity
           %th Season
           %th Grade
-          %th Professions
           %th Extraction
           %th Calcination
           %th Dissolution
           %th Concentration
+          %th Crafting
+          %th Ritual
       %tbody
         -@components.each do |component|
           %tr
@@ -45,10 +46,10 @@
             %td.text-center= component.rarity.titleize
             %td.text-center= component.season
             %td.text-right= component.grade
-            %td
-              %span.small= component.professions.map(&:name).to_sentence
             %td.text-center= component.process_extraction
             %td.text-center= component.process_calcination
             %td.text-center= component.process_dissolution
             %td.text-center= component.process_concentration
+            %td.text-center= component.crafting
+            %td.text-center= component.ritual
 

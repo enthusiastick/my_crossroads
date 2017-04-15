@@ -35,6 +35,15 @@
         %fieldset
           =f.label :process_concentration, "Concentration"
           =f.text_field :process_concentration
+    .row
+      .small-12.medium-6.columns
+        %fieldset
+          =f.label :crafting
+          =f.text_field :crafting
+      .small-12.medium-6.columns
+        %fieldset
+          =f.label :ritual
+          =f.text_field :ritual
     %fieldset.fieldset
       %legend Professions
       -@professions.each do |profession|

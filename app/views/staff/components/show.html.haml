@@ -48,6 +48,14 @@
         .small-12.medium-3.columns
           %strong Concentration:
           =@component.process_concentration
+    .callout
+      .row
+        .small-12.medium-6.columns
+          %strong Crafting:
+          =@component.crafting
+        .small-12.medium-6.columns
+          %strong Ritual:
+          =@component.ritual
     -unless @component.staff_notes.blank?
       .callout= @component.staff_notes
 .reveal#keyModal{ data: { reveal: "" } }
