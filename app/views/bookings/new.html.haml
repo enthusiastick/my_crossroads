@@ -8,10 +8,9 @@
             %fieldset.fieldset{ data: { equalizer: { watch: "" } } }
               %legend Events
               -@events.each do |event|
-                -unless event.users.include?(current_user)
-                  %p.margin-bottom-none
-                    =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box", data: { price: event.price }
-                    ="#{event.name} ($#{event.price})"
+                %p.margin-bottom-none
+                  =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box", data: { price: event.price }
+                  ="#{event.name} ($#{event.price})"
               .callout.margin-bottom-none.text-right
                 %strong Total:
                 %span#total $0

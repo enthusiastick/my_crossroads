@@ -20,6 +20,7 @@ class Character < ApplicationRecord
   }
 
   has_many :bookings
+  has_many :events, through: :bookings
   has_many :ingredients, through: :inventories
   has_many :contributions, class_name: :Transaction, foreign_key: :contributor_id
   has_many :inventories

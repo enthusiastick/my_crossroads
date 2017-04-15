@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170412173915) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "event_id",     null: false
-    t.integer  "receipt_id"
+    t.integer  "receipt_id",   null: false
     t.integer  "user_id",      null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

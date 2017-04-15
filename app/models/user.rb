@@ -8,6 +8,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   has_many :bookings
+  has_many :events, through: :bookings
   has_many :characters
   has_many :transactions
 

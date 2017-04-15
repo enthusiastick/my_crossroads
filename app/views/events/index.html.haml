@@ -21,3 +21,5 @@
               %h3.text-center=link_to event.name, event_path(event)
               %strong
                 %p.text-center= event.date
+      %h4.text-center
+        =link_to "Event Registration", new_booking_path

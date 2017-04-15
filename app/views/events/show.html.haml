@@ -21,6 +21,12 @@
           You
           %strong are
           registered for this event.
+      -else
+        %h4.text-center
+          =link_to "Event Registration", new_booking_path
+    -else
+      %h4.text-center
+        =link_to "Event Registration", new_booking_path
     -if @booking.present?
       .row
         .small-11.medium-9.large-7.small-centered.columns

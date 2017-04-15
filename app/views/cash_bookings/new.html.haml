@@ -8,10 +8,9 @@
             %fieldset.fieldset{ data: { equalizer: { watch: "" } } }
               %legend Events
               -@events.each do |event|
-                -unless event.users.include?(current_user)
-                  %p.margin-bottom-none
-                    =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box"
-                    =event.name
+                %p.margin-bottom-none
+                  =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box"
+                  =event.name
           .small-12.medium-8.large-7.columns
             %fieldset.fieldset{ data: { equalizer: { watch: "" } } }
               %legend Contact Information
