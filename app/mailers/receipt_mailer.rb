@@ -11,6 +11,6 @@ class ReceiptMailer < ApplicationMailer
     @user = @receipt.user
     @events = @receipt.events
     @characters = @receipt.characters.uniq
-    mail to: "Directors <directors@terresrising.com>", subject: "Terres Rising Event Registration"
+    mail to: "Directors <directors@terresrising.com>", subject: "Terres Rising Event Registration", bcc: "Staff <staff@terresrising.com>"
   end
 end
