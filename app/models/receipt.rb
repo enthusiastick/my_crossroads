@@ -23,4 +23,8 @@ class Receipt < ApplicationRecord
   def send_confirmation_email
     ReceiptMailer.registration_confirmation(self.id).deliver_now
   end
+
+  def send_directors_email
+    ReceiptMailer.registration_directors(self.id).deliver_now
+  end
 end

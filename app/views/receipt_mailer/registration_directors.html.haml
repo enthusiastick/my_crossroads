@@ -1,0 +1,25 @@
+%p
+  %strong Registrant:
+  =@user.full_name
+
+%p
+  %strong Events:
+  =@events.pluck(:name).to_sentence
+
+-unless @characters.empty?
+  %p
+    %strong Character:
+    =@characters.pluck(:name).to_sentence
+
+%p
+  %strong Phone:
+  =@user.phone
+
+%p
+  %strong Address:
+  ="#{@user.street_address}, #{@user.city} #{@user.state} #{@user.zip}"
+
+-if @user.self_report.present?
+  %p
+    %strong Allergies, Medical Conditions, Food Requirements:
+    =@user.self_report
