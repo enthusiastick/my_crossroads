@@ -21,5 +21,11 @@
               %h3.text-center=link_to event.name, event_path(event)
               %strong
                 %p.text-center= event.date
+              -if user_signed_in?
+                -if current_user.staff?
+                  -unless event.users.empty?
+                    =link_to staff_event_bookings_path(event) do
+                      %i.fa.fa-users
+                      Registrations
       %h4.text-center
         =link_to "Event Registration", new_booking_path

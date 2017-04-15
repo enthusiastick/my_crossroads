@@ -16,7 +16,9 @@ Rails.application.routes.draw do
         resources :pictures, only: [:index]
       end
     end
-    resources :events, only: [:create, :destroy, :edit, :new, :update]
+    resources :events, only: [:create, :destroy, :edit, :new, :update] do
+      resources :bookings, only: [:index]
+    end
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do

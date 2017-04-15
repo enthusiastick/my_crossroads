@@ -1,0 +1,32 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Events", events_path
+        %li
+          =link_to @event.name, event_path(@event)
+        %li
+          %span.show-for-sr Current:
+          Registrations
+    %h1.text-center
+      =@event.name
+      Registrations
+    %table.hover.stack.datatables
+      %thead
+        %tr
+          %th Date/Time
+          %th User
+          %th Email
+          %th Character
+          %th Paid?
+      %tbody
+        -@event.bookings.each do |booking|
+          %tr
+            %td= booking.created_at.to_s(:db)
+            %td= link_to booking.user.handle, staff_user_path(booking.user)
+            %td= link_to booking.user.email, "mailto:#{booking.user.email}"
+            %td
+              -if booking.character.present?
+                =link_to booking.character.name, staff_character_path(booking.character)
+            %td= booking.paid?
