@@ -17,7 +17,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
     create_table :bookings do |t|
       t.integer :character_id
       t.integer :event_id, null: false
-      t.integer :receipt_id
+      t.integer :receipt_id, null: false
       t.integer :user_id, null: false
 
       t.timestamps
