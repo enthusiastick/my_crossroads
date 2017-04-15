@@ -1,0 +1,50 @@
+.row
+  .small-12.columns
+    %nav.top-padded{ aria: { label: "You are here:" }, role: "navigation" }
+      %ul.breadcrumbs
+        %li
+          =link_to "Events", events_path
+        %li
+          %span.show-for-sr Current:
+          =@event.name
+.row
+  .small-12.medium-11.large-10.small-centered.columns
+    %h1.text-center
+      =@event.name
+      -if user_signed_in? && current_user.staff? && current_user.editor?
+        =link_to edit_staff_event_path(@event) do
+          %i.fa.fa-pencil-square-o
+    %h3.text-center= @event.date
+    -if user_signed_in?
+      -if @event.users.include?(current_user)
+        %p.text-center
+          You
+          %strong are
+          registered for this event.
+      -else
+        %h4.text-center
+          =link_to "Event Registration", new_booking_path
+    -else
+      %h4.text-center
+        =link_to "Event Registration", new_booking_path
+    -if @booking.present?
+      .row
+        .small-11.medium-9.large-7.small-centered.columns
+          =form_for @booking do |f|
+            =f.label :character, "Attending As"
+            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, include_blank: true
+            .text-right
+              =f.submit "Update", class: "button"
+    -unless @characters.empty?
+      %p
+        %strong Who's Coming?
+        ="(#{@characters.count})"
+        =@characters.to_sentence
+    %div= raw @markdown.render(@event.directions)
+    .row
+      .small-11.medium-7.small-centered.columns
+        .callout#map_canvas{ data: { latitude: @event.latitude, longitude: @event.longitude } }
+        %p.text-center
+          %strong
+            Address:
+            =link_to @event.address, "https://www.google.com/maps/search/#{@event.address}", target: "_blank"

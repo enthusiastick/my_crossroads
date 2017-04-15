@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :pictures, only: [:index]
       end
     end
+    resources :events, only: [:create, :destroy, :edit, :new, :update]
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do
@@ -27,8 +28,12 @@ Rails.application.routes.draw do
   end
 
   resources :account_confirmations, only: [:edit]
+  resources :bookings, only: [:new, :update]
+  resources :cash_bookings, only: [:new, :create]
   resources :characters, only: [:create, :new, :index]
+  resources :events, only: [:index, :show]
   resources :password_resets, only: [:create, :edit, :new, :update]
+  resources :receipts, only: [:create]
   resources :users, only: [:create, :edit, :update] do
     resources :characters, only: [:edit, :show, :update]
   end

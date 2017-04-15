@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :next_event, :user_signed_in?
   protect_from_forgery with: :exception
 
   def authorize_record_owner(user)
@@ -57,6 +57,10 @@ class ApplicationController < ActionController::Base
 
   def new_markdown
     Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  end
+
+  def next_event
+    Event.where("end_date > ?", Time.now).order(:start_date).first
   end
 
   def persist_location!

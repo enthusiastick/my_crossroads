@@ -1,13 +1,24 @@
 .row
   .small-12.columns
     %h1.text-center.top-padded MyCrossroads
-    %p.text-center
+    %p.margin-bottom-none.text-center
       Welcome to
       %strong MyCrossroads,
       the Terres Rising app.
       Today is
       %strong
         #{@ashriyan_date}.
+    -if next_event.present?
+      %p.text-center
+        -if next_event.start_date.past?
+          %strong
+            =link_to next_event.name, event_path(next_event)
+          is going on now.
+        -else
+          =distance_of_time_in_words_to_now(next_event.start_date).capitalize
+          until
+          %strong
+            =link_to "#{next_event.name}.", event_path(next_event)
     -if user_signed_in?
       .text-center
         =link_to characters_path, class: "button" do

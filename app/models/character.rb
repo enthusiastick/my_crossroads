@@ -19,6 +19,8 @@ class Character < ApplicationRecord
     wyldling: 11
   }
 
+  has_many :bookings
+  has_many :events, through: :bookings
   has_many :ingredients, through: :inventories
   has_many :contributions, class_name: :Transaction, foreign_key: :contributor_id
   has_many :inventories
@@ -28,6 +30,8 @@ class Character < ApplicationRecord
   validates_inclusion_of :alchemist, in: [true, false]
   validates_presence_of :name, :slug, :user
   validates_uniqueness_of :name, :slug
+
+  scope :by_name, -> { order(:name) }
 
   def to_param
     slug

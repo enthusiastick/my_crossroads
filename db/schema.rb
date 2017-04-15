@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170412173915) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "event_id",     null: false
-    t.integer  "receipt_id"
+    t.integer  "receipt_id",   null: false
     t.integer  "user_id",      null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -113,16 +113,15 @@ ActiveRecord::Schema.define(version: 20170412173915) do
   end
 
   create_table "receipts", force: :cascade do |t|
-    t.decimal  "amount",       precision: 8, scale: 2
+    t.decimal  "amount",     precision: 8, scale: 2
     t.string   "brand"
     t.string   "expiry"
-    t.string   "ip_address",                           null: false
+    t.string   "ip_address",                         null: false
     t.string   "last_4"
-    t.string   "name",                                 null: false
-    t.string   "stripe_token"
     t.string   "stripe_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "user_id",                            null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -151,6 +150,12 @@ ActiveRecord::Schema.define(version: 20170412173915) do
     t.datetime "last_signed_in_at"
     t.integer  "sign_in_count",           default: 0
     t.boolean  "editor",                  default: false
+    t.string   "phone"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.text     "self_report"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["handle"], name: "index_users_on_handle", unique: true, using: :btree
   end

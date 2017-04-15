@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widgets/autocomplete
 //= require foundation
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.foundation

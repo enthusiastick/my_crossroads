@@ -22,6 +22,10 @@ span.small {
   line-height: 1.8;
 }
 
-#character_history, #component_staff_notes {
+#character_history, #component_staff_notes, #event_directions, #receipt_report {
   height: 17rem;
+}
+
+#map_canvas {
+  height: 30rem;
 }

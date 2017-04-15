@@ -7,6 +7,8 @@ class User < ApplicationRecord
   before_create :generate_confirmation_digest
   before_save :downcase_email
 
+  has_many :bookings
+  has_many :events, through: :bookings
   has_many :characters
   has_many :transactions
 
@@ -21,6 +23,17 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :handle
 
   scope :by_name, -> { order(:first_name) }
+
+  def assign_attributes_from_receipt(hash)
+    assign_attributes(
+      phone: hash[:phone],
+      street_address: hash[:street],
+      city: hash[:city],
+      state: hash[:state],
+      zip: hash[:zip],
+      self_report: hash[:report]
+    )
+  end
 
   def authenticated?(attribute, token)
     digest = self.send("#{attribute}_digest")
