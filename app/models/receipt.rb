@@ -1,5 +1,5 @@
 class Receipt < ApplicationRecord
-  attr_accessor :card, :character_id, :city, :phone, :report, :state, :street, :zip
+  attr_accessor :card, :character_id, :multi_pass, :city, :phone, :report, :state, :street, :zip
 
   belongs_to :user
 

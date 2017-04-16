@@ -72,6 +72,9 @@ $(document).ready(function() {
       amountInput.setAttribute('name', 'amount');
       amountInput.setAttribute('value', parseInt(total)*100);
       form.appendChild(amountInput);
+      for (var i = 0, length = checkboxes.length; i < length; i++) {
+        checkboxes[i].disabled = false
+      };
 
       // Submit the form
       form.submit();
@@ -79,10 +82,29 @@ $(document).ready(function() {
 
     var checkboxes = document.getElementsByClassName('event_check_box');
     var totalDisplay = document.getElementById('total');
+    var fullYearPass = document.getElementById('receipt_multi_pass');
     var total;
     for (var i = 0, length = checkboxes.length; i < length; i++) {
       checkboxes[i].addEventListener('click', function(event) {
         calculateTotal();
+      });
+    };
+
+    if (fullYearPass) {
+      fullYearPass.addEventListener('click', function(event) {
+        if (event.target.checked) {
+          for (var i = 0, length = checkboxes.length; i < length; i++) {
+            checkboxes[i].checked = true
+            checkboxes[i].disabled = true
+            calculateTotal();
+          };
+        } else {
+          for (var i = 0, length = checkboxes.length; i < length; i++) {
+            checkboxes[i].checked = false
+            checkboxes[i].disabled = false
+            calculateTotal();
+          };
+        }
       });
     };
 

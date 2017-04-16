@@ -13,6 +13,10 @@
                 %p.margin-bottom-none
                   =check_box_tag "receipt[event_ids][]", event.id, nil, class: "event_check_box", data: { price: event.price }
                   ="#{event.name} ($#{event.price})"
+              -if @events.count == 4
+                %p.margin-bottom-none
+                  =f.check_box :multi_pass
+                  Full-Year Pass ($275)
               .callout.margin-bottom-none.text-right
                 %strong Total:
                 %span#total $0
