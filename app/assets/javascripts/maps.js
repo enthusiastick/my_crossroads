@@ -12,7 +12,7 @@ initMap = function() {
     disableDoubleClickZoom: true,
     keyboardShortcuts: false,
     scrollwheel: false,
-    zoom: 15,
+    zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(mapCanvas, mapOptions);
