@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates_format_of :email, with: EMAIL_REGEXP
-  validates_format_of :handle, with: HANDLE_REGEXP
+  validates_format_of :handle, with: HANDLE_REGEXP, message: "may only contain letters, numbers, dashes, and underscores (no spaces or other special characters), and must begin with a letter or number"
   validates_inclusion_of :editor, in: [true, false]
   validates_inclusion_of :staff, in: [true, false]
   validates_length_of :handle, in: 3..30
