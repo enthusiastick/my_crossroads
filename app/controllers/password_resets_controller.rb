@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
 
   def create
-    if params[:password_reset][:email].match(User::EMAIL_REGEXP)
+    if params[:password_reset][:email].downcase.match(User::EMAIL_REGEXP)
       user = User.find_by(email:params[:password_reset][:email])
       if user.present?
         user.generate_reset_digest
