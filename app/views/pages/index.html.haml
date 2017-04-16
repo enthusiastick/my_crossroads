@@ -3,7 +3,7 @@
 .row
   .small-12.columns
     %h1.text-center.top-padded MyCrossroads
-    %p.margin-bottom-none.text-center
+    %p.larger.margin-bottom-none.text-center
       Welcome to
       %strong MyCrossroads,
       the Terres Rising app.
@@ -11,7 +11,7 @@
       %strong
         #{@ashriyan_date}.
     -if next_event.present?
-      %p.text-center
+      %p.larger.text-center
         -if next_event.start_date.past?
           %strong
             =link_to next_event.name, event_path(next_event)
