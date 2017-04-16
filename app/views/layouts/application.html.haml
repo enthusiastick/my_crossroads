@@ -4,6 +4,7 @@
     %meta{ charset: "utf-8" }
 
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %meta{content: content_for?(:description) ? yield(:description) : "Terres Rising is a live-action role-playing game set in a medieval-style fantasy world known as Ashriya. The star Terres rises in the sky approximately 4 or 5 times a year and it is well known that great events occur at these times. The time of Terres Rising is when we gather to witness the events that occur in the town of Crossroads, in the world of Ashriya. We welcome you into our world, and hope to have you join us for many enjoyable events.", name: "description"}/
 
     %title= content_for?(:title) ? yield(:title) : "MyCrossroads"
 
