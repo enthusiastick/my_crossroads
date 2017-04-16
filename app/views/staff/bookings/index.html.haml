@@ -29,4 +29,10 @@
             %td
               -if booking.character.present?
                 =link_to booking.character.name, staff_character_path(booking.character)
-            %td= booking.paid?
+            -if booking.paid?
+              %td.text-center{ data: { order: booking.paid?, search: "paid" } }
+                =link_to staff_receipt_path(booking.receipt) do
+                  %i.fa.fa-check-circle
+            -else
+              %td.text-center{ data: { order: booking.paid? } }
+                %i.fa.fa-times-circle

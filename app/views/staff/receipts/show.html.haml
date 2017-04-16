@@ -1,0 +1,31 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Users", staff_users_path
+        %li
+          =link_to @receipt.user.handle, staff_user_path(@receipt.user)
+        %li
+          %span.show-for-sr Current:
+          Receipt
+          =@receipt.id
+.row
+  .small-11.medium-9.large-7.small-centered.columns
+    .callout
+      %h1.text-center
+        Receipt
+        =@receipt.id
+      %p
+        %strong User:
+        =link_to @receipt.user.handle, staff_user_path(@receipt.user)
+      %p
+        %strong Amount:
+        =number_to_currency(@receipt.amount)
+      -unless @receipt.bookings.empty?
+        %p
+          %strong Registrations:
+          =@receipt.events.pluck(:name).to_sentence
+      %p
+        %strong IP address:
+        =@receipt.ip_address.to_s
