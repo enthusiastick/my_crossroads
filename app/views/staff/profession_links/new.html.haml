@@ -1,0 +1,21 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Professions", staff_professions_path
+        %li
+          %span.show-for-sr Current:
+          New Profession Link
+    %h1.text-center.top-padded New Profession Link
+    =form_for [:staff, @profession_link] do |f|
+      .form-inputs
+        %fieldset
+          =f.label :profession
+          =f.select :profession_id, options_from_collection_for_select(@professions, :id, :name), include_blank: true
+        %fieldset
+          =render partial: "text_field_with_errors", locals: {attribute: :name, form: f, model: @profession_link}
+        %fieldset
+          =render partial: "text_field_with_errors", locals: {attribute: :url, form: f, model: @profession_link}
+      .form-actions
+        =f.submit "Save", class: "button"

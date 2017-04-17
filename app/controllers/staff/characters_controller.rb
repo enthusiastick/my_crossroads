@@ -16,6 +16,7 @@ class Staff::CharactersController < ApplicationController
 
   def edit
     @character = Character.find_by(slug: params[:id])
+    @professions = Profession.order(:name)
   end
 
   def index
@@ -34,6 +35,7 @@ class Staff::CharactersController < ApplicationController
       redirect_to staff_user_character_path(@character.user, @character)
     else
       flash.now[:alert] = "There was a problem updating your character."
+      @professions = Profession.order(:name)
       render :edit
     end
   end
@@ -41,6 +43,6 @@ class Staff::CharactersController < ApplicationController
   protected
 
   def staff_character_params
-    params.require(:character).permit(:name, :slug, :race, :user_id, :alchemist, :drake, :history)
+    params.require(:character).permit(:name, :slug, :race, :user_id, :drake, :history, profession_ids: [])
   end
 end

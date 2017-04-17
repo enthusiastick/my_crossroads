@@ -1,0 +1,36 @@
+.row
+  .small-12.columns
+    %nav.top-padded{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Professions", staff_professions_path
+        %li
+          %span.show-for-sr Current:
+          =@profession.name
+    %h1.text-center
+      =@profession.name
+    -if current_user.editor?
+      %p.text-center
+        =link_to new_staff_profession_link_path, class: "button" do
+          %i.fa.fa-link
+          New Profession Link
+      -@profession.profession_links.each do |link|
+        =form_for [:staff, link] do |f|
+          .row
+            .small-12.medium-5.columns
+              %fieldset
+                =render partial: "text_field_with_errors", locals: {attribute: :name, form: f, model: link}
+            .small-10.medium-5.columns
+              %fieldset
+                =render partial: "text_field_with_errors", locals: {attribute: :url, form: f, model: link}
+            .small-2.columns
+              =f.submit "Save", class: "button margin-top-one-and-a-half"
+    -else
+      .row
+        .small-11.medium-5.small-centered.columns
+          %ul.menu.vertical
+            -@profession.profession_links.each do |link|
+              %li
+                =link_to link.url, target: "_blank" do
+                  %i.fa.fa-link
+                  =link.name

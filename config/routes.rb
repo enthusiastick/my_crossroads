@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       resources :bookings, only: [:index]
     end
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
+    resources :professions, only: [:index, :show]
+    resources :profession_links, only: [:create, :new, :update]
     resources :receipts, only: [:show]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do

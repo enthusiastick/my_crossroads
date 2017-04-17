@@ -34,8 +34,9 @@
             %fieldset
               =f.label :user_id, "User"
               =f.select :user_id, options_from_collection_for_select(User.by_name, 'id', 'label_for_select', @character.user.id)
-        =f.check_box :alchemist
-        =f.label :alchemist?
+        %fieldset.fieldset
+          %legend Professions
+          =f.collection_check_boxes :profession_ids, @professions, :id, :name
         =f.label :drake
         =f.number_field :drake, min: 0
         =f.label :history, "Character History"

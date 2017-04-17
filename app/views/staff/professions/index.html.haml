@@ -1,0 +1,12 @@
+.row
+  .small-11.medium-5.small-centered.columns
+    %h1.text-center.top-padded Professions
+    -if current_user.editor?
+      %p.text-center
+        =link_to new_staff_profession_link_path, class: "button" do
+          %i.fa.fa-link
+          New Profession Link
+    %ul.menu.vertical
+      -@professions.each do |profession|
+        %li
+          %h4= link_to profession.name, staff_profession_path(profession)

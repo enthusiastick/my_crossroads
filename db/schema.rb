@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417003854) do
+ActiveRecord::Schema.define(version: 20170417020739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 20170417003854) do
     t.index ["event_id", "user_id"], name: "index_bookings_on_event_id_and_user_id", unique: true, using: :btree
   end
 
+  create_table "character_profession_links", force: :cascade do |t|
+    t.integer  "character_id", null: false
+    t.integer  "link_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["character_id", "link_id"], name: "index_character_profession_links_on_character_id_and_link_id", unique: true, using: :btree
+  end
+
+  create_table "character_professions", force: :cascade do |t|
+    t.integer  "character_id",  null: false
+    t.integer  "profession_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["character_id", "profession_id"], name: "index_character_professions_on_character_id_and_profession_id", unique: true, using: :btree
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string   "name",                       null: false
     t.text     "history",    default: ""
@@ -34,7 +50,6 @@ ActiveRecord::Schema.define(version: 20170417003854) do
     t.boolean  "archived",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.boolean  "alchemist",  default: false
     t.integer  "drake"
     t.index ["slug"], name: "index_characters_on_slug", unique: true, using: :btree
     t.index ["user_id"], name: "index_characters_on_user_id", using: :btree
@@ -106,6 +121,14 @@ ActiveRecord::Schema.define(version: 20170417003854) do
     t.index ["character_id", "ingredient_id"], name: "index_inventories_on_character_id_and_ingredient_id", unique: true, using: :btree
     t.index ["character_id"], name: "index_inventories_on_character_id", using: :btree
     t.index ["ingredient_id"], name: "index_inventories_on_ingredient_id", using: :btree
+  end
+
+  create_table "profession_links", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.integer  "profession_id", null: false
+    t.text     "url",           null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "professions", force: :cascade do |t|
