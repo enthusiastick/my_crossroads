@@ -29,6 +29,8 @@
             %th.text-center Unlocked Calcination
             %th.text-center Unlocked Dissolution
             %th.text-center Unlocked Concentration
+            %th.text-center Unlocked Crafting
+            %th.text-center Unlocked Ritual
         %tbody#form-inputs
           -@character.inventories.each do |inventory|
             %tr
@@ -51,6 +53,12 @@
                 %td.text-center
                   %fieldset
                     =b.check_box :unlocked_concentration
+                %td.text-center
+                  %fieldset
+                    =b.check_box :unlocked_crafting
+                %td.text-center
+                  %fieldset
+                    =b.check_box :unlocked_ritual
       .row
         .small-12.columns
           .form-actions

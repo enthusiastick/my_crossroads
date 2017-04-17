@@ -47,6 +47,8 @@
               %th.text-center Calcination
               %th.text-center Dissolution
               %th.text-center Concentration
+              %th.text-center Crafting
+              %th.text-center Ritual
           %tbody
             -@character.inventories.each do |inventory|
               %tr
@@ -70,6 +72,16 @@
                 %td.text-center
                   -if inventory.unlocked_concentration?
                     =inventory.ingredient.process_concentration
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_crafting?
+                    =inventory.ingredient.crafting
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_ritual?
+                    =inventory.ingredient.ritual
                   -else
                     %i.fa.fa-lock
     -unless @character.professions.empty?

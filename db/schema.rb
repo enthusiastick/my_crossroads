@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417020739) do
+ActiveRecord::Schema.define(version: 20170417170722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 20170417020739) do
     t.boolean  "unlocked_extraction",    default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.boolean  "unlocked_crafting",      default: false
+    t.boolean  "unlocked_ritual",        default: false
     t.index ["character_id", "ingredient_id"], name: "index_inventories_on_character_id_and_ingredient_id", unique: true, using: :btree
     t.index ["character_id"], name: "index_inventories_on_character_id", using: :btree
     t.index ["ingredient_id"], name: "index_inventories_on_ingredient_id", using: :btree

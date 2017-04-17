@@ -40,6 +40,16 @@
                   %i.fa.fa-question-circle
                 %th.text-center
                   %i.fa.fa-question-circle
+              -if @character.crafter?
+                %th.text-center Crafting
+              -else
+                %th.text-center
+                  %i.fa.fa-question-circle
+              -if @character.ritualist?
+                %th.text-center Ritual
+              -else
+                %th.text-center
+                  %i.fa.fa-question-circle
           %tbody
             -@character.inventories.each do |inventory|
               %tr
@@ -63,6 +73,16 @@
                 %td.text-center
                   -if inventory.unlocked_concentration?
                     =inventory.ingredient.process_concentration
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_crafting?
+                    =inventory.ingredient.crafting
+                  -else
+                    %i.fa.fa-lock
+                %td.text-center
+                  -if inventory.unlocked_ritual?
+                    =inventory.ingredient.ritual
                   -else
                     %i.fa.fa-lock
     -unless @character.professions.empty?

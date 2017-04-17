@@ -39,6 +39,14 @@ class Character < ApplicationRecord
     professions.include?(Profession.alchemy)
   end
 
+  def crafter?
+    professions.include?(Profession.crafting)
+  end
+
+  def ritualist?
+    professions.include?(Profession.ritualist)
+  end
+
   def to_param
     slug
   end

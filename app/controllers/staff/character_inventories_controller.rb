@@ -20,7 +20,7 @@ class Staff::CharacterInventoriesController < ApplicationController
   protected
 
   def inventory_params
-    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id, :unlocked_calcination, :unlocked_concentration, :unlocked_dissolution, :unlocked_extraction])
+    params.require(:character).permit(inventories_attributes: [:id, :quantity, :ingredient_id, :unlocked_calcination, :unlocked_concentration, :unlocked_dissolution, :unlocked_extraction, :unlocked_crafting, :unlocked_ritual])
   end
 
   def duplicate_ingredient_ids?(params)
