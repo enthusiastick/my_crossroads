@@ -31,7 +31,7 @@
           =link_to staff_user_character_inventories_path(@character.user, @character), class: "button" do
             %i.fa.fa-list-ol
             Edit Components Inventory
-    -else @character.inventories.empty?
+    -else
       .callout
         %h2.text-center
           Components Inventory
@@ -72,6 +72,35 @@
                     =inventory.ingredient.process_concentration
                   -else
                     %i.fa.fa-lock
+    -unless @character.professions.empty?
+      .callout
+        %h2.text-center Professions
+        %ul.tabs#profession-tabs{ data: { tabs: "" } }
+          -@character.professions.order(:name).each do |profession|
+            %li.tabs-title
+              %a{ href: "##{profession.name.parameterize}" }= profession.name
+        .tab-content{ data: { tabs: { content: "profession-tabs" } } }
+          -@character.professions.order(:name).each do |profession|
+            .tabs-panel{id: profession.name.parameterize}
+              -if profession.profession_links.empty?
+                %p (No links currently available.)
+              -else
+                -if current_user.editor?
+                  =form_for [:staff, @character] do |f|
+                    =f.collection_check_boxes :profession_link_ids, profession.profession_links.order(:name), :id, :name do |b|
+                      %p
+                        =b.label { b.check_box + b.text }
+                    =f.submit "Save", class: "button"
+                -else
+                  %ul
+                    -profession.profession_links.order(:name).each do |link|
+                      %li
+                        -if @character.profession_links.include?(link)
+                          %i.fa.fa-eye
+                        -else
+                          %i.fa.fa-lock
+                        =link.name
+
 .reveal#historyModal{"data-reveal": ""}
   %h2.margin-bottom-none.text-center Character History
   %hr/
