@@ -49,7 +49,7 @@ class Staff::ComponentsController < ApplicationController
     @component = Ingredient.find(params[:id])
     if @component.update(ingredient_params)
       flash[:success] = "Component updated successfully."
-      redirect_to staff_components_path
+      redirect_to staff_component_path(@component)
     else
       flash.now[:alert] = "There was a problem updating your component."
       @professions = Profession.all
