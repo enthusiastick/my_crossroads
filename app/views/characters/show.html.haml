@@ -65,6 +65,18 @@
                     =inventory.ingredient.process_concentration
                   -else
                     %i.fa.fa-lock
+    -unless @character.professions.empty?
+      -@character.professions.order(:name).each do |profession|
+        -unless @character.profession_links.where(profession: profession).empty?
+          .callout
+            %h2.text-center= profession.name
+            .menu-centered
+              %ul.menu
+                -@character.profession_links.where(profession: profession).order(:name).each do |link|
+                  %li
+                    =link_to link.url, target: "_blank" do
+                      %i.fa.fa-link
+                      =link.name
 .reveal#historyModal{"data-reveal": ""}
   %h2.margin-bottom-none.text-center
     Character History

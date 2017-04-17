@@ -87,19 +87,20 @@
               -else
                 -if current_user.editor?
                   =form_for [:staff, @character] do |f|
-                    =f.collection_check_boxes :profession_link_ids, profession.profession_links.order(:name), :id, :name do |b|
-                      %p
-                        =b.label { b.check_box + b.text }
+                    %ol
+                      =f.collection_check_boxes :profession_link_ids, profession.profession_links.order(:name), :id, :name do |b|
+                        %li
+                          =b.label { b.text + " " + b.check_box }
                     =f.submit "Save", class: "button"
                 -else
-                  %ul
+                  %ol
                     -profession.profession_links.order(:name).each do |link|
                       %li
                         -if @character.profession_links.include?(link)
                           %i.fa.fa-eye
                         -else
                           %i.fa.fa-lock
-                        =link.name
+                        =link_to link.name, link.url, target: "_blank"
 
 .reveal#historyModal{"data-reveal": ""}
   %h2.margin-bottom-none.text-center Character History
