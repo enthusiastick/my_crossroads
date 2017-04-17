@@ -41,6 +41,6 @@ class Staff::CharactersController < ApplicationController
   protected
 
   def staff_character_params
-    params.require(:character).permit(:name, :slug, :race, :user_id, :alchemist, :history)
+    params.require(:character).permit(:name, :slug, :race, :user_id, :alchemist, :drake, :history)
   end
 end

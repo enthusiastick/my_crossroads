@@ -20,7 +20,11 @@
           %i.fa.fa-trash{"aria-hidden": "true"}
       %a{"data-open": "historyModal"}
         %i.fa.fa-book{"aria-hidden": "true"}
-    %p.text-center= @character.race.titleize
+    %h3.text-center= @character.race.titleize
+    -unless @character.drake.nil?
+      %p.text-center
+        =number_with_delimiter(@character.drake)
+        Drake
     -if @character.inventories.empty?
       -if current_user.editor?
         %p.text-center

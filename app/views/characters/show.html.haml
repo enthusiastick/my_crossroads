@@ -13,7 +13,11 @@
       =@character.name
       %a{"data-open": "historyModal"}
         %i.fa.fa-book{"aria-hidden": "true"}
-    %p.text-center= @character.race.titleize
+    %h3.text-center= @character.race.titleize
+    -unless @character.drake.nil?
+      %p.text-center
+        =number_with_delimiter(@character.drake)
+        Drake
     -unless @character.inventories.empty?
       .callout
         %h2.text-center Components Inventory

@@ -7,9 +7,14 @@
           %th Name
           %th Race
           %th User
+          %th Wealth
       %tbody
         -@characters.each do |character|
           %tr
             %td= link_to character.name, staff_user_character_path(character.user, character)
             %td= character.race.titleize
             %td= link_to character.user.handle, staff_user_path(character.user)
+            %td{ data: { order: character.drake } }
+              -unless character.drake.nil?
+                =number_with_delimiter(character.drake)
+                Drake
