@@ -3,6 +3,10 @@
 .row
   .small-12.medium-11.large-10.small-centered.columns
     %h1.text-center.top-padded Event Registration
+    %p.margin-bottom-none.text-center
+      Pay full-price at the door, or
+      =link_to "click here", new_booking_path
+      to pay in advance (and be eligible for early registration discounts.)
     =form_for @receipt, url: cash_bookings_path do |f|
       .form-inputs{ data: { equalizer: "" } }
         .row
@@ -35,6 +39,6 @@
             =f.collection_select :character_id, current_user.characters.by_name, :id, :name, {  include_blank: true }, class: "margin-bottom-none"
             %p
               To add characters to your account,
-              =link_to "click here.", new_character_path
+              =link_to "click here.", new_character_path, target: "_blank"
       .form-actions
         =f.submit "Register", class: "button"
