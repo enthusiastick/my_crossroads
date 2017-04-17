@@ -28,7 +28,7 @@
             %td= link_to booking.user.email, "mailto:#{booking.user.email}"
             %td
               -if booking.character.present?
-                =link_to booking.character.name, staff_character_path(booking.character)
+                =link_to booking.character.name,  staff_user_character_path(booking.character.user, booking.character)
             -if booking.paid?
               %td.text-center{ data: { order: booking.paid?, search: "paid" } }
                 =link_to staff_receipt_path(booking.receipt) do
