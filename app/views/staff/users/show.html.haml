@@ -44,6 +44,22 @@
       -else
         =distance_of_time_in_words_to_now(@user.last_signed_in_at)
         ago
+    -if @user.street_address.present?
+      .row
+        .small-11.medium-7.large-5.small-centered.columns
+          .card.text-center
+            .card-divider
+              %h4
+                =@user.full_name
+            .card-section
+              %p
+                =@user.street_address
+                %br/
+                =@user.city
+                =@user.state
+                =@user.zip
+                %br/
+                =number_to_phone(@user.phone)
     -unless @user.characters.empty?
       %h3.text-center Characters
       %table.hover.stack.datatables

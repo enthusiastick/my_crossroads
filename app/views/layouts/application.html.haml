@@ -25,7 +25,9 @@
         #responsive-menu
           .top-bar-left
             %ul.vertical.medium-horizontal.menu
-              %li= link_to "Events", events_path, class: "button"
+              %li
+                .button-group.stacked-for-small.margin-bottom-none
+                  =link_to "Events", events_path, class: "button"
               -if user_signed_in?
                 %li.menu-text Signed in as:
                 %li= link_to current_user.handle, edit_user_path(current_user)

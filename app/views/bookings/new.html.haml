@@ -4,7 +4,7 @@
   .small-12.medium-11.large-10.small-centered.columns
     %h1.text-center.top-padded Event Registration
     %p.margin-bottom-none.text-center
-      Pay now using your credit card, or
+      Pay now using your card, or
       =link_to "click here", new_cash_booking_path
       to pay at the door.
     =form_for @receipt, data: { "stripe-publishable-key": @stripe_publishable_key } do |f|
