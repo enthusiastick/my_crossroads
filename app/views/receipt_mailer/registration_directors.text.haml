@@ -9,7 +9,7 @@ Events:
   =@characters.pluck(:name).to_sentence
 
 Phone:
-=@user.phone
+=number_to_phone(@user.phone)
 
 Address:
 ="#{@user.street_address}, #{@user.city} #{@user.state} #{@user.zip}"
