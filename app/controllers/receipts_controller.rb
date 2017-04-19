@@ -4,14 +4,22 @@ class ReceiptsController < ApplicationController
   def create
     if valid_params?(params)
       events = Event.find(params[:receipt][:event_ids])
-      charge = Stripe::Charge.create(
-        amount: params[:amount].to_i,
-        currency: "usd",
-        source: params[:stripeToken],
-        description: "#{current_user.full_name} registration for #{events.pluck(:name).to_sentence}.",
-        receipt_email: current_user.email
-      )
-      if charge.paid
+      begin
+        charge = Stripe::Charge.create(
+          amount: params[:amount].to_i,
+          currency: "usd",
+          source: params[:stripeToken],
+          description: "#{current_user.full_name} registration for #{events.pluck(:name).to_sentence}.",
+          receipt_email: current_user.email
+        )
+      rescue Stripe::CardError => e
+        puts ">>>>>>>"
+        e.json_body[:error].each { |k,v| puts "#{k.to_s.titleize}: #{v}"}
+        puts "<<<<<<<"
+      rescue => e
+        puts ">>>>>>> <<<<<<<"
+      end
+      if charge.present? && charge.paid
         receipt = Receipt.new_from_charge(charge)
         receipt.ip_address = request.remote_ip
         receipt.user = current_user
