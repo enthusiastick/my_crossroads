@@ -50,6 +50,8 @@
             %span{ "aria-hidden": true } &times;
       = yield
     .off-canvas.position-bottom#sign-in{ data: { off: { canvas: "" } } }
+      %button.close-button{ aria: { label: "Close menu" }, data: { close: "" }, type: "button" }
+        %span{ aria: { hidden: true } } &times;
       .row.top-padded
         .small-12.columns
           =form_for :session, url: sign_in_path do |f|
