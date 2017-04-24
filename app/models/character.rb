@@ -1,6 +1,7 @@
 class Character < ApplicationRecord
 
   before_validation :generate_slug
+  before_validation :strip_name
 
   belongs_to :user
 
@@ -55,5 +56,9 @@ class Character < ApplicationRecord
 
   def generate_slug
     self.slug ||= name.parameterize
+  end
+
+  def strip_name
+    self.name = self.name.strip
   end
 end
