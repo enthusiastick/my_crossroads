@@ -5,7 +5,7 @@ class Staff::StaffProfilesController < ApplicationController
     @staff_profile = StaffProfile.new(staff_profile_params)
     if @staff_profile.save
       flash[:success] = "Staff bio updated successfully."
-      redirect_to staff_profiles_path
+      redirect_to staff_bio_index_path
     else
       flash[:alert] = "There was a problem updating your staff bio."
       render "staff/profiles/index"
@@ -16,7 +16,7 @@ class Staff::StaffProfilesController < ApplicationController
     @staff_profile = StaffProfile.find(params[:id])
     if @staff_profile.update(staff_profile_params)
       flash[:success] = "Staff bio updated successfully."
-      redirect_to staff_profiles_path
+      redirect_to staff_bio_index_path
     else
       flash[:alert] = "There was a problem updating your staff bio."
       render "staff/profiles/index"

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         resources :inventories, only: [:index]
       end
     end
-    resources :profiles, only: [:index]
+    resources :bio, only: [:index]
     resources :staff_profiles, only: [:create, :update]
     resources :user_staff_statuses, only: [:update]
     resources :user_editor_statuses, only: [:update]
