@@ -1,0 +1,36 @@
+.row
+  .small-12.columns
+    .text-center.top-padded
+      -if current_user.editor?
+        .button-group.expanded
+          =link_to "Edit My Bio", staff_bio_index_path, class: "button"
+          =link_to "Review & Publish Staff Bios", staff_review_bios_path, class: "button disabled"
+      %h1
+        Review Staff Bios
+    %hr/
+    -@staff_profiles.each do |profile|
+      .card
+        .card-divider.text-center
+          %h2= profile.user.full_name
+        .card-section.text-center
+          -if profile.picture.present?
+            =image_tag(profile.picture.url, alt: "Picture of #{profile.user.full_name}")
+          %h2= profile.title
+          %p
+            %strong= profile.responsibilities
+        .card-section
+          %p
+            %em= profile.blurb
+      =form_for [:staff, :review, profile] do |f|
+        .row
+          .small-12.medium-4.columns
+            =f.label :series
+            =f.number_field :series
+          .small-12.medium-4.columns
+            .text-center
+              =f.label :published
+              =f.check_box :published
+          .small-12.medium-4.column
+            .text-right
+              =f.submit "Save", class: "button"
+      %hr/

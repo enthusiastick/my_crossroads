@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get "sign-up", to: "users#new", as: :sign_up
 
   namespace :staff do
+    namespace :review do
+      resources :staff_profiles, only: [:update]
+    end
+    resources :bio, only: [:index]
     resources :characters, only: [:destroy, :index, :update]
     resources :character_inventories, only: [:update]
     resources :components, except: [:create, :destroy, :update] do
@@ -23,13 +27,13 @@ Rails.application.routes.draw do
     resources :professions, only: [:index, :show]
     resources :profession_links, only: [:create, :new, :update]
     resources :receipts, only: [:show]
+    resources :review_bios, only: [:index]
+    resources :staff_profiles, only: [:create, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do
         resources :inventories, only: [:index]
       end
     end
-    resources :bio, only: [:index]
-    resources :staff_profiles, only: [:create, :update]
     resources :user_staff_statuses, only: [:update]
     resources :user_editor_statuses, only: [:update]
   end
