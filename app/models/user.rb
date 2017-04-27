@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :events, through: :bookings
   has_many :characters
   has_many :transactions
+  has_one :staff_profile
 
   has_secure_password
 

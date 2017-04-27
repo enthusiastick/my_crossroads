@@ -28,6 +28,8 @@
               %li
                 .button-group.stacked-for-small.margin-bottom-none
                   =link_to "Events", events_path, class: "button"
+                  -unless staff_bios.empty?
+                    =link_to "Staff Bios", staff_path, class: "button"
               -if user_signed_in?
                 %li.menu-text Signed in as:
                 %li= link_to current_user.handle, edit_user_path(current_user)
@@ -37,7 +39,7 @@
             %ul.vertical.medium-horizontal.menu
               -if user_signed_in?
                 -if current_user.staff?
-                  %li= link_to "Staff", staff_path, class: "button"
+                  %li= link_to "Staff", staff_menu_path, class: "button"
                 %li= link_to "Sign Out", sign_out_path, method: :delete
               -elsif controller_name != "sessions"
                 %li.show-for-small-only= link_to "Sign In", sign_in_path

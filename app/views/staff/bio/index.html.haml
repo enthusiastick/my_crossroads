@@ -1,0 +1,47 @@
+.row
+  .small-12.columns
+    .text-center.top-padded
+      -if current_user.editor?
+        .button-group.expanded
+          =link_to "Edit My Bio", staff_bio_index_path, class: "button disabled"
+          =link_to "Review & Publish Staff Bios", staff_review_bios_path, class: "button"
+      %h1
+        Staff Bio for
+        =current_user.full_name
+
+-if @staff_profile.published?
+  .row
+    .small-12.medium-6.large-4.small-centered.columns
+      .card
+        .card-divider.text-center
+          %h2= @staff_profile.user.full_name
+        .card-section.text-center
+          -if @staff_profile.picture.present?
+            =image_tag(@staff_profile.picture.url, alt: "Picture of #{@staff_profile.user.full_name}")
+          %h2= @staff_profile.title
+          %p
+            %strong= @staff_profile.responsibilities
+        .card-section
+          %p
+            %em= @staff_profile.blurb
+-else
+  .row
+    .small-11.medium-9.small-centered.columns
+      =form_for [:staff, @staff_profile] do |f|
+        -if @staff_profile.picture.present? && !@staff_profile.picture.kind_of?(String)
+          .text-center
+            =image_tag(@staff_profile.picture.url, alt: "Picture of #{@staff_profile.user.full_name}", class: "thumbnail")
+        .form-inputs
+          %fieldset
+            %label.button{for: "staff_profile_picture"} Upload Image
+            =f.file_field :picture, class: "show-for-sr"
+          %fieldset
+            =render partial: "text_field_with_errors", locals: {attribute: :title, form: f, model: @staff_profile}
+          %fielset
+            =f.label :responsibilities
+            =f.text_area :responsibilities
+          %fielset
+            =f.label :blurb
+            =f.text_area :blurb
+        .form-actions
+          =f.submit "Save", class: "button"

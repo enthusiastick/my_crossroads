@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  get "staff", to: "pages#staff"
+  get "staff", to: "pages#staff", as: :staff
+  get "staff-menu", to: "pages#staff_menu", as: :staff_menu
   get "sign-in", to: "sessions#new", as: :sign_in
   post "sign-in", to: "sessions#create"
   delete "sign-out", to: "sessions#destroy"
   get "sign-up", to: "users#new", as: :sign_up
 
   namespace :staff do
+    namespace :review do
+      resources :staff_profiles, only: [:update]
+    end
+    resources :bio, only: [:index]
     resources :characters, only: [:destroy, :index, :update]
     resources :character_inventories, only: [:update]
     resources :components, except: [:create, :destroy, :update] do
@@ -23,6 +28,8 @@ Rails.application.routes.draw do
     resources :professions, only: [:index, :show]
     resources :profession_links, only: [:create, :new, :update]
     resources :receipts, only: [:show]
+    resources :review_bios, only: [:index]
+    resources :staff_profiles, only: [:create, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do
         resources :inventories, only: [:index]

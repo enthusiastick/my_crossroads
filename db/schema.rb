@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417170722) do
+ActiveRecord::Schema.define(version: 20170420173414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +158,20 @@ ActiveRecord::Schema.define(version: 20170417170722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_seasons_on_name", unique: true, using: :btree
+  end
+
+  create_table "staff_profiles", force: :cascade do |t|
+    t.text     "blurb"
+    t.text     "contact"
+    t.string   "picture"
+    t.boolean  "published",        default: false, null: false
+    t.text     "responsibilities"
+    t.integer  "series",           default: 10,    null: false
+    t.string   "title",                            null: false
+    t.integer  "user_id",                          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["user_id"], name: "index_staff_profiles_on_user_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
