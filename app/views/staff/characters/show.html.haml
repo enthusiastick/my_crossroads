@@ -92,18 +92,23 @@
             %li.tabs-title
               %a{ href: "##{profession.name.parameterize}" }= profession.name
         .tab-content{ data: { tabs: { content: "profession-tabs" } } }
-          -@character.professions.order(:name).each do |profession|
-            .tabs-panel{id: profession.name.parameterize}
-              -if profession.profession_links.empty?
-                %p (No links currently available.)
-              -else
-                -if current_user.editor?
-                  =form_for [:staff, @character] do |f|
+          -if current_user.editor?
+            =form_for [:staff, @character] do |f|
+              -@character.professions.order(:name).each do |profession|
+                .tabs-panel{id: profession.name.parameterize}
+                  -if profession.profession_links.empty?
+                    %p (No links currently available.)
+                  -else
                     %ol
                       =f.collection_check_boxes :profession_link_ids, profession.profession_links.order(:name), :id, :name do |b|
                         %li
                           =b.label { b.text + " " + b.check_box }
                     =f.submit "Save", class: "button"
+          -else
+            -@character.professions.order(:name).each do |profession|
+              .tabs-panel{id: profession.name.parameterize}
+                -if profession.profession_links.empty?
+                  %p (No links currently available.)
                 -else
                   %ol
                     -profession.profession_links.order(:name).each do |link|
@@ -113,7 +118,6 @@
                         -else
                           %i.fa.fa-lock
                         =link_to link.name, link.url, target: "_blank"
-
 .reveal#historyModal{"data-reveal": ""}
   %h2.margin-bottom-none.text-center Character History
   %hr/
