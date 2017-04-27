@@ -8,9 +8,10 @@
       %h1
         Staff Bio for
         =current_user.full_name
-.row
-  .small-11.medium-9.small-centered.columns
-    -if @staff_profile.published?
+
+-if @staff_profile.published?
+  .row
+    .small-12.medium-6.large-4.small-centered.columns
       .card
         .card-divider.text-center
           %h2= @staff_profile.user.full_name
@@ -23,7 +24,9 @@
         .card-section
           %p
             %em= @staff_profile.blurb
-    -else
+-else
+  .row
+    .small-11.medium-9.small-centered.columns
       =form_for [:staff, @staff_profile] do |f|
         -if @staff_profile.picture.present? && !@staff_profile.picture.kind_of?(String)
           .text-center

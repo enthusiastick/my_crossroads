@@ -7,8 +7,9 @@
           =link_to "Review & Publish Staff Bios", staff_review_bios_path, class: "button disabled"
       %h1
         Review Staff Bios
-    %hr/
-    -@staff_profiles.each do |profile|
+-@staff_profiles.each do |profile|
+  .row
+    .small-12.medium-6.large-4.small-centered.columns
       .card
         .card-divider.text-center
           %h2= profile.user.full_name
@@ -33,4 +34,3 @@
           .small-12.medium-4.column
             .text-right
               =f.submit "Save", class: "button"
-      %hr/
