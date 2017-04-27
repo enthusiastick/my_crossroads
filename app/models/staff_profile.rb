@@ -1,6 +1,8 @@
 class StaffProfile < ApplicationRecord
   belongs_to :user
 
+  mount_uploader :picture, PictureUploader
+
   validates_inclusion_of :published, in: [true, false]
   validates_numericality_of :series, only_integer: true
   validates_presence_of :title

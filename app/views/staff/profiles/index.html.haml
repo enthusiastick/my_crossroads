@@ -1,0 +1,25 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded
+      Staff Bio for
+      =current_user.full_name
+.row
+  .small-11.medium-9.small-centered.columns
+    =form_for [:staff, @staff_profile] do |f|
+      -if @staff_profile.picture.present? && !@staff_profile.picture.kind_of?(String)
+        .text-center
+          =image_tag(@staff_profile.picture.url, alt: "Picture of #{@staff_profile.user.full_name}", class: "thumbnail")
+      .form-inputs
+        %fieldset
+          %label.button{for: "staff_profile_picture"} Upload Image
+          =f.file_field :picture, class: "show-for-sr"
+        %fieldset
+          =render partial: "text_field_with_errors", locals: {attribute: :title, form: f, model: @staff_profile}
+        %fielset
+          =f.label :responsibilities
+          =f.text_area :responsibilities
+        %fielset
+          =f.label :blurb
+          =f.text_area :blurb
+      .form-actions
+        =f.submit "Save", class: "button"

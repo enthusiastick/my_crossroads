@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  get "staff", to: "pages#staff"
+  get "staff-menu", to: "pages#staff", as: :staff
   get "sign-in", to: "sessions#new", as: :sign_in
   post "sign-in", to: "sessions#create"
   delete "sign-out", to: "sessions#destroy"
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
         resources :inventories, only: [:index]
       end
     end
+    resources :profiles, only: [:index]
+    resources :staff_profiles, only: [:create, :update]
     resources :user_staff_statuses, only: [:update]
     resources :user_editor_statuses, only: [:update]
   end
