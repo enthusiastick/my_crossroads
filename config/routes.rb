@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  get "staff-menu", to: "pages#staff", as: :staff
+  get "staff", to: "pages#staff", as: :staff
+  get "staff-menu", to: "pages#staff_menu", as: :staff_menu
   get "sign-in", to: "sessions#new", as: :sign_in
   post "sign-in", to: "sessions#create"
   delete "sign-out", to: "sessions#destroy"

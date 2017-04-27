@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :next_event, :user_signed_in?
+  helper_method :current_user, :next_event, :staff_bios, :user_signed_in?
   protect_from_forgery with: :exception
 
   def authorize_record_owner(user)
@@ -101,6 +101,10 @@ class ApplicationController < ActionController::Base
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def staff_bios
+    StaffProfile.where(published: true).order(:series)
   end
 
   def user_signed_in?

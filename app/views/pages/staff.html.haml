@@ -1,27 +1,15 @@
-.row
-  .small-11.medium-9.large-7.small-centered.columns
-    .top-padded.stacked.button-group
-      =link_to staff_bio_index_path, class: "button" do
-        %h2
-          %i.fa.fa-id-badge{ aria: { hidden: "true" } }
-          Biography
-      =link_to staff_characters_path, class: "button" do
-        %h2
-          %i.fa.fa-users{ aria: { hidden: "true" } }
-          Characters
-      =link_to staff_components_path, class: "button" do
-        %h2
-          %i.fa.fa-cubes{ aria: { hidden: "true" } }
-          Components
-      =link_to staff_pictures_path, class: "button" do
-        %h2
-          %i.fa.fa-picture-o{ aria: { hidden: "true" } }
-          Component Visual Dictionary
-      =link_to staff_professions_path, class: "button" do
-        %h2
-          %i.fa.fa-briefcase{ aria: { hidden: "true" } }
-          Professions
-      =link_to staff_users_path, class: "button" do
-        %h2
-          %i.fa.fa-id-card{ aria: { hidden: "true" } }
-          Users
+.row.top-padded
+  -staff_bios.each do |profile|
+    .small-12.medium-6.large-4.columns.end
+      .card
+        .card-divider.text-center
+          %h2= profile.user.full_name
+        .card-section.text-center
+          -if profile.picture.present?
+            =image_tag(profile.picture.url, alt: "Picture of #{profile.user.full_name}")
+          %h2= profile.title
+          %p
+            %strong= profile.responsibilities
+        .card-section
+          %p
+            %em= profile.blurb
