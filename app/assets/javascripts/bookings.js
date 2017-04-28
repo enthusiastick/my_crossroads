@@ -117,8 +117,8 @@ $(document).ready(function() {
           total += parseInt(checkbox.dataset.price)
         }
       }
-      if (total == 300) {
-        total -= 25;
+      if (total > 299) {
+        total = 275;
       }
       totalDisplay.textContent = '$' + total;
     }
