@@ -1,0 +1,19 @@
+.row
+  .small-12.columns
+    %h1.text-center.top-padded
+      Contact
+      =@staff.staff_profile.title
+      =@staff.full_name
+    =form_for @message, url: staff_messages_path(@staff) do |f|
+      .form-inputs
+        %fieldset
+          =f.label :subject
+          =f.text_field :subject
+        %fieldset
+          =f.label :body, "Message"
+          =f.text_area :body
+      .form-actions.text-right
+        =f.button :submit, class: "button" do
+          %i.fa.fa-envelope
+          Send
+

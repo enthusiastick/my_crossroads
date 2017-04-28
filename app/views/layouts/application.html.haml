@@ -29,7 +29,7 @@
                 .button-group.stacked-for-small.margin-bottom-none
                   =link_to "Events", events_path, class: "button"
                   -unless staff_profiles.empty?
-                    =link_to "Staff", staff_path, class: "button"
+                    =link_to "Staff", staff_index_path, class: "button"
               -if user_signed_in?
                 %li.menu-text Signed in as:
                 %li= link_to current_user.handle, edit_user_path(current_user)

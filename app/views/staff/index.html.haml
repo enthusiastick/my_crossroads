@@ -13,3 +13,7 @@
         .card-section
           %p
             %em= profile.blurb
+          %p.text-right
+            =link_to new_staff_message_path(profile.user) do
+              %i.fa.fa-envelope
+              Contact

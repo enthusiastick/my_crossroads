@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  get "staff", to: "pages#staff", as: :staff
   get "staff-menu", to: "pages#staff_menu", as: :staff_menu
   get "sign-in", to: "sessions#new", as: :sign_in
   post "sign-in", to: "sessions#create"
@@ -46,6 +45,9 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :password_resets, only: [:create, :edit, :new, :update]
   resources :receipts, only: [:create]
+  resources :staff, only: [:index] do
+    resources :messages, only: [:create, :new]
+  end
   resources :users, only: [:create, :edit, :update] do
     resources :characters, only: [:edit, :show, :update]
   end
