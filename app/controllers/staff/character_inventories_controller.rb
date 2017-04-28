@@ -6,6 +6,7 @@ class Staff::CharacterInventoriesController < ApplicationController
     if duplicate_ingredient_ids?(params)
       flash.now[:alert] = "There was a problem updating your component inventory."
       @components = Ingredient.all - @character.ingredients
+      @inventories = Inventory.order_by_ingredient_name.where(character: @character)
       render 'staff/inventories/index'
     elsif @character.update(inventory_params)
       flash[:success] = "Component inventory updated successfully."
@@ -13,6 +14,7 @@ class Staff::CharacterInventoriesController < ApplicationController
     else
       flash.now[:alert] = "There was a problem updating your component inventory."
       @components = Ingredient.all - @character.ingredients
+      @inventories = Inventory.order_by_ingredient_name.where(character: @character)
       render 'staff/inventories/index'
     end
   end

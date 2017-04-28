@@ -4,5 +4,6 @@ class Staff::InventoriesController < ApplicationController
   def index
     @character = Character.find_by(slug: params[:character_id])
     @components = Ingredient.by_name - @character.ingredients
+    @inventories = Inventory.order_by_ingredient_name.where(character: @character)
   end
 end

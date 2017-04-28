@@ -32,7 +32,7 @@
             %th.text-center Unlocked Crafting
             %th.text-center Unlocked Ritual
         %tbody#form-inputs
-          -@character.inventories.each do |inventory|
+          -@inventories.each do |inventory|
             %tr
               =f.fields_for :inventories, inventory do |b|
                 %td
