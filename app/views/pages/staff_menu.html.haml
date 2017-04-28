@@ -1,10 +1,6 @@
 .row
   .small-11.medium-9.large-7.small-centered.columns
     .top-padded.stacked.button-group
-      =link_to staff_bio_index_path, class: "button" do
-        %h2
-          %i.fa.fa-id-badge{ aria: { hidden: "true" } }
-          Biography
       =link_to staff_characters_path, class: "button" do
         %h2
           %i.fa.fa-users{ aria: { hidden: "true" } }
@@ -21,6 +17,10 @@
         %h2
           %i.fa.fa-briefcase{ aria: { hidden: "true" } }
           Professions
+      =link_to staff_profiles_path, class: "button" do
+        %h2
+          %i.fa.fa-id-badge{ aria: { hidden: "true" } }
+          Staff Profile
       =link_to staff_users_path, class: "button" do
         %h2
           %i.fa.fa-id-card{ aria: { hidden: "true" } }

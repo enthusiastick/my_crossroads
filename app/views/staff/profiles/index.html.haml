@@ -3,10 +3,10 @@
     .text-center.top-padded
       -if current_user.editor?
         .button-group.expanded
-          =link_to "Edit My Bio", staff_bio_index_path, class: "button disabled"
-          =link_to "Review & Publish Staff Bios", staff_review_bios_path, class: "button"
+          =link_to "Edit My Profile", staff_profiles_path, class: "button disabled"
+          =link_to "Review & Publish Staff Profiles", staff_review_profiles_path, class: "button"
       %h1
-        Staff Bio for
+        Staff Profile for
         =current_user.full_name
 
 -if @staff_profile.published?

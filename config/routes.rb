@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     namespace :review do
       resources :staff_profiles, only: [:update]
     end
-    resources :bio, only: [:index]
     resources :characters, only: [:destroy, :index, :update]
     resources :character_inventories, only: [:update]
     resources :components, except: [:create, :destroy, :update] do
@@ -27,8 +26,9 @@ Rails.application.routes.draw do
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :professions, only: [:index, :show]
     resources :profession_links, only: [:create, :new, :update]
+    resources :profiles, only: [:index]
     resources :receipts, only: [:show]
-    resources :review_bios, only: [:index]
+    resources :review_profiles, only: [:index]
     resources :staff_profiles, only: [:create, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do

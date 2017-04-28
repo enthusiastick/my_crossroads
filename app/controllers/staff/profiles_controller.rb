@@ -1,4 +1,4 @@
-class Staff::BioController < ApplicationController
+class Staff::ProfilesController < ApplicationController
   before_action :authenticate_staff!
 
   def index

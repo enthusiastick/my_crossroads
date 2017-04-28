@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :next_event, :staff_bios, :user_signed_in?
+  helper_method :current_user, :next_event, :staff_profiles, :user_signed_in?
   protect_from_forgery with: :exception
 
   def authorize_record_owner(user)
@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
     @current_user = nil
   end
 
-  def staff_bios
+  def staff_profiles
     StaffProfile.where(published: true).order(:series)
   end
 
