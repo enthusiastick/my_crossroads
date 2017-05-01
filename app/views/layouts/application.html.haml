@@ -50,7 +50,8 @@
           = content_tag :span, msg
           %button.close-button{ "aria-label": "Dismiss alert", data: { close: "" }, type: "button" }
             %span{ "aria-hidden": true } &times;
-      = yield
+      .top-padded
+        = yield
     .off-canvas.position-bottom#sign-in{ data: { off: { canvas: "" } } }
       %button.close-button{ aria: { label: "Close menu" }, data: { close: "" }, type: "button" }
         %span{ aria: { hidden: true } } &times;
