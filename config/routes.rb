@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
     resources :events, only: [:create, :destroy, :edit, :new, :update] do
       resources :bookings, only: [:index]
+      resources :self_reports, only: [:index]
     end
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
     resources :professions, only: [:index, :show]

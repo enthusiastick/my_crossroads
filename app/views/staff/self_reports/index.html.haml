@@ -1,0 +1,25 @@
+.row
+  .small-12.columns
+    %nav{"aria-label": "You are here:", role: "navigation"}
+      %ul.breadcrumbs
+        %li
+          =link_to "Events", events_path
+        %li
+          =link_to @event.name, event_path(@event)
+        %li
+          =link_to "Registrations", staff_event_bookings_path(@event)
+        %li
+          %span.show-for-sr Current:
+          Self Reports
+    %h1.text-center
+      =@event.name
+      Self Reports
+.row
+  .small-11.medium-9.large-7.small-centered.columns
+    -@event.users.order(:first_name).each do |user|
+      -if user.self_report.present?
+        .card.text-center
+          .card-divider
+            %h5= link_to user.full_name, staff_user_path(user)
+          .card-section
+            =user.self_report

@@ -12,6 +12,8 @@
     %h1.text-center
       =@event.name
       Registrations
+      =link_to staff_event_self_reports_path(@event) do
+        %i.fa.fa-medkit
     %table.hover.stack.datatables
       %thead
         %tr
