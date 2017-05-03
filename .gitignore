@@ -15,3 +15,5 @@
 
 .env
 latest.dump
+/public/packs
+/node_modules
