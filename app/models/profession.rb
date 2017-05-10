@@ -1,8 +1,8 @@
 class Profession < ApplicationRecord
-  ALCHEMY = "Alchemy"
-  CRAFTING = "Craftsman"
+  ALCHEMY = "Alchemist"
+  CRAFTING = "Artisan"
   RITUALIST = "Ritualist"
-  STOCK = %w(Alchemy Apothecary Astrology Craftsman Herbalist/Mycologist Husbandry Merchant Miner/Geologist Ritualist Physician)
+  STOCK = %w(Alchemist Apothecary Artisan Astrologer Geologist Herbalist Merchant Physician Ritualist Zoologist)
 
   has_many :character_professions
   has_many :characters, through: :character_professions
