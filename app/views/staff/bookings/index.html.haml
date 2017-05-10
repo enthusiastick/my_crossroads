@@ -26,7 +26,7 @@
         -@event.bookings.each do |booking|
           %tr
             %td= booking.created_at.to_s(:db)
-            %td= link_to booking.user.handle, staff_user_path(booking.user)
+            %td= link_to booking.user.label, staff_user_path(booking.user)
             %td= link_to booking.user.email, "mailto:#{booking.user.email}"
             %td
               -if booking.character.present?

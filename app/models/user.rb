@@ -68,7 +68,7 @@ class User < ApplicationRecord
     update_attributes(password_reset_digest: User.digest(password_reset_token), password_reset_sent_at: Time.current)
   end
 
-  def label_for_select
+  def label
     if staff?
       "#{first_name} #{last_name} (#{handle}*)"
     else
