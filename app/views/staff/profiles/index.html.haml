@@ -1,10 +1,12 @@
 .row
   .small-12.columns
     .text-center
-      -if current_user.editor?
-        .button-group.expanded
-          =link_to "Edit My Profile", staff_profiles_path, class: "button disabled"
+      .button-group.expanded
+        =link_to "Edit My Profile", staff_profiles_path, class: "button disabled"
+        -if current_user.editor?
           =link_to "Review & Publish Staff Profiles", staff_review_profiles_path, class: "button"
+        -else
+          =link_to "Review Staff Profiles", staff_review_profiles_path, class: "button"
       %h1
         Staff Profile for
         =current_user.full_name
