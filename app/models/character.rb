@@ -40,12 +40,16 @@ class Character < ApplicationRecord
     professions.include?(Profession.alchemy)
   end
 
-  def crafter?
-    professions.include?(Profession.crafting)
+  def artisan?
+    professions.include?(Profession.artisan)
   end
 
   def ritualist?
     professions.include?(Profession.ritualist)
+  end
+
+  def scholar?
+    professions.any? { |profession| Profession.scholar.include?(profession) }
   end
 
   def to_param

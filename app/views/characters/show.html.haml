@@ -26,7 +26,7 @@
             %tr
               %th.text-right Quantity
               %th Component
-              -if @character.alchemist?
+              -if @character.alchemist? || @character.scholar?
                 %th.text-center Extraction
                 %th.text-center Calcination
                 %th.text-center Dissolution
@@ -40,12 +40,12 @@
                   %i.fa.fa-question-circle
                 %th.text-center
                   %i.fa.fa-question-circle
-              -if @character.crafter?
+              -if @character.artisan? || @character.scholar?
                 %th.text-center Crafting
               -else
                 %th.text-center
                   %i.fa.fa-question-circle
-              -if @character.ritualist?
+              -if @character.ritualist? || @character.scholar?
                 %th.text-center Ritual
               -else
                 %th.text-center
