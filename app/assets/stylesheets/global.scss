@@ -25,7 +25,18 @@
   padding-top: 1rem;
 }
 
+.yield-content {
+  background-color: #ffefd9;
+  min-height: 33rem;
+  padding: 1rem 0px;
+
+  .fieldset legend {
+    background-color: #ffefd9;
+  }
+}
+
 p.license {
+  background-color: #e5d7c3;
   font-size: smaller;
 }
 
