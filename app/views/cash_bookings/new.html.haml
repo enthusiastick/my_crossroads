@@ -36,7 +36,7 @@
         .small-12.medium-7.large-9.columns
           %fieldset
             =f.label :character
-            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, {  include_blank: true }, class: "margin-bottom-none"
+            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, { include_blank: "(Hide my registration)" }, class: "margin-bottom-none"
             %p
               To add characters to your account,
               =link_to "click here.", new_character_path, target: "_blank"

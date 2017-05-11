@@ -40,7 +40,7 @@
         .small-11.medium-9.large-7.small-centered.columns
           =form_for @booking do |f|
             =f.label :character, "Attending As"
-            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, include_blank: true
+            =f.collection_select :character_id, current_user.characters.by_name, :id, :name, include_blank: "(Hide my registration)"
             .text-right
               =f.submit "Update", class: "button"
     -unless @characters.empty?
