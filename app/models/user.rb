@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :handle
 
   scope :by_name, -> { order(:first_name) }
+  scope :confirmed, -> { where.not(confirmed_at: nil) }
 
   def assign_attributes_from_receipt(hash)
     assign_attributes(

@@ -2,7 +2,7 @@ class Staff::UsersController < ApplicationController
   before_action :authenticate_staff!
 
   def index
-    @users = User.all
+    @users = User.confirmed
   end
 
   def show
