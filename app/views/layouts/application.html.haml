@@ -52,6 +52,12 @@
             %span{ "aria-hidden": true } &times;
       .top-padded
         = yield
+      %p.license.text-center
+        %em &copy; 2017, Terres Rising LLC, All Rights Reserved.
+        %br/
+        %strong MyCrossroads
+        is licensed under
+        =link_to "the MIT License.", "https://opensource.org/licenses/MIT", target: "_blank"
     .off-canvas.position-bottom#sign-in{ data: { off: { canvas: "" } } }
       %button.close-button{ aria: { label: "Close menu" }, data: { close: "" }, type: "button" }
         %span{ aria: { hidden: true } } &times;
