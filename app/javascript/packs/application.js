@@ -1,10 +1,25 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import 'whatwg-fetch';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Route, Switch } from 'react-router';
+import createBrowserHistory from 'history/createBrowserHistory'
+import { BrowserRouter } from 'react-router-dom'
 
-console.log('Hello World from Webpacker')
+import TagRequest from '../react/components/TagRequest';
+
+const history = createBrowserHistory();
+
+document.addEventListener('DOMContentLoaded', () => {
+  let reactElement = document.getElementById('react-app');
+
+  if (reactElement) {
+    ReactDOM.render(
+      <BrowserRouter history={history}>
+        <Switch>
+          <Route path='/users/:userId/characters/:characterId/tag_requests/new' component={TagRequest} />
+        </Switch>
+       </BrowserRouter>,
+      reactElement
+    )
+  }
+})

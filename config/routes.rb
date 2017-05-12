@@ -50,6 +50,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :new]
   end
   resources :users, only: [:create, :edit, :update] do
-    resources :characters, only: [:edit, :show, :update]
+    resources :characters, only: [:edit, :show, :update] do
+      resources :tag_requests, only: [:new]
+    end
   end
 end
