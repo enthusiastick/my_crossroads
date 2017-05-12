@@ -10,7 +10,8 @@
 
     = stylesheet_link_tag "application"
     %script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['GMAPS_API_KEY']}"}
-    = javascript_include_tag "application", "data-turbolinks-track": true
+    = javascript_include_tag "application"
+    = javascript_pack_tag "application"
     = csrf_meta_tag
 
   %body
@@ -45,12 +46,12 @@
                 %li.show-for-small-only= link_to "Sign In", sign_in_path
                 %li.show-for-medium
                   %a{ data: { toggle: "sign-in" } } Sign In
-      - flash.each do |name, msg|
-        %div{ class: name + " callout", data: { closable: "" }}
-          = content_tag :span, msg
-          %button.close-button{ "aria-label": "Dismiss alert", data: { close: "" }, type: "button" }
-            %span{ "aria-hidden": true } &times;
       .yield-content
+        - flash.each do |name, msg|
+          %div{ class: name + " callout", data: { closable: "" }}
+            = content_tag :span, msg
+            %button.close-button{ "aria-label": "Dismiss alert", data: { close: "" }, type: "button" }
+              %span{ "aria-hidden": true } &times;
         = yield
       %p.license.margin-bottom-none.text-center
         %em &copy; 2017, Terres Rising LLC, All Rights Reserved.
