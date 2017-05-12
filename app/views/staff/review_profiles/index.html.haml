@@ -20,11 +20,13 @@
           -if profile.picture.present?
             =image_tag(profile.picture.url, alt: "Picture of #{profile.user.full_name}")
           %h2= profile.title
-          %p
-            %strong= profile.responsibilities
-        .card-section
-          %p
-            %em= profile.blurb
+        -if profile.responsibilities.present?
+          .card-section
+            =raw @markdown.render(profile.responsibilities)
+        %hr/
+        -if profile.blurb.present?
+          .card-divider
+            =raw @markdown.render(profile.blurb)
         -if current_user.editor?
           %hr/
           .card-section
