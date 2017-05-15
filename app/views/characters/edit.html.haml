@@ -7,12 +7,12 @@
         %li
           =link_to "My Characters", characters_path
         %li
-          =link_to @character.name, user_character_path(@user, @character)
+          =link_to @character.name, character_path(@character)
         %li
           %span.show-for-sr Current:
           Edit
     %h1.text-center= @character.name
-    =form_for [@user, @character] do |f|
+    =form_for @character do |f|
       .form-errors
         -if @character.errors.present?
           .callout.alert
