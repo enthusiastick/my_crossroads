@@ -29,6 +29,7 @@ class Character < ApplicationRecord
   has_many :inventories
   has_many :ingredients, through: :inventories
   accepts_nested_attributes_for :inventories
+  has_many :non_zero_inventories, -> { joins(:ingredient).where.not(quantity: 0).order("ingredients.name") }, class_name: :Inventory
 
   validates_numericality_of :drake, allow_nil: true, only_integer: true, greater_than_or_equal_to: 0
   validates_presence_of :name, :slug, :user

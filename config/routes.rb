@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   delete "sign-out", to: "sessions#destroy"
   get "sign-up", to: "users#new", as: :sign_up
 
+  namespace :api do
+    namespace :v1 do
+      resources :characters, only: [:show]
+    end
+  end
+
   namespace :staff do
     namespace :review do
       resources :staff_profiles, only: [:update]
