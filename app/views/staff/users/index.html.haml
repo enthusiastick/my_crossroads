@@ -6,16 +6,12 @@
         %tr
           %th Username
           %th Email
-          %th First Name
-          %th Last Name
           %th Staff
       %tbody
         -@users.each do |user|
           %tr
-            %td= link_to user.handle, staff_user_path(user)
+            %td= link_to user.label, staff_user_path(user)
             %td= link_to user.email, "mailto:#{user.email}"
-            %td= user.first_name
-            %td= user.last_name
             %td
               -if user.staff?
                 %i.fa.fa-star

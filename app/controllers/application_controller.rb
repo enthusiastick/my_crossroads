@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
   end
 
   def staff_profiles
-    StaffProfile.where(published: true).order(:series)
+    @staff_profiles ||= StaffProfile.where(published: true).order(:series)
   end
 
   def user_signed_in?

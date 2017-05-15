@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
       <BrowserRouter history={history}>
         <Switch>
-          <Route path='/users/:userId/characters/:characterId/tag_requests/new' component={TagRequestContainer} />
+          <Route path='/characters/:characterId/tag_requests' component={TagRequestContainer} />
         </Switch>
        </BrowserRouter>,
       reactElement

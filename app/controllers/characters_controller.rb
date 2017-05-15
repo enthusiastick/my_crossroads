@@ -16,7 +16,7 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find_by(slug: params[:id])
-    @user = User.find_by(handle: params[:user_id])
+    @user = @character.user
     authorize_record_owner(@user)
   end
 
@@ -30,18 +30,18 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find_by(slug: params[:id])
-    @user = User.find_by(handle: params[:user_id])
+    @user = @character.user
     @markdown = new_markdown
     authorize_record_owner(@user)
   end
 
   def update
     @character = Character.find_by(slug: params[:id])
-    @user = User.find_by(handle: params[:user_id])
+    @user = @character.user
     authorize_record_owner(@user)
     if @character.update(update_params)
       flash[:success] = "Character updated successfully."
-      redirect_to user_character_path(@user, @character)
+      redirect_to character_path(@character)
     else
       flash.now[:alert] = "There was a problem updating your character."
       render :edit

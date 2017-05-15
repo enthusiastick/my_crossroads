@@ -42,16 +42,14 @@ Rails.application.routes.draw do
   resources :account_confirmations, only: [:edit]
   resources :bookings, only: [:new, :update]
   resources :cash_bookings, only: [:new, :create]
-  resources :characters, only: [:create, :new, :index]
+  resources :characters, only: [:create, :edit, :index, :new, :show, :update] do
+    resources :tag_requests, only: [:index]
+  end
   resources :events, only: [:index, :show]
   resources :password_resets, only: [:create, :edit, :new, :update]
   resources :receipts, only: [:create]
   resources :staff, only: [:index] do
     resources :messages, only: [:create, :new]
   end
-  resources :users, only: [:create, :edit, :update] do
-    resources :characters, only: [:edit, :show, :update] do
-      resources :tag_requests, only: [:new]
-    end
-  end
+  resources :users, only: [:create, :edit, :update]
 end
