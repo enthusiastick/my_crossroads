@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "./bin/webpack-dev-server"
+  },
   "dependencies": {
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",

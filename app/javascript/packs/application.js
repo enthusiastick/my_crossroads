@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory'
 import { BrowserRouter } from 'react-router-dom'
 
-import TagRequest from '../react/components/TagRequest';
+import TagRequestContainer from '../react/containers/TagRequestContainer';
 
 const history = createBrowserHistory();
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
       <BrowserRouter history={history}>
         <Switch>
-          <Route path='/users/:userId/characters/:characterId/tag_requests/new' component={TagRequest} />
+          <Route path='/users/:userId/characters/:characterId/tag_requests/new' component={TagRequestContainer} />
         </Switch>
        </BrowserRouter>,
       reactElement
