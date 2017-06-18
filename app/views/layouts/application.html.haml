@@ -8,6 +8,7 @@
 
     %title= content_for?(:title) ? yield(:title) : "MyCrossroads"
 
+    = render "application/favicon"
     = stylesheet_link_tag "application"
     %script{src: "https://maps.googleapis.com/maps/api/js?key=#{ENV['GMAPS_API_KEY']}"}
     = javascript_include_tag "application"

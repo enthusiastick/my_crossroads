@@ -30,6 +30,7 @@ gem "webpacker"
 group :development, :test do
   gem "dotenv-rails"
   gem "pry-rails"
+  gem "rails_real_favicon"
   gem "rspec-rails"
 end
 
