@@ -37,6 +37,15 @@ class Ingredient < ApplicationRecord
 
   scope :by_name, -> { order(:name) }
 
+  def ritual_properties
+    ritual_properties = Array.new
+    ritual_properties << "Attribute: #{ritual_attribute}" if !ritual_attribute.blank?
+    ritual_properties << "Elemental Affinity: #{ritual_elemental_affinity}" if !ritual_elemental_affinity.blank?
+    ritual_properties << "Gender: #{ritual_gender}" if !ritual_gender.blank?
+    ritual_properties << "Opposite: #{ritual_opposite}" if !ritual_opposite.blank?
+    ritual_properties
+  end
+
   def season
     case seasons.order(:id)
     when Season.months

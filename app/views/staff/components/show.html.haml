@@ -34,6 +34,9 @@
         %strong Seasons:
         =@component.season
         ="(#{@component.seasons.map(&:name).to_sentence})"
+    %span.label Crafting
+    .callout=@component.crafting
+    %span.label Processes
     .callout
       .row
         .small-12.medium-3.columns
@@ -48,15 +51,23 @@
         .small-12.medium-3.columns
           %strong Concentration:
           =@component.process_concentration
+    %span.label Ritual
     .callout
       .row
-        .small-12.medium-6.columns
-          %strong Crafting:
-          =@component.crafting
-        .small-12.medium-6.columns
-          %strong Ritual:
-          =@component.ritual
+        .small-12.medium-3.columns
+          %strong Attribute:
+          =@component.ritual_attribute
+        .small-12.medium-3.columns
+          %strong Elemental Affinity:
+          =@component.ritual_elemental_affinity
+        .small-12.medium-3.columns
+          %strong Gender:
+          =@component.ritual_gender
+        .small-12.medium-3.columns
+          %strong Opposite:
+          =@component.ritual_opposite
     -unless @component.staff_notes.blank?
+      %span.label Staff Notes
       .callout= @component.staff_notes
 .reveal#keyModal{ data: { reveal: "" } }
   %table.hover.stack

@@ -32,10 +32,7 @@
           %th Rarity
           %th Season
           %th Grade
-          %th Extraction
-          %th Calcination
-          %th Dissolution
-          %th Concentration
+          %th Processes
           %th Crafting
           %th Ritual
       %tbody
@@ -46,10 +43,30 @@
             %td.text-center= component.rarity.titleize
             %td.text-center= component.season
             %td.text-right= component.grade
-            %td.text-center= component.process_extraction
-            %td.text-center= component.process_calcination
-            %td.text-center= component.process_dissolution
-            %td.text-center= component.process_concentration
+            %td.text-center
+              %p.margin-bottom-none
+                %strong Extraction:
+                =component.process_extraction
+              %p.margin-bottom-none
+                %strong Calcination:
+                =component.process_calcination
+              %p.margin-bottom-none
+                %strong Dissolution
+                =component.process_dissolution
+              %p.margin-bottom-none
+                %strong Concentration
+                =component.process_concentration
             %td.text-center= component.crafting
-            %td.text-center= component.ritual
-
+            %td.text-center
+              %p.margin-bottom-none
+                %strong Attribute:
+                =component.ritual_attribute
+              %p.margin-bottom-none
+                %strong Elemental Affinity:
+                =component.ritual_elemental_affinity
+              %p.margin-bottom-none
+                %strong Gender:
+                =component.ritual_gender
+              %p.margin-bottom-none
+                %strong Opposite:
+                =component.ritual_opposite

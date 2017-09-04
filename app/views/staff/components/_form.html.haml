@@ -19,31 +19,48 @@
           =f.label :grade, "Grade"
           =f.number_field :grade, in: 0..4
     .row
-      .small-12.medium-3.columns
-        %fieldset
-          =f.label :process_extraction, "Extraction"
-          =f.text_field :process_extraction
-      .small-12.medium-3.columns
-        %fieldset
-          =f.label :process_calcination, "Calcination"
-          =f.text_field :process_calcination
-      .small-12.medium-3.columns
-        %fieldset
-          =f.label :process_dissolution, "Dissolution"
-          =f.text_field :process_dissolution
-      .small-12.medium-3.columns
-        %fieldset
-          =f.label :process_concentration, "Concentration"
-          =f.text_field :process_concentration
-    .row
-      .small-12.medium-6.columns
+      .small-12.columns
         %fieldset
           =f.label :crafting
           =f.text_field :crafting
-      .small-12.medium-6.columns
-        %fieldset
-          =f.label :ritual
-          =f.text_field :ritual
+    %fieldset.fieldset
+      %legend Processes
+      .row
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :process_extraction, "Extraction"
+            =f.text_field :process_extraction
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :process_calcination, "Calcination"
+            =f.text_field :process_calcination
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :process_dissolution, "Dissolution"
+            =f.text_field :process_dissolution
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :process_concentration, "Concentration"
+            =f.text_field :process_concentration
+    %fieldset.fieldset
+      %legend Ritual
+      .row
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :ritual_attribute, "Attribute"
+            =f.text_field :ritual_attribute
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :ritual_elemental_affinity, "Elemental Affinity"
+            =f.text_field :ritual_elemental_affinity
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :ritual_gender, "Gender"
+            =f.text_field :ritual_gender
+        .small-12.medium-3.columns
+          %fieldset
+            =f.label :ritual_opposite, "Opposite"
+            =f.text_field :ritual_opposite
     %fieldset.fieldset
       %legend Professions
       -@professions.each do |profession|

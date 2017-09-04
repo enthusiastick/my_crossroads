@@ -26,22 +26,13 @@
             %tr
               %th.text-right Quantity
               %th Component
-              -if @character.alchemist? || @character.scholar?
-                %th.text-center Extraction
-                %th.text-center Calcination
-                %th.text-center Dissolution
-                %th.text-center Concentration
+              -if @character.artisan? || @character.scholar?
+                %th.text-center Crafting
               -else
                 %th.text-center
                   %i.fa.fa-question-circle
-                %th.text-center
-                  %i.fa.fa-question-circle
-                %th.text-center
-                  %i.fa.fa-question-circle
-                %th.text-center
-                  %i.fa.fa-question-circle
-              -if @character.artisan? || @character.scholar?
-                %th.text-center Crafting
+              -if @character.alchemist? || @character.scholar?
+                %th.text-center Processes
               -else
                 %th.text-center
                   %i.fa.fa-question-circle
@@ -56,35 +47,78 @@
                 %td.text-right= inventory.quantity
                 %td= inventory.ingredient.name
                 %td.text-center
-                  -if inventory.unlocked_extraction?
-                    =inventory.ingredient.process_extraction
-                  -else
-                    %i.fa.fa-lock
-                %td.text-center
-                  -if inventory.unlocked_calcination?
-                    =inventory.ingredient.process_calcination
-                  -else
-                    %i.fa.fa-lock
-                %td.text-center
-                  -if inventory.unlocked_dissolution?
-                    =inventory.ingredient.process_dissolution
-                  -else
-                    %i.fa.fa-lock
-                %td.text-center
-                  -if inventory.unlocked_concentration?
-                    =inventory.ingredient.process_concentration
-                  -else
-                    %i.fa.fa-lock
-                %td.text-center
                   -if inventory.unlocked_crafting?
                     =inventory.ingredient.crafting
                   -else
                     %i.fa.fa-lock
-                %td.text-center
-                  -if inventory.unlocked_ritual?
-                    =inventory.ingredient.ritual
+                %td
+                  %span
+                    -if @character.alchemist? || @character.scholar?
+                      Extraction:
+                    -else
+                      %i.fa.fa-question-circle
+                    -if inventory.unlocked_extraction?
+                      =inventory.ingredient.process_extraction
+                      %br/
+                    -else
+                      %i.fa.fa-lock
+                      &nbsp;
+                  %span
+                    -if @character.alchemist? || @character.scholar?
+                      Calcination:
+                    -else
+                      %i.fa.fa-question-circle
+                    -if inventory.unlocked_calcination?
+                      =inventory.ingredient.process_calcination
+                      %br/
+                    -else
+                      %i.fa.fa-lock
+                      &nbsp;
+                  %span
+                    -if @character.alchemist? || @character.scholar?
+                      Dissolution:
+                    -else
+                      %i.fa.fa-question-circle
+                    -if inventory.unlocked_dissolution?
+                      =inventory.ingredient.process_dissolution
+                      %br/
+                    -else
+                      %i.fa.fa-lock
+                      &nbsp;
+                  %span
+                    -if @character.alchemist? || @character.scholar?
+                      Concentration:
+                    -else
+                      %i.fa.fa-question-circle
+                    -if inventory.unlocked_concentration?
+                      =inventory.ingredient.process_concentration
+                    -else
+                      %i.fa.fa-lock
+                      &nbsp;
+                %td
+                  -if @character.ritualist? || @character.scholar?
+                    -if inventory.unlocked_ritual?
+                      =inventory.ingredient.ritual_properties.to_sentence
+                    -else
+                      Attribute:
+                      %i.fa.fa-question-circle
+                      &nbsp;
+                      Elemental Affinity:
+                      %i.fa.fa-question-circle
+                      &nbsp;
+                      Gender:
+                      %i.fa.fa-question-circle
+                      &nbsp;
+                      Opposite:
+                      %i.fa.fa-question-circle
                   -else
-                    %i.fa.fa-lock
+                    -if inventory.unlocked_ritual?
+                      =inventory.ingredient.ritual_properties.to_sentence
+                    -else
+                      -4.times do
+                        %i.fa.fa-question-circle
+                        %i.fa.fa-lock
+                        &nbsp;
     -unless @character.professions.empty?
       -@character.professions.order(:name).each do |profession|
         -unless @character.profession_links.where(profession: profession).empty?

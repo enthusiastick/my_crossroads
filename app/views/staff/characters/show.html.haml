@@ -81,7 +81,7 @@
                     %i.fa.fa-lock
                 %td.text-center
                   -if inventory.unlocked_ritual?
-                    =inventory.ingredient.ritual
+                    =inventory.ingredient.ritual_properties.to_sentence
                   -else
                     %i.fa.fa-lock
     -unless @character.professions.empty?
