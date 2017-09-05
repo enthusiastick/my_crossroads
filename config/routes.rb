@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :self_reports, only: [:index]
     end
     resources :ingredients, controller: :components, only: [:create, :destroy, :update]
+    resources :inventories, only: [:destroy]
     resources :professions, only: [:index, :show]
     resources :profession_links, only: [:create, :new, :update]
     resources :profiles, only: [:index]

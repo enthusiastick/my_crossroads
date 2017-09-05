@@ -36,7 +36,9 @@
             %tr
               =f.fields_for :inventories, inventory do |b|
                 %td
-                  %fieldset
+                  =link_to staff_inventory_path(inventory), class: "float-left", data: { confirm: "Delete #{@character.name}'s '#{inventory.ingredient.name}': are you sure?" }, method: :delete do
+                    %i.fa.fa-trash
+                  %fieldset.margin-left-one
                     =b.number_field :quantity, class: "text-right"
                 %td.text-center
                   %strong

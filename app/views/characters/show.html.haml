@@ -45,7 +45,11 @@
             -@character.inventories.each do |inventory|
               %tr
                 %td.text-right= inventory.quantity
-                %td= inventory.ingredient.name
+                %td
+                  =inventory.ingredient.name
+                  -if inventory.ingredient.picture.present?
+                    %a.float-right{ data: { open: inventory.ingredient.name.parameterize } }
+                      %i.fa.fa-eye
                 %td.text-center
                   -if inventory.unlocked_crafting?
                     =inventory.ingredient.crafting
@@ -145,3 +149,11 @@
   %button.close-button{"data-close": "", "aria-label": "Close modal", "type": "button"}
     %span{"aria-hidden": "true"}
       &times;
+-@character.inventories.each do |inventory|
+  -if inventory.ingredient.picture.present?
+    .reveal{ id: "#{inventory.ingredient.name.parameterize}", data: { reveal: "" } }
+      %span.label= inventory.ingredient.name
+      =image_tag(inventory.ingredient.picture.url, alt: "Picture of #{inventory.ingredient.name}")
+      %button.close-button{ data: { close: "" }, aria: { label:  "Close modal"}, type: "button" }
+        %span{ aria: { hidden: "true" } }
+          &times;
