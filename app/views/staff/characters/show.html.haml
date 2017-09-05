@@ -38,7 +38,7 @@
           -if current_user.editor?
             =link_to staff_user_character_inventories_path(@character.user, @character) do
               %i.fa.fa-list-ol{"aria-hidden": "true"}
-        %table.hover.datatables
+        %table.hover.datatables{ data: { page: { length: "25" }, order: "[[1,\"asc\"]]" } }
           %thead
             %tr
               %th.text-right Quantity
