@@ -21,7 +21,7 @@
     -unless @character.inventories.empty?
       .callout
         %h2.text-center Components Inventory
-        %table.hover.datatables
+        %table.hover.datatables{ data: { page: { length: "25" }, order: "[[1,\"asc\"]]" } }
           %thead
             %tr
               %th.text-right Quantity
