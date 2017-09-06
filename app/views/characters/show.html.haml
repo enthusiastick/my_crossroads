@@ -112,14 +112,11 @@
                       &nbsp;
                       Gender:
                       %i.fa.fa-question-circle
-                      &nbsp;
-                      Opposite:
-                      %i.fa.fa-question-circle
                   -else
                     -if inventory.unlocked_ritual?
                       =inventory.ingredient.ritual_properties.to_sentence
                     -else
-                      -4.times do
+                      -3.times do
                         %i.fa.fa-question-circle
                         %i.fa.fa-lock
                         &nbsp;

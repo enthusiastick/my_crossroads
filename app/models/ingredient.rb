@@ -42,7 +42,6 @@ class Ingredient < ApplicationRecord
     ritual_properties << "Attribute: #{ritual_attribute}" if !ritual_attribute.blank?
     ritual_properties << "Elemental Affinity: #{ritual_elemental_affinity}" if !ritual_elemental_affinity.blank?
     ritual_properties << "Gender: #{ritual_gender}" if !ritual_gender.blank?
-    ritual_properties << "Opposite: #{ritual_opposite}" if !ritual_opposite.blank?
     ritual_properties
   end
 
