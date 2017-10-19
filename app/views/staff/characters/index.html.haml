@@ -1,7 +1,7 @@
 .row
   .small-12.columns
     %h1.text-center Characters
-    %table.hover.stack.datatables
+    %table.hover.stack.datatables{ data: { page: { length: "100" } } }
       %thead
         %tr
           %th Name
