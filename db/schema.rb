@@ -194,13 +194,13 @@ ActiveRecord::Schema.define(version: 20170904164633) do
     t.integer "failed_sign_in_attempts", default: 0
     t.datetime "last_signed_in_at"
     t.integer "sign_in_count", default: 0
+    t.boolean "editor", default: false
     t.string "phone"
     t.string "street_address"
     t.string "city"
     t.string "state"
     t.string "zip"
     t.text "self_report"
-    t.boolean "editor", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["handle"], name: "index_users_on_handle", unique: true
   end
