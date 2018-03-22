@@ -1,0 +1,25 @@
+<div class="bank">
+<h1>Bank of Derrikham</h1>
+<div class="bankAccounts">
+  <%  %>
+<% @accounts.each do |account| %>
+  <div>
+    <%= link_to "#{account.character.name}", character_bank_account_path(account.character.id, account.id) %>
+    || <%= account.balance %>
+  </div>
+<% end %>
+</div>
+
+<div class="newAccountForm"> <h1>Create a new account</h1>
+  <%= form_for(@account) do |f| %>
+  <p>
+     <%= f.label  :character_id, "Character" %>
+     <%= f.collection_select(:character_id,@characters_without_accounts, :id,:name,{include_blank: true}, class: "characterSelect")%>
+   </p>
+     <%= f.label :balance, "Starting Balance" %>
+     <%= f.text_field :balance, class:"startingBalance" %>
+
+     <p><%= f.submit %></P>
+  <% end %>
+</div>
+</div>

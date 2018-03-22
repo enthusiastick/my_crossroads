@@ -1,0 +1,16 @@
+<div class="bankForm">
+<%= form_for [@character,@account,@transaction] do |f| %>
+ <%= f.label "Transaction Type" %>
+ <%= f.radio_button :transaction_type, "Debit" %>
+ <%= label :transaction_type, "Debit" %>
+
+ <%= f.radio_button :transaction_type, "Credit" %>
+ <%= label :transaction_type, "Credit" %>
+
+ <%= f.text_field :transaction_amount , class: "drakeBank"%>
+ <%= f.label :transaction_amount, "Drake" %>
+
+ <%= f.submit "Submit" %>
+
+<% end %>
+</div>
