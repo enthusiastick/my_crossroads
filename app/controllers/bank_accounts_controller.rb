@@ -1,6 +1,6 @@
 class BankAccountsController < ApplicationController
   def index
-    if current_user.banker ==true || current_user.staff == true
+    if current_user.banker?|| current_user.staff?
       @accounts = BankAccount.all
       characters = Character.all
       @characters_without_accounts = []
@@ -30,10 +30,8 @@ class BankAccountsController < ApplicationController
 
   def create
     @account = BankAccount.new(account_params)
-    @character = Character.find(account_params[:character_id])
-
     if @account.save
-      redirect_to character_bank_account_path(@character.id,@account.id)
+      redirect_to character_bank_account_path(@account.character,@account)
     else
       flash[:notice]="Account add failed"
     end

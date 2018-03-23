@@ -30,7 +30,6 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find_by(slug: params[:id])
-    @bank_account = BankAccount.where('character_id =?', @character.id)
     @user = @character.user
     @markdown = new_markdown
     authorize_record_owner(@user)
