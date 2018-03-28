@@ -1,14 +1,9 @@
 class BankAccountsController < ApplicationController
+  before_action :authenticate_staff!
   def index
     if current_user.banker?|| current_user.staff?
       @accounts = BankAccount.all
-      characters = Character.all
-      @characters_without_accounts = []
-      characters.each do |character|
-        if !BankAccount.has_account?(character.id) == true && character.archived==false
-          @characters_without_accounts << character
-        end
-      end
+      @characters_without_accounts = Character.includes(:bank_account).where(archived: false, bank_accounts: { id: nil })
       @account = BankAccount.new
     else
       authenticate_staff!
