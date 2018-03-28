@@ -1,0 +1,7 @@
+<h1>Recipes</h1>
+
+<div class="row">
+  <% @recipes.each do |recipe| %>
+  <p><%= link_to recipe.name, staff_recipe_path(recipe) %> </p>
+    <% end %>
+</div>

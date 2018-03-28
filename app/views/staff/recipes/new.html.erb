@@ -1,0 +1,55 @@
+<div class="row">
+<%= form_for [:staff, @recipe] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name  %>
+
+    <%= f.label :subtype  %>
+    <%= f.select :subtype, options_for_select(Recipe.subtypes), :subtype, :subtype  %>
+    <%= f.label :category  %>
+    <%= f.text_field :category  %>
+    <%= f.label :level  %>
+    <%= f.text_field :level  %>
+    <%= f.label :effect_family  %>
+    <%= f.text_field :effect_family  %>
+    <%= f.label :delivery  %>
+    <%= f.text_field :delivery  %>
+    <%= f.label :application_time  %>
+    <%= f.text_field :application_time  %>
+
+    <%= f.label :duration  %>
+    <%= f.text_field :duration  %>
+
+    <%= f.label :effect  %>
+    <%= f.text_field :effect  %>
+
+    <%= f.label :description  %>
+    <%= f.text_field :description  %>
+
+    <%= f.label :ingredient_1_id  %>
+    <%= f.text_field :ingredient_1_id  %>
+
+    <%= f.label :ingredient_2_id  %>
+    <%= f.text_field :ingredient_2_id  %>
+
+    <%= f.label :ingredient_3_id  %>
+    <%= f.text_field :ingredient_3_id  %>
+
+    <%= f.label :ingredient_4_id  %>
+    <%= f.text_field :ingredient_4_id  %>
+
+    <%= f.label :process_1  %>
+    <%= f.text_field :process_1  %>
+
+    <%= f.label :process_2  %>
+    <%= f.text_field :process_2  %>
+
+    <%= f.label :process_3  %>
+    <%= f.text_field :process_3  %>
+
+    <%= f.label :process_4  %>
+    <%= f.text_field :process_4  %>
+
+
+    <%= f.submit %>
+<% end %>
+</div>
