@@ -1,5 +1,5 @@
 class BankAccountsController < ApplicationController
-  before_action :authenticate_staff!
+
   def index
     if current_user.banker?|| current_user.staff?
       @accounts = BankAccount.all
@@ -20,6 +20,7 @@ class BankAccountsController < ApplicationController
     end
     @account = @character.bank_account
     @transactions = @account.bank_transactions
+    @user = current_user
   end
 
 
