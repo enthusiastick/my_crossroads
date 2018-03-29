@@ -1,14 +1,9 @@
 class BankAccountsController < ApplicationController
+
   def index
     if current_user.banker?|| current_user.staff?
       @accounts = BankAccount.all
-      characters = Character.all
-      @characters_without_accounts = []
-      characters.each do |character|
-        if !BankAccount.has_account?(character.id) == true && character.archived==false
-          @characters_without_accounts << character
-        end
-      end
+      @characters_without_accounts = Character.includes(:bank_account).where(archived: false, bank_accounts: { id: nil })
       @account = BankAccount.new
     else
       authenticate_staff!
@@ -25,12 +20,18 @@ class BankAccountsController < ApplicationController
     end
     @account = @character.bank_account
     @transactions = @account.bank_transactions
+    @user = current_user
   end
 
 
   def create
     @account = BankAccount.new(account_params)
     if @account.save
+      BankTransaction.create(
+        bank_account_id:@account.id,
+        transaction_type: "Initial Deposit",
+        transaction_amount: @account.balance
+      )
       redirect_to character_bank_account_path(@account.character,@account)
     else
       flash[:notice]="Account add failed"

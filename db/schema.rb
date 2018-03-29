@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325222310) do
+ActiveRecord::Schema.define(version: 20180329005536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,9 @@ ActiveRecord::Schema.define(version: 20180325222310) do
     t.integer "transaction_amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "target_account_id"
     t.index ["bank_account_id"], name: "index_bank_transactions_on_bank_account_id"
+    t.index ["target_account_id"], name: "index_bank_transactions_on_target_account_id"
   end
 
   create_table "bookings", id: :serial, force: :cascade do |t|
