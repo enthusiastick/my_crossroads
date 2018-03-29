@@ -27,6 +27,11 @@ class BankAccountsController < ApplicationController
   def create
     @account = BankAccount.new(account_params)
     if @account.save
+      BankTransaction.create(
+        bank_account_id:@account.id,
+        transaction_type: "Initial Deposit",
+        transaction_amount: @account.balance
+      )
       redirect_to character_bank_account_path(@account.character,@account)
     else
       flash[:notice]="Account add failed"
