@@ -9,7 +9,7 @@
     <tbody>
 <% @accounts.each do |account| %>
   <tr>
-    <td><%=link_to "#{account.character.name}", character_bank_account_path(account.character.id, account.id)%></td>
+    <td><%=link_to "#{account.character.name}", character_bank_account_path(account.character, account)%></td>
     <td><%=account.balance%> Drake</td>
   </tr>
 <% end %>

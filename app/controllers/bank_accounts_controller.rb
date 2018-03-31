@@ -12,9 +12,6 @@ class BankAccountsController < ApplicationController
 
   def show
     @character = Character.find_by(slug: params[:character_id])
-      if !@character
-        @character = Character.find(params[:character_id])
-      end
     if !current_user.banker && !current_user.staff
       authorize_user(@character.user)
     end
