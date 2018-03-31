@@ -32,7 +32,8 @@ class Ingredient < ApplicationRecord
   accepts_nested_attributes_for :seasons
   has_many :inventories, dependent: :destroy
   has_many :characters, through: :inventories
-  has_many :recipes
+  has_many :recipes, through: :recipe_ingredients
+  has_many :recipe_ingredients
 
   validates_presence_of :category, :name, :rarity
 

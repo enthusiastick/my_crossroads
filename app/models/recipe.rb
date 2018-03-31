@@ -27,13 +27,10 @@ class Recipe < ApplicationRecord
     "Vial"
   ]
 
-  has_many :ingredient_1, class_name: "Ingredient", foreign_key: :ingredient_1_id
-  has_many :ingredient_2, class_name: "Ingredient", foreign_key: :ingredient_2_id
-  has_many :ingredient_3, class_name: "Ingredient", foreign_key: :ingredient_3_id
-  has_many :ingredient_4, class_name: "Ingredient", foreign_key: :ingredient_4_id
   has_many :recipe_books
   has_many :characters, through: :recipe_books
-
+  has_many :ingredients, through: :recipe_ingredients
+  has_many :recipe_ingredients
 
 def self.processes
    Recipe::PROCESSES

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329005536) do
+ActiveRecord::Schema.define(version: 20180331154034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,19 @@ ActiveRecord::Schema.define(version: 20180329005536) do
     t.index ["recipes_id"], name: "index_recipe_books_on_recipes_id"
   end
 
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "extraction_ingredient_id"
+    t.bigint "dissolution_ingredient_id"
+    t.bigint "concentration_ingredient_id"
+    t.bigint "calcination_ingredient_id"
+    t.index ["calcination_ingredient_id"], name: "index_recipe_ingredients_on_calcination_ingredient_id"
+    t.index ["concentration_ingredient_id"], name: "index_recipe_ingredients_on_concentration_ingredient_id"
+    t.index ["dissolution_ingredient_id"], name: "index_recipe_ingredients_on_dissolution_ingredient_id"
+    t.index ["extraction_ingredient_id"], name: "index_recipe_ingredients_on_extraction_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.string "subtype", null: false
@@ -194,21 +207,9 @@ ActiveRecord::Schema.define(version: 20180329005536) do
     t.string "duration"
     t.string "effect", null: false
     t.text "description", null: false
-    t.bigint "ingredient_1_id", null: false
-    t.bigint "ingredient_2_id"
-    t.bigint "ingredient_3_id"
-    t.bigint "ingredient_4_id"
-    t.string "process_1", null: false
-    t.string "process_2"
-    t.string "process_3"
-    t.string "process_4"
     t.string "hex_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ingredient_1_id"], name: "index_recipes_on_ingredient_1_id"
-    t.index ["ingredient_2_id"], name: "index_recipes_on_ingredient_2_id"
-    t.index ["ingredient_3_id"], name: "index_recipes_on_ingredient_3_id"
-    t.index ["ingredient_4_id"], name: "index_recipes_on_ingredient_4_id"
     t.index ["name"], name: "index_recipes_on_name", unique: true
   end
 
