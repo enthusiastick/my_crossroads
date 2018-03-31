@@ -21,7 +21,7 @@ class BankTransactionsController < ApplicationController
       )
       if @transaction.save
         BankTransaction.calculate_balance(@account, @transaction)
-        redirect_to character_bank_account_path(@character.id, @account.id)
+        redirect_to character_bank_account_path(@character, @account)
         flash[:notice] = 'Transaction added successfully'
       else
         flash[:notice] = 'Transaction failed'
@@ -43,7 +43,7 @@ class BankTransactionsController < ApplicationController
       )
       if transactions.map(&:save)
         BankTransaction.transfer(@account, @target_account, @transaction_amount)
-        redirect_to character_bank_account_path(@character.id, @account.id)
+        redirect_to character_bank_account_path(@character, @account)
       else
         flash[:notice] = 'Transaction add failed'
         render :new
@@ -53,7 +53,7 @@ class BankTransactionsController < ApplicationController
   end
 
   def new
-    @character = Character.find(params[:character_id])
+    @character = Character.find_by(slug: params[:character_id])
     @account = BankAccount.find(params[:bank_account_id])
     @characters_with_accounts = Character.includes(:bank_account).where.not(bank_accounts: { id: nil }, bank_accounts:{character_id: @character})
     @transaction = BankTransaction.new
@@ -63,6 +63,5 @@ class BankTransactionsController < ApplicationController
   protected
   def transaction_params
     params.require(:bank_transaction).permit(:transaction_type, :transaction_amount, :target_account)
-
   end
 end

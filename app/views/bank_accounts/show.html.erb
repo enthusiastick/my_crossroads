@@ -4,7 +4,7 @@
 <div> </div>
 <% if @user.staff? || @user.banker? %>
 <div class="row">
-<%= link_to "New Transaction", new_character_bank_account_bank_transaction_path(@character.id,@account.id),class:"button" %>
+<%= link_to "New Transaction", new_character_bank_account_bank_transaction_path(@character,@account),class:"button" %>
 </div>
 <% end %>
 
