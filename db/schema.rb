@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331154034) do
+ActiveRecord::Schema.define(version: 20180331220606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,19 +183,6 @@ ActiveRecord::Schema.define(version: 20180331154034) do
     t.index ["recipes_id"], name: "index_recipe_books_on_recipes_id"
   end
 
-  create_table "recipe_ingredients", force: :cascade do |t|
-    t.bigint "recipe_id"
-    t.bigint "extraction_ingredient_id"
-    t.bigint "dissolution_ingredient_id"
-    t.bigint "concentration_ingredient_id"
-    t.bigint "calcination_ingredient_id"
-    t.index ["calcination_ingredient_id"], name: "index_recipe_ingredients_on_calcination_ingredient_id"
-    t.index ["concentration_ingredient_id"], name: "index_recipe_ingredients_on_concentration_ingredient_id"
-    t.index ["dissolution_ingredient_id"], name: "index_recipe_ingredients_on_dissolution_ingredient_id"
-    t.index ["extraction_ingredient_id"], name: "index_recipe_ingredients_on_extraction_ingredient_id"
-    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.string "subtype", null: false
@@ -210,6 +197,14 @@ ActiveRecord::Schema.define(version: 20180331154034) do
     t.string "hex_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "extraction_ingredient_id"
+    t.bigint "calcination_ingredient_id"
+    t.bigint "dissolution_ingredient_id"
+    t.bigint "concentration_ingredient_id"
+    t.index ["calcination_ingredient_id"], name: "index_recipes_on_calcination_ingredient_id"
+    t.index ["concentration_ingredient_id"], name: "index_recipes_on_concentration_ingredient_id"
+    t.index ["dissolution_ingredient_id"], name: "index_recipes_on_dissolution_ingredient_id"
+    t.index ["extraction_ingredient_id"], name: "index_recipes_on_extraction_ingredient_id"
     t.index ["name"], name: "index_recipes_on_name", unique: true
   end
 

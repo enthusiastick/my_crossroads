@@ -1,18 +1,27 @@
 <div class="row">
 <%= form_for [:staff, @recipe] do |f| %>
+
+    <%= f.label :extraction_ingredient_id %>
+    <%= f.collection_select(:extraction_ingredient_id, @ingredients, :id, :name, {include_blank:true}) %>
+
+    <%= f.label :calcination_ingredient_id %>
+    <%= f.collection_select(:calcination_ingredient_id, @ingredients, :id, :name, {include_blank:true}) %>
+
+    <%= f.label :dissolution_ingredient_id %>
+    <%= f.collection_select(:dissolution_ingredient_id, @ingredients, :id, :name, {include_blank:true}) %>
+
+    <%= f.label :concentration_ingredient_id %>
+    <%= f.collection_select(:concentration_ingredient_id, @ingredients, :id, :name, {include_blank:true}) %>
+
     <%= f.label :name %>
     <%= f.text_field :name  %>
 
-    <%= f.label :subtype  %>
-    <%= f.select :subtype, options_for_select_from_collection(Recipe.subtypes), :subtype, :subtype  %>
     <%= f.label :category  %>
-    <%= f.text_field :category  %>
-    <%= f.label :level  %>
-    <%= f.text_field :level  %>
+    <%= f.select :category, options_for_select(Recipe.categories{ |value| [value]}), include_blank:true %>
+
     <%= f.label :effect_family  %>
-    <%= f.text_field :effect_family  %>
-    <%= f.label :delivery  %>
-    <%= f.text_field :delivery  %>
+    <%= f.select :effect_family, options_for_select(Recipe.effect_families{ |value| [value]}), include_blank:true %>
+
     <%= f.label :application_time  %>
     <%= f.text_field :application_time  %>
 
@@ -23,7 +32,8 @@
     <%= f.text_field :effect  %>
 
     <%= f.label :description  %>
-    <%= f.text_field :description  %>
+    <%= f.text_area :description  %>
+
 
     <%= f.submit %>
 <% end %>

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :professions, only: [:index, :show]
     resources :profession_links, only: [:create, :new, :update]
     resources :profiles, only: [:index]
+    resources :recipes
     resources :receipts, only: [:show]
     resources :review_profiles, only: [:index]
     resources :staff_profiles, only: [:create, :update]

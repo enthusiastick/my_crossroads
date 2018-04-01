@@ -18,13 +18,9 @@ csv.each do |row|
     r.duration = row["duration"],
     r.effect = row["effect"],
     r.description = row["description"],
-    r.ingredient_1_id = row[ "ingredient_1_id"],
-    r.ingredient_2_id = row[ "ingredient_2_id"],
-    r.ingredient_3_id = row[ "ingredient_3_id"],
-    r.ingredient_4_id = row[ "ingredient_4_id"],
-    r.process_1 = row["process_1"],
-    r.process_2 = row["process_2"],
-    r.process_3 = row["process_3"],
-    r.process_4 = row["process_4"]
+    r.extraction_ingredient_id = row[ "ingredient_2_id"],
+    r.calcination_ingredient_id = row[ "ingredient_3_id"],
+    r.dissolution_ingredient_id = row[ "ingredient_1_id"],
+    r.concentration_ingredient_id = row[ "ingredient_4_id"],
   r.save
 end
