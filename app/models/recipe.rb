@@ -106,7 +106,6 @@ class Recipe < ApplicationRecord
     if recipe.category =="Inert" || recipe.category =="Vials" || recipe.category =="Inks" || recipe.category =="Gasses"
       level = 1
     end
-
     subtype = Recipe.subtypes[recipe.category][level-1].values[0]
     delivery = "None"
     if recipe.category == "Coatings" || recipe.category == "Liniments" || recipe.category == "Particulates"
@@ -118,6 +117,6 @@ class Recipe < ApplicationRecord
     else
       delivery = "None"
     end
-    recipe.update(level: level, subtype: subtype, delivery:delivery)
+    return {"Delivery" => delivery, "Subtype" => subtype, "Level" => level}
   end
 end

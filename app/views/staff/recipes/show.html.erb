@@ -54,4 +54,8 @@
   <h1 class="recipeHeader">Description</h1>
   <%= @recipe.description %>
 </div>
+
+<div class="row">
+<%= link_to "Edit this recipe",edit_staff_recipe_path(@recipe), class:"button" %>
+</div>
 </div>
