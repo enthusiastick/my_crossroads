@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331220606) do
+ActiveRecord::Schema.define(version: 20180402023717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20180331220606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "profession_id"], name: "index_character_professions_on_character_id_and_profession_id", unique: true
+  end
+
+  create_table "character_recipes", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "recipe_id"
+    t.index ["character_id"], name: "index_character_recipes_on_character_id"
+    t.index ["recipe_id"], name: "index_character_recipes_on_recipe_id"
   end
 
   create_table "characters", id: :serial, force: :cascade do |t|
@@ -174,15 +181,6 @@ ActiveRecord::Schema.define(version: 20180331220606) do
     t.cidr "ip_address"
   end
 
-  create_table "recipe_books", force: :cascade do |t|
-    t.bigint "character_id"
-    t.bigint "recipes_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["character_id"], name: "index_recipe_books_on_character_id"
-    t.index ["recipes_id"], name: "index_recipe_books_on_recipes_id"
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.string "subtype", null: false
@@ -201,11 +199,13 @@ ActiveRecord::Schema.define(version: 20180331220606) do
     t.bigint "calcination_ingredient_id"
     t.bigint "dissolution_ingredient_id"
     t.bigint "concentration_ingredient_id"
+    t.string "slug", null: false
     t.index ["calcination_ingredient_id"], name: "index_recipes_on_calcination_ingredient_id"
     t.index ["concentration_ingredient_id"], name: "index_recipes_on_concentration_ingredient_id"
     t.index ["dissolution_ingredient_id"], name: "index_recipes_on_dissolution_ingredient_id"
     t.index ["extraction_ingredient_id"], name: "index_recipes_on_extraction_ingredient_id"
     t.index ["name"], name: "index_recipes_on_name", unique: true
+    t.index ["slug"], name: "index_recipes_on_slug", unique: true
   end
 
   create_table "seasons", id: :serial, force: :cascade do |t|

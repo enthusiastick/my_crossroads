@@ -28,6 +28,11 @@
     -unless @bank_account.length == 0
       %p.text-center
         =link_to "Bank Account",character_bank_account_path(@character.id, @bank_account[0].id)
+    -if @character.alchemist?
+      %p.text-center
+        =link_to staff_user_character_character_recipes_path(@character.user, @character), class: "button" do
+          %i.fa.fa-list-ol
+          Character Recipes
     -if @character.inventories.empty?
       -if current_user.editor?
         %p.text-center

@@ -1,0 +1,8 @@
+<div class="row">
+  <h1><%= @character.name%> Recipes Known </h1>
+  <% @recipes.each do |recipe| %>
+  <p>
+    <%= link_to recipe.name, recipe_path(recipe) %>
+  </p>
+  <% end %>
+</div>

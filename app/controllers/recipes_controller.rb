@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def new
-
+  def show
+    @recipe = Recipe.find_by(slug:params[:id])
   end
 end

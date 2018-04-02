@@ -34,8 +34,8 @@ Rails.application.routes.draw do
     resources :staff_profiles, only: [:create, :update]
     resources :users, only: [:index, :show] do
       resources :characters, only: [:edit, :show] do
+        resources :character_recipes, only: [:index]
         resources :inventories, only: [:index]
-        resources :recipe_books
       end
     end
     resources :recipes
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:new, :update]
   resources :cash_bookings, only: [:new, :create]
   resources :characters, only: [:create, :edit, :index, :new, :show, :update] do
-    resources :recipe_books, only:[:show]
+    resources :character_recipes, only:[:index]
     resources :bank_accounts, only: [:show, :edit, :new] do
       resources :bank_transactions
       end
@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :password_resets, only: [:create, :edit, :new, :update]
   resources :receipts, only: [:create]
+  resources :recipes, only:[:show]
   resources :staff, only: [:index] do
     resources :messages, only: [:create, :new]
   end

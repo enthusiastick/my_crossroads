@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+    before_validation :generate_slug
+
   CATEGORIES = [
     "Coatings",
     "Gasses",
@@ -67,12 +69,14 @@ class Recipe < ApplicationRecord
 
 
   has_many :recipe_books
-  has_many :characters, through: :recipe_books
+  has_many :character_recipes
+  has_many :characters, through: :character_recipes
   belongs_to :extraction_ingredient, class_name: 'Ingredient', foreign_key: :extraction_ingredient_id, optional: true
   belongs_to :concentration_ingredient, class_name: 'Ingredient', foreign_key: :concentration_ingredient_id, optional: true
   belongs_to :dissolution_ingredient, class_name: 'Ingredient', foreign_key: :dissolution_ingredient_id, optional: true
   belongs_to :calcination_ingredient, class_name: 'Ingredient', foreign_key: :calcination_ingredient_id, optional: true
 
+  validates_presence_of :name, :slug
 
   def self.categories
     Recipe::CATEGORIES
@@ -118,5 +122,15 @@ class Recipe < ApplicationRecord
       delivery = "None"
     end
     return {"Delivery" => delivery, "Subtype" => subtype, "Level" => level}
+  end
+
+  def to_param
+    slug
+  end
+
+  protected
+  
+  def generate_slug
+    self.slug ||= name.parameterize
   end
 end
