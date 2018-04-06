@@ -174,44 +174,6 @@ ActiveRecord::Schema.define(version: 20180329005536) do
     t.cidr "ip_address"
   end
 
-  create_table "recipe_books", force: :cascade do |t|
-    t.bigint "character_id"
-    t.bigint "recipes_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["character_id"], name: "index_recipe_books_on_character_id"
-    t.index ["recipes_id"], name: "index_recipe_books_on_recipes_id"
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "subtype", null: false
-    t.string "category", null: false
-    t.integer "level", null: false
-    t.string "effect_family", null: false
-    t.string "delivery", null: false
-    t.string "application_time"
-    t.string "duration"
-    t.string "effect", null: false
-    t.text "description", null: false
-    t.bigint "ingredient_1_id", null: false
-    t.bigint "ingredient_2_id"
-    t.bigint "ingredient_3_id"
-    t.bigint "ingredient_4_id"
-    t.string "process_1", null: false
-    t.string "process_2"
-    t.string "process_3"
-    t.string "process_4"
-    t.string "hex_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ingredient_1_id"], name: "index_recipes_on_ingredient_1_id"
-    t.index ["ingredient_2_id"], name: "index_recipes_on_ingredient_2_id"
-    t.index ["ingredient_3_id"], name: "index_recipes_on_ingredient_3_id"
-    t.index ["ingredient_4_id"], name: "index_recipes_on_ingredient_4_id"
-    t.index ["name"], name: "index_recipes_on_name", unique: true
-  end
-
   create_table "seasons", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "equivalent"
