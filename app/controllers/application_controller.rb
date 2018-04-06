@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_banker_or_staff!
+    authenticate_user!
+    if user_signed_in?
+      unless current_user.banker? || current_user.staff?
+        flash[:alert] = "You are not authorized to access this content."
+        redirect_to root_path
+      end
+    end
+  end
+
   def authenticate_staff!
     authenticate_user!
     if user_signed_in?

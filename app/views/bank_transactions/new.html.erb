@@ -1,0 +1,21 @@
+<div class="bankForm">
+  <%= form_for [@character,@account,@transaction] do |f| %>
+  <%= f.label "Transaction Type" %>
+  <%= f.radio_button :transaction_type, "Debit" %>
+  <%= label :transaction_type, "Debit" %>
+
+  <%= f.radio_button :transaction_type, "Credit" %>
+  <%= label :transaction_type, "Credit" %>
+
+  <%= f.radio_button :transaction_type, "Transfer" %>
+  <%= label :transaction_type, "Transfer" %>
+
+  <%= f.label :transaction_amount, "Amount" %>
+  <%= f.text_field :transaction_amount , class: "drakeBank"%>
+
+  <%= f.label :target_account, "Transfer To" %>
+  <%= f.collection_select(:target_account,@characters_with_accounts, :id,:name,{include_blank: true}, class: "characterSelect")%>
+  <%= f.submit "Submit", class:"button" %>
+
+  <% end %>
+</div>

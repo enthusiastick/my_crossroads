@@ -1,0 +1,33 @@
+<div class="row">
+<h1 class="bankHeader">Bank of Derrikham</h1>
+<div class="row">
+  <table role="grid" class="row">
+    <thead class="row">
+      <th>Character</th>
+      <th>Balance</th>
+    </thead>
+    <tbody>
+<% @accounts.each do |account| %>
+  <tr>
+    <td><%=link_to "#{account.character.name}", character_bank_account_path(account.character, account)%></td>
+    <td><%=account.balance%> Drake</td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>
+  <div class="row">
+    <h1>Create a new account</h1>
+  <%= form_for(@account) do |f| %>
+
+     <%= f.label  :character_id, "Character" %>
+     <%= f.collection_select(:character_id,@characters_without_accounts, :id,:name,{include_blank: true}, class: "characterSelect")%>
+
+     <%= f.label :balance, "Starting Balance" %>
+     <%= f.text_field :balance, class:"startingBalance" %>
+
+     <%= f.submit "Create Bank Account", class:"button" %>
+  <% end %>
+
+</div>
+</div>

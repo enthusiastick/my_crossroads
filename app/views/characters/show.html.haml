@@ -18,6 +18,9 @@
       %p.text-center
         =number_with_delimiter(@character.drake)
         Drake
+    -unless @character.bank_account.nil?
+      %p.text-center
+        =link_to "Bank Account",character_bank_account_path(@character, @character.bank_account)
     -unless @character.inventories.empty?
       .callout
         %h2.text-center Components Inventory

@@ -1,0 +1,32 @@
+<div class="row">
+<h1 class="bankHeader"> <%= link_to "Bank of Derrikham", bank_accounts_path %> </h1>
+<h3> <%= @character.name %>'s Bank Account - Balance: <%= @account.balance  %> Drake</h3>
+<div> </div>
+<% if @user.staff? || @user.banker? %>
+<div class="row">
+<%= link_to "New Transaction", new_character_bank_account_bank_transaction_path(@character,@account),class:"button" %>
+</div>
+<% end %>
+
+<div class="row">
+  <h1>Transaction History</h1>
+  <table role="grid" class="row">
+    <thead class="row">
+      <th>date</th>
+      <th>time</th>
+      <th>type</th>
+      <th>amount</th>
+    </thead>
+    <tbody>
+<% @transactions.each do |tran| %>
+<tr>
+  <td><%= tran.created_at.strftime("%D") %></td>
+  <td><%= tran.created_at.strftime("%R") %></td>
+  <td><%= tran.transaction_type %></td>
+  <td><%= tran.transaction_amount %> Drake</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
