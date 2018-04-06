@@ -1,4 +1,6 @@
 class BankTransactionsController < ApplicationController
+  before_action :authenticate_banker_or_staff!
+
   def create
     @character = Character.find_by(slug: params[:character_id])
     @account = BankAccount.find(params[:bank_account_id])
@@ -9,7 +11,7 @@ class BankTransactionsController < ApplicationController
     @transaction_type = transaction_params[:transaction_type]
     @transaction_amount = transaction_params[:transaction_amount]
     if BankTransaction.validate_balance?(@account,@transaction_type, @transaction_amount)
-      flash[:notice] = "Not enough drake for transaction"
+      flash[:alert] = "Not enough drake for transaction"
       redirect_to bank_accounts_path and return
     end
     if @transaction_type == "Credit" || @transaction_type == "Debit"
@@ -22,9 +24,9 @@ class BankTransactionsController < ApplicationController
       if @transaction.save
         BankTransaction.calculate_balance(@account, @transaction)
         redirect_to character_bank_account_path(@character, @account)
-        flash[:notice] = 'Transaction added successfully'
+        flash[:success] = 'Transaction added successfully'
       else
-        flash[:notice] = 'Transaction failed'
+        flash[:alert] = 'Transaction failed'
         render :new
       end
     else
@@ -45,11 +47,10 @@ class BankTransactionsController < ApplicationController
         BankTransaction.transfer(@account, @target_account, @transaction_amount)
         redirect_to character_bank_account_path(@character, @account)
       else
-        flash[:notice] = 'Transaction add failed'
+        flash[:alert] = 'Transaction add failed'
         render :new
       end
     end
-
   end
 
   def new

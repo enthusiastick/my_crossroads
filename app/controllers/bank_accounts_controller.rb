@@ -1,13 +1,10 @@
 class BankAccountsController < ApplicationController
+  before_action :authenticate_banker_or_staff!, only: [:create, :index]
 
   def index
-    if current_user.banker?|| current_user.staff?
-      @accounts = BankAccount.all
-      @characters_without_accounts = Character.includes(:bank_account).where(archived: false, bank_accounts: { id: nil })
-      @account = BankAccount.new
-    else
-      authenticate_staff!
-    end
+    @accounts = BankAccount.all
+    @characters_without_accounts = Character.includes(:bank_account).where(archived: false, bank_accounts: { id: nil }).alpha_by_name
+    @account = BankAccount.new
   end
 
   def show
@@ -19,7 +16,6 @@ class BankAccountsController < ApplicationController
     @transactions = @account.bank_transactions
     @user = current_user
   end
-
 
   def create
     @account = BankAccount.new(account_params)
@@ -43,6 +39,7 @@ class BankAccountsController < ApplicationController
   end
 
   protected
+
   def account_params
     params.require(:bank_account).permit(:character_id, :balance)
   end
