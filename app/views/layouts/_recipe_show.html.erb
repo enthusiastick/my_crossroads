@@ -1,0 +1,60 @@
+<h1 class="recipeHeader"><%= @recipe.name %></h1>
+<div class="large-12 columns">
+  <table role="grid" class="row">
+    <thead class="row">
+      <th>Level</th>
+      <th>Subtype</th>
+      <th>Category</th>
+      <th>Effect Family</th>
+      <th>Delivery</th>
+      <th>Application Time</th>
+      <th>Duration</th>
+    </thead>
+    <tbody>
+      <td><%=@recipe.level%></td>
+      <td><%=@recipe.subtype%></td>
+      <td><%=@recipe.category%></td>
+      <td><%=@recipe.effect_family%></td>
+      <td><%=@recipe.delivery%></td>
+      <td><%=@recipe.application_time%></td>
+      <td><%=@recipe.duration%></td>
+    </tbody>
+  </table>
+</div>
+<div class="large-12 columns">
+  <h1 class="recipeHeader">Description</h1>
+  <p class="recipeDescription"><%= @recipe.description %></p>
+</div>
+<h1 class="recipeHeader">Ingredients</h1>
+<div class="large-12 columns">
+  <table role="grid" class="row">
+    <thead>
+    <% if @recipe.extraction_ingredient %>
+      <th>Extraction</th>
+    <% end %>
+    <% if @recipe.calcination_ingredient %>
+      <th>Calcination</th>
+    <% end %>
+    <% if @recipe.dissolution_ingredient %>
+      <th>Dissolution</th>
+    <% end %>
+    <% if @recipe.concentration_ingredient%>
+      <th>Concentration</th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% if @recipe.extraction_ingredient %>
+      <td><%= @recipe.extraction_ingredient.name %></td>
+    <% end %>
+    <% if @recipe.calcination_ingredient %>
+      <td><%= @recipe.calcination_ingredient.name %></td>
+    <% end %>
+    <% if @recipe.dissolution_ingredient %>
+      <td><%= @recipe.dissolution_ingredient.name %></td>
+    <% end %>
+    <% if @recipe.concentration_ingredient%>
+      <td><%= @recipe.concentration_ingredient.name %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

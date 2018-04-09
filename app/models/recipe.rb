@@ -129,7 +129,7 @@ class Recipe < ApplicationRecord
   end
 
   protected
-  
+
   def generate_slug
     self.slug ||= name.parameterize
   end

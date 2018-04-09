@@ -1,61 +1,7 @@
 <div class="row">
-<h1 class="recipeHeader"><%= @recipe.name %></h1>
-<div class="recipeHeader large-10 large-1-offset columns">
-  <span class="large-3 columns">
-    <span class="recipeSpanLabels">Level:</span>
-    <span class="recipeSpanDetail"><%=@recipe.level%></span>
-  </span>
-  <span class="large-3 columns">
-    <span class="recipeSpanLabels">Subtype:</span>
-    <span class="recipeSpanDetail"><%=@recipe.subtype%></span>
-  </span>
-  <span class="large-3 columns">
-    <span class="recipeSpanLabels">Category:</span>
-    <span class="recipeSpanDetail"><%=@recipe.category%></span>
-  </span>
-  <span class="large-3 columns end">
-    <span class="recipeSpanLabels">Effect Family:</span>
-    <span class="recipeSpanDetail"><%=@recipe.effect_family%></span>
-  </span>
-
-</div>
-<div class="row">
-<div class="recipeHeader large-10 large-1-offset columns">
-    <span class="large-3 columns">
-  <span class="recipeSpanLabels">Delivery:</span>
-  <span class="recipeSpanDetail"><%=@recipe.delivery%></span>
-    </span>
-    <span class="large-4 columns">
-  <span class="recipeSpanLabels">Application Time:</span>
-  <span class="recipeSpanDetail"><%=@recipe.application_time%></span>
-    </span>
-    <span class="large-4 columns end">
-  <span class="recipeSpanLabels">Duration:</span>
-  <span class="recipeSpanDetail"><%=@recipe.duration%></span>
-    </span>
-  </div>
-</div>
-<div class="recipeIngredients row">
-  <h2 class="recipeHeader">Ingredients</h2>
-<% if @recipe.extraction_ingredient %>
-<span class="recipeSpanDetail">Extraction: <%= @recipe.extraction_ingredient.name %></span>
-<% end %>
-<% if @recipe.calcination_ingredient %>
-<span class="recipeSpanDetail">Calcination:<%= @recipe.calcination_ingredient.name %></span>
-<% end %>
-<% if @recipe.dissolution_ingredient %>
-<span class="recipeSpanDetail">Dissolution:<%= @recipe.dissolution_ingredient.name %></span>
-<% end %>
-<% if @recipe.concentration_ingredient%>
-<span class="recipeSpanDetail">Concentration:<%= @recipe.concentration_ingredient.name %></span>
-<% end %>
-</div>
-<div>
-  <h1 class="recipeHeader">Description</h1>
-  <%= @recipe.description %>
-</div>
-
+<%= render partial:"layouts/recipe_show" %>
 <div class="row">
 <%= link_to "Edit this recipe",edit_staff_recipe_path(@recipe), class:"button" %>
+<%= link_to "Assign this recipe to a character", new_staff_recipe_character_recipe_path(@recipe), class:"button" %>
 </div>
 </div>

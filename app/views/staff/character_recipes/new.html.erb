@@ -1,0 +1,25 @@
+<% if @character %>
+  <h1>Assign Recipe to <%= link_to @character.name, staff_user_character_character_recipes_path(@character.user, @character) %></h1>
+  <div class="row">
+    <%= form_for [:staff,:user,:character, @character_recipe] do |f| %>
+    <%= f.label :recipe_id, "Recipe" %>
+    <%= f.collection_select(:recipe_id,@recipes,:id,:name, {include_blank:true}) %>
+
+    <%= f.submit "Assign", class:"button" %>
+
+    <% end %>
+
+  </div>
+<% end %>
+
+<% if @recipe %>
+<div class="row">
+  <h1>Assign <%=@recipe.name %> to a character</h1>
+  <%= form_for [:staff, :recipe, @character_recipe] do |f| %>
+  <%= f.label :character_id %>
+  <%= f.collection_select(:character_id, @alchemists, :id,:name, {include_blank:true}) %>
+
+  <%= f.submit "Assign", class:"button" %>
+  <% end %>
+</div>
+<% end %>

@@ -13,19 +13,17 @@
       =@character.name
       %a{"data-open": "historyModal"}
         %i.fa.fa-book{"aria-hidden": "true"}
+      -if @character.alchemist?
+        =link_to character_character_recipes_path(@character.slug) do
+          %i.fa.fa-flask{"aria-hidden": "true"}
+      -unless @character.bank_account.nil?
+        =link_to character_bank_account_path(@character, @character.bank_account) do
+          %i.fa.fa-diamond{"aria-hidden": "true"}
     %h3.text-center= @character.race.titleize
     -unless @character.drake.nil?
       %p.text-center
         =number_with_delimiter(@character.drake)
         Drake
-    -unless @character.bank_account.nil?
-      %p.text-center
-        =link_to "Bank Account",character_bank_account_path(@character, @character.bank_account)
-    -if @character.alchemist?
-      %p.text-center
-        =link_to character_character_recipes_path(@character), class: "button" do
-          %i.fa.fa-list-ol
-          Character Recipes
     -unless @character.inventories.empty?
       .callout
         %h2.text-center Components Inventory

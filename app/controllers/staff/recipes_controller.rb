@@ -1,12 +1,12 @@
 class Staff::RecipesController < ApplicationController
   before_action :authenticate_staff!
+
   def index
     @recipes = Recipe.all
   end
 
   def show
     @recipe = Recipe.find_by(slug:params[:id])
-
   end
 
   def new
@@ -29,14 +29,14 @@ class Staff::RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(slug:params[:id])
     @ingredients = Ingredient.all
     @category = @recipe.category
     @effect_family = @recipe.effect_family
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(slug:params[:id])
     if @recipe.update(
       extraction_ingredient_id:recipe_params[:extraction_ingredient_id],
       calcination_ingredient_id:recipe_params[:calcination_ingredient_id],
