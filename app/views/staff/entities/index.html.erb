@@ -1,0 +1,16 @@
+<div class="row">
+<h1>Entities</h1>
+<div class="row">
+<% @entities.each do |entity|%>
+<div class ="row">
+  <%= entity.name %>
+  <ul class = "row">Members
+    <% entity.characters.each do |character| %>
+    <li class="entityMembers"><%= character.name %> </li>
+    <% end %>
+  </ul>
+
+</div>
+  <% end %>
+</div>
+</div>

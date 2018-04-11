@@ -33,6 +33,7 @@ class Ingredient < ApplicationRecord
   has_many :inventories, dependent: :destroy
   has_many :characters, through: :inventories
   has_many :recipes
+  has_many :entity_stores, as: :storable
 
   validates_presence_of :category, :name, :rarity
 

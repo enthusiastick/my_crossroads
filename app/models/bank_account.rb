@@ -1,5 +1,6 @@
 class BankAccount < ApplicationRecord
-  belongs_to :character
+  belongs_to :character, optional: true
+  belongs_to :entity, optional:true
   has_many :bank_transactions
 
   def self.has_account?(character_id)

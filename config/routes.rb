@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         resources :pictures, only: [:index]
       end
     end
+    resources :entities 
     resources :events, only: [:create, :destroy, :edit, :new, :update] do
       resources :bookings, only: [:index]
       resources :self_reports, only: [:index]
