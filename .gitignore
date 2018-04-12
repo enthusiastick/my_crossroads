@@ -18,3 +18,4 @@ latest.dump
 /public/packs
 /public/packs-test
 /node_modules
+/db/schema.rb
