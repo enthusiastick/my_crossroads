@@ -25,7 +25,6 @@ class Staff::CharactersController < ApplicationController
 
   def show
     @character = Character.find_by(slug: params[:id])
-    binding.pry
     @bank_account = BankAccount.where('character_id =?', @character.id)
     @markdown = new_markdown
   end

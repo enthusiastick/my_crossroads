@@ -2,6 +2,6 @@
   <h1><%= @entity.name%></h1>
   <div class="row"> <%= @entity.description %>  </div>
   <% @entity.characters.each do |character| %>
-  <div><%=link_to character.name, staff_user_character_path(character) %></div>
+  <div><%=link_to character.name, staff_user_character_path(character.user, character) %></div>
   <% end %>
 </div>
