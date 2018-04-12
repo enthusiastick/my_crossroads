@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402023717) do
+ActiveRecord::Schema.define(version: 20180412010914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bank_accounts", force: :cascade do |t|
-    t.bigint "character_id"
     t.integer "balance", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bankable_type"
+    t.bigint "character_id"
     t.index ["character_id"], name: "index_bank_accounts_on_character_id"
   end
 
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180402023717) do
   create_table "character_recipes", force: :cascade do |t|
     t.bigint "character_id"
     t.bigint "recipe_id"
+    t.index ["character_id", "recipe_id"], name: "index_character_recipes_on_character_id_and_recipe_id", unique: true
     t.index ["character_id"], name: "index_character_recipes_on_character_id"
     t.index ["recipe_id"], name: "index_character_recipes_on_recipe_id"
   end
@@ -79,6 +81,32 @@ ActiveRecord::Schema.define(version: 20180402023717) do
     t.integer "drake"
     t.index ["slug"], name: "index_characters_on_slug", unique: true
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "entities", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "slug", null: false
+    t.index ["name"], name: "index_entities_on_name", unique: true
+    t.index ["slug"], name: "index_entities_on_slug", unique: true
+  end
+
+  create_table "entity_characters", force: :cascade do |t|
+    t.bigint "entity_id"
+    t.bigint "character_id"
+    t.index ["character_id"], name: "index_entity_characters_on_character_id"
+    t.index ["entity_id", "character_id"], name: "index_entity_characters_on_entity_id_and_character_id", unique: true
+    t.index ["entity_id"], name: "index_entity_characters_on_entity_id"
+  end
+
+  create_table "entity_stores", force: :cascade do |t|
+    t.bigint "entity_id"
+    t.string "storable_type"
+    t.bigint "storable_id"
+    t.integer "quantity"
+    t.index ["entity_id", "storable_id", "storable_type"], name: "store_item", unique: true
+    t.index ["entity_id"], name: "index_entity_stores_on_entity_id"
+    t.index ["storable_type", "storable_id"], name: "index_entity_stores_on_storable_type_and_storable_id"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
