@@ -1,6 +1,6 @@
 class DropRecipeBooks < ActiveRecord::Migration[5.1]
   def up
-    remove_column :character_recipes, :recipe_books_id
+    remove_column :character_recipes, :recipe_book_id
     drop_table :recipe_books
   end
 

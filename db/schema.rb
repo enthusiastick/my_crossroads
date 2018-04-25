@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402023717) do
+ActiveRecord::Schema.define(version: 20180409024145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180402023717) do
   create_table "character_recipes", force: :cascade do |t|
     t.bigint "character_id"
     t.bigint "recipe_id"
+    t.index ["character_id", "recipe_id"], name: "index_character_recipes_on_character_id_and_recipe_id", unique: true
     t.index ["character_id"], name: "index_character_recipes_on_character_id"
     t.index ["recipe_id"], name: "index_character_recipes_on_recipe_id"
   end
@@ -247,13 +248,13 @@ ActiveRecord::Schema.define(version: 20180402023717) do
     t.integer "failed_sign_in_attempts", default: 0
     t.datetime "last_signed_in_at"
     t.integer "sign_in_count", default: 0
-    t.boolean "editor", default: false
     t.string "phone"
     t.string "street_address"
     t.string "city"
     t.string "state"
     t.string "zip"
     t.text "self_report"
+    t.boolean "editor", default: false
     t.boolean "banker", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["handle"], name: "index_users_on_handle", unique: true
