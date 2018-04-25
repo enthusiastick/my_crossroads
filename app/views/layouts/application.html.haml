@@ -40,6 +40,8 @@
           .top-bar-right
             %ul.vertical.medium-horizontal.menu
               -if user_signed_in?
+                -if current_user.banker?
+                  %li= link_to "Bank of Derrickham", bank_accounts_path, class: "button"
                 -if current_user.staff?
                   %li= link_to "Admin", staff_menu_path, class: "button"
                 %li= link_to "Sign Out", sign_out_path, method: :delete
