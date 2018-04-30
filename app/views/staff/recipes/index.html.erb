@@ -1,0 +1,29 @@
+
+<div class="row">
+  <h1>Recipes</h1>
+<div><%= link_to "Create a new Recipe",new_staff_recipe_path, class:"button" %></div>
+<div class="large-12 columns">
+  <table role="grid" class="row">
+    <thead class="row">
+      <th>Name</th>
+      <th>Level</th>
+      <th>Subtype</th>
+      <th>Category</th>
+      <th>Effect Family</th>
+      <th>Delivery</th>
+      <th>Application Time</th>
+      <th>Duration</th>
+    </thead>
+      <% @recipes.each do |recipe| %>
+      <tbody>
+      <td><%= link_to recipe.name, staff_recipe_path(recipe) %> </td>
+      <td><%=recipe.level%></td>
+      <td><%=recipe.subtype%></td>
+      <td><%=recipe.category%></td>
+      <td><%=recipe.effect_family%></td>
+      <td><%=recipe.delivery%></td>
+      <td><%=recipe.application_time%></td>
+      <td><%=recipe.duration%></td>
+    </tbody>
+      <% end %>
+  </table>

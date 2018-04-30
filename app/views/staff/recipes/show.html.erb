@@ -1,0 +1,7 @@
+<div class="row">
+<%= render partial:"layouts/recipe_show" %>
+<div class="row">
+<%= link_to "Edit this recipe",edit_staff_recipe_path(@recipe), class:"button" %>
+<%= link_to "Assign this recipe to a character", new_staff_recipe_character_recipe_path(@recipe), class:"button" %>
+</div>
+</div>

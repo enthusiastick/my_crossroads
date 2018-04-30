@@ -30,6 +30,9 @@ class Character < ApplicationRecord
   has_many :ingredients, through: :inventories
   accepts_nested_attributes_for :inventories
   has_one :bank_account
+  has_one :recipe_book
+  has_many :character_recipes
+  has_many :recipes, through: :character_recipes
 
   validates_numericality_of :drake, allow_nil: true, only_integer: true, greater_than_or_equal_to: 0
   validates_presence_of :name, :slug, :user

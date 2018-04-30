@@ -1,113 +1,127 @@
-name,category,rarity,season,grade,category2,extraction,calcination,dissolution,concentration
-Agaric Essence,Vials,Common,Any,1,Vials,sleep,tiring,lucid dreaming,improve dreams
-Alum/Barud,Mineral,Uncommon,Any,2,Minerals,Healing,None,Fixative/Mordant,Increase Healing
-Amanita Virosa,Mushrooms,Common,Spring,1,Mushrooms,Toxicity,Weakness,Disintegration,Increase Toxicity
-Amythest,Gems,Scarce,Any,2,Gems,Temperance,Manifestation,Cure Physical Damage,Tranquility
-Bisort,Plants,Scarce,Any,2,Plants,Astringent,Warning,Reduce Poison,Resist Poison
-Black Quartz,Stones,Rare,Any,3,Stones,merging of divergent? energy,protecting physical space from negative energy,Binding,Deep Meditation
-Blackrose,Plants,Ex. Rare,Varcindium,3,Plants,Protection,Spirit,Increase Spirit,spiritual protection
-Blood,Vials,Common,Any,1,Vials,"bypassing toxin defense (remove ""toxin"" from call)",decrease toxin defense,remove toxin defense,Draws out unique Racial qualities
-Bloodworm,Insects,Common,Any,2,Insects,Degeneration,None,Undeath,Death
-Blue Moss,Mushrooms,Uncommon,Spring,1,Mushrooms,Calmative,Heals Burns,Protects Against Fire,Increase Fire Resistance
-Bomb Thistle,Plants,Scarce,Any,2,Plants,Devastation,Dispersal,Stun,Plant Growth
-Bombshell,Mechanical,Common,Any,1,Mechanical,None,Add 5' radius to gas,None,None
-Brach,Mineral,Uncommon,Any,2,Minerals,Properties of Earth,Durability,enhances base effect,Increases Secondary Effect
-Carnelian,Stone,Scarce,Any,1,Stone,Physical Protection,Calming,Proof Against Wasting,Courage
-Cedarwood,Plants,Common,Spring/Fall,1,Plants,Cleansing,Paralysis,Knowledge,Clarity
-Chromium,Metal,Uncommon,Any,2,Metals,Resist Corrosion,Makes Things Brittle,Protects Metal,Properties of Air
-Cinnabar,Metal,Uncommon,Any,2,Metals,Manifestation/Prosperity,Visions,Increase Divine Connection,Release from Fear
-Copper,Metal,Common,Any,1,Metals,Transference,Conductivity,Cleverness,Properties of Spirit
-Corpseworm,Insects,Common,Any,1,Insects,Disease,Cleansing,Putrefaction,None
-Crow Egg,Animals,Common,Spring,2,Animals,Mimicry,Death,Intelligence,Rebirth
-Cupreus Patina,Mushrooms,Rare,Any,3,Mushrooms,Enervation (Wasting),Lingering Decay,Disease,None
-Cyra,Plants,Common,Spring,1,Plants,Distillation,Chaos,Juxtaposition,Decrease Compatibility
-Cyra Sap,Vials,Scarce,Spring/Summer,1,Vials,absorbed gases,defends against gas,reduces gas,changes gas
-Deer Antler,Animals,Common,Spring,2,Animals,Regenerative Healing,Repair Maim,Physical Strength,Alertness
-Dragon Scale,Animals,Ex. Rare,Any,3,Animals,Longevity,Resistance,Enhance,Improve
-Dragon Soul,Gems,Ex. Rare,Any,3,Gems,Purity,Amplification,Enhance Healing,Ice
-Eagle Egg,Animals,Rare,Fall,3,Animals,Creation,Air,Accuracy,Spirit
-Earth Newt,Animals,Common,Any,2,Animals,Acid,Identifies Inactive Ingredients,Separation/Dissolution,Earth
-Ebony,Plants,Common,Spring/Fall,1,Plants,Undeath,Death,Staining; Darkness,Spiritual Preparation
-Edram Root,Plants,Common,Spring,1,Plants,adhesive,Earth,Resilience,stability
-Eel,Animals,Uncommon,Any,2,Animals,Slipperiness,None,Shape Changing,Increase Water/Ice
-Elder Root,Plants,Common,Any,1,Plants,Healing,Curing Effects,Boosts Healing,Regeneration
-Elf's Ear,Plants,Common,Spring,1,Plants,Resist Lightning,Air,Growth,Adaptation
-Emerald,Gems,Uncommon,Any,2,Gems,Friendship,Unity,Increase Healing,Connection to Nature
-Essence of Change,Essences,Rare,Any,3,Essences,Limit effect of substance to Ritika,Limit substance to not work on Ritika,Increase effect on Ritika,Enhance effect on Ritika
-Essence of Energy,Essences,Rare,Any,3,Essences,Limit effect of substance to Krosan,Limit substance to not work on Krosan,Increase effect on Krosan,Enhance effect on Krosan
-Essence of Humanity,Essences,Rare,Any,3,Essences,Limit effect of substance to Human,Limit substance to not work on Human,Increase effect on Human,Enhance effect on Human
-Essence of the Mind,Essences,Rare,Any,3,Essences,Limit effect of substance to Dagon,Limit substance to not work on Dagon,Increase effect on Dagon,Enhance effect on Dagon
-Essence of the Mountain,Essences,Rare,Any,3,Essences,Limit effect of substance to Haroc,Limit substance to not work on Haroc,Increase effect on Haroc,Enhance effect on Haroc
-Essence of the World,Essences,Rare,Any,3,Essences,Limit effect of substance to Wyldlying,Limit substance to not work on Wyldlying,Increase effect on Wyldlying,Enhance effect on Wyldlying
-Essence of Tranquility,Essences,Rare,Any,3,Essences,Limit effect of substance to Elves,Limit substance to not work on Elves,Increase effect on Elves,Enhance effect on Elves
-Essence of Unlife,Essences,Rare,Any,3,Essences,Limit effect of substance to Undead,Limit substance to not work on Undead,Increase effect on Undead,Enhance effect on Undead
-Fire Newt,Animals,Uncommon,Spring 2/Fall 1,2,Animals,Disintegration,Protect from Fire,Enhance Fire,Increase Fire
-Firewort,Plants,Common,Any,1,Plants,Properties of Fire,Propagation,increase fire,enhance fire
-Flint,Stone,Common,Any,1,Stones,Ablation,Manifestation,Spirit,Clairvoyance
-Fly,Insects,Common,Any,1,Insects,Irritation,Agility,Nausea,Enhances effects of disease/sickness
-Fly Agaric,Mushrooms,Uncommon,Fall,2,Mushrooms,Nausea,Pain,Sleep,exhaustion (limit AP use)
-Forge's Friend,Insects,Uncommon,Any,2,Insects,Creation,Fire,Resist Fire,Toughen?
-Fox Tail,Animals,Uncommon,Any,2,Animals,Charm,Stealth?,Silence,Luck
-Frog,Animals,Common,Spring/Summer,1,Animals,Emotions,Hallucination,Adaptability,Transformation
-Gear,Mechanical,Scarce,Any,2,Mechanical,None,None,None,None
-Ghost Fungus,Mushrooms,Uncommon,Fall 2,2,Mushrooms,Light,Aspiration,Raising Up,Hope
-Gleaming Cup,Plants,Uncommon,Spring,2,Plants,None,Opposites,Reversal,Negation
-Gleaming Essence,Essences,Rare,Any,3,Essences,Limit effect of substance to Mystic,Limit substance to not work on Mystic,Increase effect on Mystic,Enhance effect on Mystic
-Glow Ants,Insects,Rare,Any,3,Insects,Cooperation,Determination,Light,Itchiness
-Glowing spider,Insects,Rare,Mod,3,Insects,dimensional awareness,freedom of movement,Connection,reduce fear
-Gold,Metal,Uncommon,Any,2,Metals,Perfection,Properties of the Sun,Amplify Healing,Amplify Curing
-Gold Wire,Mechanical,Scarce,Any,2,Mechanical,None,None,None,None
-Granite,Stone,Common,Any,1,Stones,Strength,Determination,Mind,Endurance
-Grense Spores,Mushrooms,Rare,Fall,3,Mushrooms,Anti-Vitality,Saps Regeneration,Reduce Healing,Weaken Resistance
-Grey Festerer,Mushrooms,Ex. Rare,Spring 1,3,Mushrooms,expulsion,Induce Bleeding,Death,Anticoagulant
-Grub ,Insects,Common,"Spring 2, Fall 1",1,Insects,Digestion,fights disease,enhance purification,Enhance disease resistance
-Heather,Plants,Uncommon,Spring/Summer,2,Plants,Sleep,exhaustion,Sleep,Coma
-Horehound,Plants,Scarce,Spring/Summer,1,Plants,Cyclic Regeneration,Focus,Healing,Restoration
-Hyacinth Nectar,Vials,Uncommon,Any,2,Vials,enhances vitality,improves vitality,protects vitality,restores vitality
-Hydrogen Atheleck,Vials,Common,Any,1,Vials,contact gases,vaporization,improve gaseousness,increase gaseousness
-Iron,Metal,Common,Any,1,Metals,Command,Warding against Glibben,Affinity to Blood,Battle
-Jade,Stones,Rare,Any,3,Stones,Balance,Counter-toxin,Dreaming,"Positivity, Joy"
-Laen,Mineral,Ex. Rare,Any,3,Minerals,None,Fortitude,Multiply Uses,Enhanced Resistance
-Lake Crab,Animals,Uncommon,Spring/Summer,2,Animals,Communication,Mental Protection,Frailty,Defense
-Lavastone,Stone,Uncommon,Any,2,Stones,Resist Fire,Transformation,Scouring,Cursing
-Lead,Metal,Common,Any,1,Metals,Obfuscation,Slowing,Mania,improve resistance
-Marcoc Oil,Vials,Uncommon,Any,2,Vials,revivification,verve,greatly prepares spririt for death,increase charisma
-Maythen Essence,Vials,Ex. Rare,Any,3,Vials,stasis,coma,sleep,suppress dreams
-Mercury,Vials,Uncommon,Any,2,Vials,entropy,fluidity,weaken structure,disharmony
-Methal Acid,Vials,Scarce,Any,3,Vials,division,changes liquids to gas,used to blend comps,nullify comp effects
-Mill Thorn,Plants,Uncommon,Any,2,Plants,Pain,Bleeding,anitcoagulant,Quicken Toxin
-Mother's Milk,Mushrooms,Common,Any,1,Mushrooms,Causes Moderate (lvl 2)Sleep Effect,Palliative,Reduce Mental Stress,Calming
-Mouse,Animals,Common,Any,1,Animals,Secrecy,Mystery,Survival/Adaptability?,Wayfinding
-Murkleech,Insects,Common,Spring/Summer,1,Insects,Sapping,Perserverance,Purification,Satiation
-Newt Acid,Vials,Uncommon,Any,2,Vials,rendering,caustics,Improve Acid,abrasive
-Obsidian,Stones,Uncommon,Any,2,Stones,Severance,Blocks Psionic Attack,Shielding,Spiritual Growth
-Orange Fungus,Mushrooms,Common,Spring,1,Mushrooms,Ages Materials,Weakens Resistances,Corrodes Metal,None
-Persil Liquid,Vials,Common,Any,1,Vials,causes weakness effect,unraveling,increases weakness,improves weakness
-Phosphorous,Mineral,Scarce,Any,1,Minerals,Explosive Energy,Energy transfer,Increase Explosiveness,Enhance Fire
-Piemont White,Mushrooms,Scarce,Any,2,Mushrooms,Feverish Energy,Increase Speed,induce exhaustion after initial effect,Reduce
-Piston,Mechanical,Uncommon,Any,2,Mechanical,None,None,None,None
-Platinum,Metal,Uncommon,Any,2,Metals,Reflective,Grounding,Reduce Lightning,Clairvoyance
-Pond Sucker,Mushrooms,Uncommon,Summer,2,Mushrooms,Healing,Speeds Limb Regeneration,Properties of Water,Increase Vitality
-Quartz Crystal,Stone,Common,Any,1,Stones,Focus,None,(Increase) Healing,Protection from Magic
-Rabbit,Animals,Common,Any,1,Animals,Fertility,Fear,Multiplication,Agility
-Radix Liquid,Vials,Common,Any,1,Vials,resilience,fortitude,increase resiliance,increase fortitude
-Red Lichen,Mushrooms,Scarce,Any,2,Mushrooms,Protection of Life,Coagulant,Protect from Hazardous Environs,Absorb Toxin
-Roach,Insects,Common,Any,1,Insects,Multiplication,Resistance,Survival,Resilience
-Ruby,Gems,Uncommon,Any,2,Gems,inspiration,Nobility,Cure Exhaustion,Passion
-Sapphire,Gems,Ex. Rare,Any,3,Gems,Justice,Integrity,Mental Health,Wisdom
-Sheep,Animals,Common,Summer/Any,1,Animals,None,Mental Suggestability,None,Insulation
-Silver,Metal,Uncommon,Any,1,Metals,Properties of the Moon,Amplify Magic,Magic,Resist Fire
-Silver Oak,Plant,Rare,Quellsvart,3,Plants,life,Renewal,greatly increase healing,greatly increase curing
-Snake,Animals,Scarce,Any,1,Animals,Venom,Reversal/Reverse Effects,Speed,Duplicity/Change
-Snake Venom,Vials,Rare,Any,2,Vials,lethality,quickness of effect,improve toxicity of ingested,increase damage
-Spider,Insects,Common,Any,1,Insects,Poison,Balance,Release from Binding,Strengthen Physical Bond
-Sulphur,Mineral,Scarce,Any,1,Minerals,Vitality,Explosive,Used to bypass defenses,Destroy Negativity
-Tofani,Plants,Uncommon,Any,2,Plants,Delirium,Silencing,declining health,Harm
-Tremellales,Mushrooms,Uncommon,Spring 1,2,Mushrooms,Increases Potency,Rejuvenation,Strengthen,Bonding
-Trytich,Mineral,Uncommon,Any,2,Minerals,Multiplication,Enhancement,Change,Increase
-Tubing,Mechanical,Common,Any,1,Mechanical,None,None,None,None
-Turtle,Animals,Uncommon,Spring/Summer,2,Animals,Protection,Endurance,Shielding,Hardness
-Undvika Heartwood,Plants,Ex. Rare,Quellsvart,3,Plants,pure magic,infuse magic,greatly increase magic,greatly improve magic
-White Sage,Plants,Uncommon,"Spring 2, Fall 1",2,Plants,recover from trauma,Purification,Union of Body and Spirit,Cleansing
-White Trumpet,Mushrooms,Common,Any,1,Mushrooms,Boosts Immune System,Fights Parasitic Infection,None,Mask Properties
-Wormwood Root,Plants,Scarce,Any,2,Plants,Astral Projection,Divination,Increase Compatibility,Improves? Visions
+name,id
+Alum/Barud,2
+Cedarwood,15
+Chromium,16
+Bloodworm,9
+Cyra,22
+Fly Agaric,47
+Dragon Soul,26
+Eagle Egg,27
+Elder Root,32
+Elf's Ear,33
+Fox Tail,49
+Frog,50
+Amanita Virosa,3
+Crow Egg,20
+Bisort,5
+Corpseworm,19
+Blue Moss,10
+Cupreus Patina,21
+Deer Antler,24
+Edram Root,30
+Earth Newt,28
+Firewort,44
+Bomb Thistle,11
+Dragon Scale,25
+Forge's Friend,48
+Ghost Fungus,52
+Gear,51
+Lavastone,71
+Essence of Energy,36
+Essence of Humanity,37
+Essence of the Mind,38
+Essence of the Mountain,39
+Essence of the World,40
+Essence of Unlife,42
+Emerald,34
+Undvika Heartwood,109
+Tubing,107
+Gold Wire,58
+Grey Festerer,61
+Laen,69
+Mill Thorn,77
+Mother's Milk,78
+Phosphorous,85
+Piston,87
+Platinum,88
+Roach,94
+Snake,100
+Sheep,97
+Silver,98
+Tremellales,105
+Turtle,108
+Glow Ants,55
+Quartz Crystal,90
+Spider,102
+Fly,46
+Glowing spider,56
+Grense Spores,60
+Heather,63
+Horehound,64
+Lake Crab,70
+Mouse,79
+Iron,67
+Lead,72
+Piemont White,86
+Rabbit,91
+Obsidian,82
+Ruby,95
+Tofani,104
+White Trumpet,111
+Trytich,106
+Eel,31
+Wormwood Root,112
+"""Demon Gold""",123
+Blood (Ritika),119
+Persil Liquid,84
+Agaric Essence,1
+Mercury,75
+Marcoc Oil,73
+Maythen Essence,74
+Radix Liquid,92
+Hydrogen Atheleck,66
+Silver Oak,99
+Blackrose,7
+Amethyst,4
+Blood (Elf),115
+Blood (Ghoul),120
+Blood (Krosan),117
+Blood (Haroc),116
+Blood (Mystic),118
+Bombshell,12
+Blood (Lyche),121
+Blood (Wyldling),124
+Newt Acid,81
+Blood (Dagon),114
+Pond Sucker,89
+Blood,8
+Black Quartz,6
+Brach,13
+Carnelian,14
+Cinnabar,17
+Copper,18
+Ebony,29
+Hyacinth Nectar,65
+Blood (B'Tair),113
+Cyra Sap,23
+Fire Newt,43
+Snake Venom,101
+Orange Fungus,83
+Sapphire,96
+Sulphur,103
+Flint,45
+Granite,59
+Gleaming Cup,53
+Gold,57
+Grub ,62
+Murkleech,80
+Red Lichen,93
+White Sage,110
+Essence of Change,35
+Essence of Tranquility,41
+Gleaming Essence,54
+Jade,68
+Methal Acid,76
+Undvika Sapwood,126
+Blood (Human),125
+Blood (Vampyre),122

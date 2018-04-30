@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329005536) do
+ActiveRecord::Schema.define(version: 20180409024145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 20180329005536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "profession_id"], name: "index_character_professions_on_character_id_and_profession_id", unique: true
+  end
+
+  create_table "character_recipes", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "recipe_id"
+    t.index ["character_id", "recipe_id"], name: "index_character_recipes_on_character_id_and_recipe_id", unique: true
+    t.index ["character_id"], name: "index_character_recipes_on_character_id"
+    t.index ["recipe_id"], name: "index_character_recipes_on_recipe_id"
   end
 
   create_table "characters", id: :serial, force: :cascade do |t|
@@ -174,6 +182,33 @@ ActiveRecord::Schema.define(version: 20180329005536) do
     t.cidr "ip_address"
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "subtype", null: false
+    t.string "category", null: false
+    t.integer "level", null: false
+    t.string "effect_family", null: false
+    t.string "delivery", null: false
+    t.string "application_time"
+    t.string "duration"
+    t.string "effect", null: false
+    t.text "description", null: false
+    t.string "hex_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "extraction_ingredient_id"
+    t.bigint "calcination_ingredient_id"
+    t.bigint "dissolution_ingredient_id"
+    t.bigint "concentration_ingredient_id"
+    t.string "slug", null: false
+    t.index ["calcination_ingredient_id"], name: "index_recipes_on_calcination_ingredient_id"
+    t.index ["concentration_ingredient_id"], name: "index_recipes_on_concentration_ingredient_id"
+    t.index ["dissolution_ingredient_id"], name: "index_recipes_on_dissolution_ingredient_id"
+    t.index ["extraction_ingredient_id"], name: "index_recipes_on_extraction_ingredient_id"
+    t.index ["name"], name: "index_recipes_on_name", unique: true
+    t.index ["slug"], name: "index_recipes_on_slug", unique: true
+  end
+
   create_table "seasons", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "equivalent"
@@ -213,13 +248,13 @@ ActiveRecord::Schema.define(version: 20180329005536) do
     t.integer "failed_sign_in_attempts", default: 0
     t.datetime "last_signed_in_at"
     t.integer "sign_in_count", default: 0
-    t.boolean "editor", default: false
     t.string "phone"
     t.string "street_address"
     t.string "city"
     t.string "state"
     t.string "zip"
     t.text "self_report"
+    t.boolean "editor", default: false
     t.boolean "banker", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["handle"], name: "index_users_on_handle", unique: true
