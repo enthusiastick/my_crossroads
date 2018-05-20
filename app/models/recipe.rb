@@ -1,4 +1,4 @@
-class Recipe < ApplicationRecord
+ class Recipe < ApplicationRecord
     before_validation :generate_slug
 
   CATEGORIES = [

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   resources :cash_bookings, only: [:new, :create]
   resources :characters, only: [:create, :edit, :index, :new, :show, :update] do
     resources :character_recipes, only:[:index, :show]
+    resources :ingredient_transfers, only:[:new, :create]
     resources :bank_accounts, only: [:show, :edit, :new] do
       resources :bank_transactions
     end

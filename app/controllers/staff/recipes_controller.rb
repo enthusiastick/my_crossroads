@@ -47,6 +47,7 @@ class Staff::RecipesController < ApplicationController
       effect_family:recipe_params[:effect_family],
       application_time:recipe_params[:application_time],
       duration:recipe_params[:duration],
+      expiration:recipe_params[:expiration],
       effect:recipe_params[:effect],
       description:recipe_params[:description],
     )
@@ -73,6 +74,7 @@ def recipe_params
     :category,
     :effect_family,
     :application_time,
+    :expiration,
     :duration,
     :effect,
     :description
