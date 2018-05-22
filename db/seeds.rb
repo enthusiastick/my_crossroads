@@ -19,6 +19,7 @@ csv.each do |row|
     r.expiration = row["expiration"],
     r.effect = row["effect"],
     r.description = row["description"],
+    r.expiration = row["expiration"],
     r.extraction_ingredient_id = row[ "extraction_ingredient_id"],
     r.calcination_ingredient_id = row[ "calcination_ingredient_id"],
     r.dissolution_ingredient_id = row[ "dissolution_ingredient_id"],
