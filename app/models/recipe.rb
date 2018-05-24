@@ -1,5 +1,5 @@
- class Recipe < ApplicationRecord
-    before_validation :generate_slug
+class Recipe < ApplicationRecord
+  before_validation :generate_slug
 
   CATEGORIES = [
     "Coatings",
