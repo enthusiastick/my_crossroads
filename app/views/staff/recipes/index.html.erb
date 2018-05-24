@@ -13,6 +13,7 @@
       <th>Delivery</th>
       <th>Application Time</th>
       <th>Duration</th>
+      <th>Expiration</th>
     </thead>
       <% @recipes.each do |recipe| %>
       <tbody>
@@ -24,6 +25,7 @@
       <td><%=recipe.delivery%></td>
       <td><%=recipe.application_time%></td>
       <td><%=recipe.duration%></td>
+      <td><%=recipe.expiration%></td>
     </tbody>
       <% end %>
   </table>

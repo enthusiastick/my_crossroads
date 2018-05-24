@@ -10,6 +10,9 @@
       <th>Delivery</th>
       <th>Application Time</th>
       <th>Duration</th>
+      <th>Expiration</th>
+      <th>Effect</th>
+      <th>Description</th>
     </thead>
     <tbody>
 <% @recipes.each do |recipe| %>
@@ -21,6 +24,9 @@
     <td><%=recipe.delivery%></td>
     <td><%=recipe.application_time%></td>
     <td><%=recipe.duration%></td>
+    <td><%=recipe.expiration%></td>
+    <td><%=recipe.effect%></td>
+    <td><%=recipe.description%></td>
   </tr>
 <% end %>
 </tbody>

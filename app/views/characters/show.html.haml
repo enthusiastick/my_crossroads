@@ -27,6 +27,8 @@
     -unless @character.inventories.empty?
       .callout
         %h2.text-center Components Inventory
+        %p.text-center
+          =link_to "Send Components to another Character", new_character_ingredient_transfer_path(@character.slug)
         %table.hover.datatables{ data: { page: { length: "25" }, order: "[[1,\"asc\"]]" } }
           %thead
             %tr

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409024145) do
+ActiveRecord::Schema.define(version: 20180510180439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,32 @@ ActiveRecord::Schema.define(version: 20180409024145) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
+  create_table "entities", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "slug", null: false
+    t.index ["name"], name: "index_entities_on_name", unique: true
+    t.index ["slug"], name: "index_entities_on_slug", unique: true
+  end
+
+  create_table "entity_characters", force: :cascade do |t|
+    t.bigint "entity_id"
+    t.bigint "character_id"
+    t.index ["character_id"], name: "index_entity_characters_on_character_id"
+    t.index ["entity_id", "character_id"], name: "index_entity_characters_on_entity_id_and_character_id", unique: true
+    t.index ["entity_id"], name: "index_entity_characters_on_entity_id"
+  end
+
+  create_table "entity_stores", force: :cascade do |t|
+    t.bigint "entity_id"
+    t.string "storable_type"
+    t.bigint "storable_id"
+    t.integer "quantity"
+    t.index ["entity_id", "storable_id", "storable_type"], name: "store_item", unique: true
+    t.index ["entity_id"], name: "index_entity_stores_on_entity_id"
+    t.index ["storable_type", "storable_id"], name: "index_entity_stores_on_storable_type_and_storable_id"
+  end
+
   create_table "events", id: :serial, force: :cascade do |t|
     t.string "address"
     t.text "directions"
@@ -115,6 +141,18 @@ ActiveRecord::Schema.define(version: 20180409024145) do
     t.index ["ingredient_id", "season_id"], name: "index_ingredient_seasons_on_ingredient_id_and_season_id", unique: true
     t.index ["ingredient_id"], name: "index_ingredient_seasons_on_ingredient_id"
     t.index ["season_id"], name: "index_ingredient_seasons_on_season_id"
+  end
+
+  create_table "ingredient_transfers", force: :cascade do |t|
+    t.bigint "source_inventory_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.bigint "target_inventory_id", null: false
+    t.integer "quantity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_ingredient_transfers_on_ingredient_id"
+    t.index ["source_inventory_id"], name: "index_ingredient_transfers_on_source_inventory_id"
+    t.index ["target_inventory_id"], name: "index_ingredient_transfers_on_target_inventory_id"
   end
 
   create_table "ingredients", id: :serial, force: :cascade do |t|
@@ -182,6 +220,15 @@ ActiveRecord::Schema.define(version: 20180409024145) do
     t.cidr "ip_address"
   end
 
+  create_table "recipe_books", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "recipes_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_recipe_books_on_character_id"
+    t.index ["recipes_id"], name: "index_recipe_books_on_recipes_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.string "subtype", null: false
@@ -201,6 +248,7 @@ ActiveRecord::Schema.define(version: 20180409024145) do
     t.bigint "dissolution_ingredient_id"
     t.bigint "concentration_ingredient_id"
     t.string "slug", null: false
+    t.string "expiration"
     t.index ["calcination_ingredient_id"], name: "index_recipes_on_calcination_ingredient_id"
     t.index ["concentration_ingredient_id"], name: "index_recipes_on_concentration_ingredient_id"
     t.index ["dissolution_ingredient_id"], name: "index_recipes_on_dissolution_ingredient_id"
@@ -248,13 +296,13 @@ ActiveRecord::Schema.define(version: 20180409024145) do
     t.integer "failed_sign_in_attempts", default: 0
     t.datetime "last_signed_in_at"
     t.integer "sign_in_count", default: 0
+    t.boolean "editor", default: false
     t.string "phone"
     t.string "street_address"
     t.string "city"
     t.string "state"
     t.string "zip"
     t.text "self_report"
-    t.boolean "editor", default: false
     t.boolean "banker", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["handle"], name: "index_users_on_handle", unique: true

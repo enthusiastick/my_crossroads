@@ -16,11 +16,13 @@ csv.each do |row|
     r.delivery = row["delivery"],
     r.application_time = row["application_time"],
     r.duration = row["duration"],
+    r.expiration = row["expiration"],
     r.effect = row["effect"],
     r.description = row["description"],
-    r.extraction_ingredient_id = row[ "ingredient_2_id"],
-    r.calcination_ingredient_id = row[ "ingredient_3_id"],
-    r.dissolution_ingredient_id = row[ "ingredient_1_id"],
-    r.concentration_ingredient_id = row[ "ingredient_4_id"],
+    r.expiration = row["expiration"],
+    r.extraction_ingredient_id = row[ "extraction_ingredient_id"],
+    r.calcination_ingredient_id = row[ "calcination_ingredient_id"],
+    r.dissolution_ingredient_id = row[ "dissolution_ingredient_id"],
+    r.concentration_ingredient_id = row[ "concentration_ingredient_id"],
   r.save
 end

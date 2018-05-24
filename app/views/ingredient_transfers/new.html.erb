@@ -1,0 +1,18 @@
+<h1>Transfer Component</h1>
+<div class="row">
+  <h1>Select Component to transfer from  <%=  @source_character.name%></h1>
+  <%= form_for [@source_character,@ingredient_transfer] do |f|%>
+
+  <%= f.label "Component to transfer"%>
+  <%= f.select( 'ingredient',options_from_collection_for_select(@source_ingredients,'id','name'))%>
+
+  <%= f.label "Character to Transfer to"%>
+  <%= f.select( 'target_inventory',options_from_collection_for_select(@characters,'slug','name'))%>
+
+  <%= f.label "Quantity"%>
+  <%= f.text_field :quantity %>
+
+  <%= f.submit %>
+  <% end %>
+
+</div>
