@@ -1,0 +1,58 @@
+<% content_for :title do %>
+  MyCrossroads: Welcome
+<% end %>
+<div class ="row">
+  <div class="small-12 columns">
+    <ul class="linkBar">
+      <li class="small-3 columns" > <%=  link_to "Events", events_path, class:"button" %>
+      <li class="small-3 columns"> <%= link_to "Evaluate an Event", "http://www.terresrising.com/events/evaluate", class:"button" %>
+      <li class="small-3 columns"> <%= link_to "Timeblocks", "http://www.terresrising.com/events/timeblocks", class:"button" %>
+      <li class="small-3 columns"> <%= mail_to "staff@terresrising.com", "Contact Us", class:"button" %>
+    </ul>
+  </div>
+</div>
+  <div class="row mainDiv">
+    <div class="small-12 columns">
+      <p class="larger margin-bottom-none text-center">
+        Today is <strong><%= @ashriyan_date %></strong>
+      </p>
+      <%= render "layouts/welcomeblurb" %>
+      <% if next_event.present? %>
+        <p class="larger text-center">
+          <% if next_event.start_date.past? %>
+            <strong>
+              <%= link_to next_event.name, event_path(next_event) %>
+            </strong>
+            is going on now.
+          <% else %>
+            <%= distance_of_time_in_words_to_now(next_event.start_date).capitalize %>
+            until
+            <strong>
+              <%= link_to "#{next_event.name}.", event_path(next_event) %>
+            </strong>
+          <% end %>
+        </p>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="text-center">
+          <%= link_to characters_path, class:"button" do %>
+            <h2>
+              <i aria-hidden="true" class="fa fa-users"></i>
+              My Characters
+            </h2>
+          <% end %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+  <div class ="row">
+    <div class="small-12 columns">
+      <ul class="linkBar">
+        <li class="small-3 columns" > <%=  link_to "Rules", "https://docs.google.com/document/d/1-MD64HLOYMRwl9QBnzr-QTTJYZ_WIAYEmN3KkRZS3VA/edit", class:"button" %>
+        <li class="small-3 columns"> <%= link_to "Forums", "http://www.terresrising.com/forum", class:"button" %>
+        <li class="small-3 columns"> <%= link_to "Gallery", "http://www.terresrising.com/gallery/", class:"button" %>
+          <li class="small-3 columns"> <%= link_to "Privacy", "http://www.terresrising.com/main/privacy", class:"button" %>
+      </ul>
+    </div>
+  </div>
+</div>
