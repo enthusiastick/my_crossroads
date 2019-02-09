@@ -20,3 +20,14 @@
   font-family: fantasy;
   font-size: 1.2rem;
 }
+
+.banner {
+  font-size: 36px;
+  text-align:center;
+  font-weight: bolder;
+  font-family: trebuchet, helvetica, arial, sans-serif;
+}
+
+.bannerRow{
+  margin-bottom: 2px;
+}
